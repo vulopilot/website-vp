@@ -106,25 +106,45 @@
 
   <!-- WHY IT MATTERS -->
   <section class="section why-section">
-    <p class="eyebrow reveal">Why this matters</p>
-    <h2 class="reveal">If you're not checking, <span class="highlight">you don't actually know.</span></h2>
-    <p class="section-sub reveal">Most WordPress sites don't fail loudly. They lose traffic to a weak title tag, lose a sale to a page that takes 6 seconds to load, or sit on an unpatched plugin for months — quietly, with no alert, until it's a real problem.</p>
+    <div class="split">
+      <div class="copy reveal">
+        <p class="eyebrow">Why this matters</p>
+        <h2>If you're not checking, <span class="highlight">you don't actually know.</span></h2>
+        <p class="card-copy">Most WordPress sites don't fail loudly. They lose traffic to a weak title tag, lose a sale to a page that takes 6 seconds to load, or sit on an unpatched plugin for months — quietly, with no alert, until it's a real problem.</p>
+        <ul class="check-list why-list">
+          <li><strong>It's invisible until it isn't.</strong> A slipping ranking or a slow page sends no notification — by the time you notice, you've likely lost visitors.</li>
+          <li><strong>Checking it by hand takes hours.</strong> Most owners properly audit none of this, regularly, because who has the time.</li>
+          <li><strong>Right now, it's scattered.</strong> An SEO plugin, a security plugin, a speed tester — different dashboards, nothing talking to each other.</li>
+        </ul>
+      </div>
 
-    <div class="grid-cards grid-cards-3 reveal">
-      <div class="tile tile-peach why-tile">
-        <span class="why-icon">👁️</span>
-        <p class="tile-title">It's invisible until it isn't.</p>
-        <p class="tile-copy">A slipping ranking or a slow page doesn't send you a notification. By the time you notice, you've likely already lost visitors.</p>
-      </div>
-      <div class="tile tile-mint why-tile">
-        <span class="why-icon">⏱️</span>
-        <p class="tile-title">Checking it all by hand takes hours.</p>
-        <p class="tile-copy">SEO, speed, content, security, backups — properly auditing even one of these takes real time. Most owners check none of them regularly.</p>
-      </div>
-      <div class="tile tile-blue why-tile">
-        <span class="why-icon">🧩</span>
-        <p class="tile-title">Right now, it's scattered across 4+ tools.</p>
-        <p class="tile-copy">An SEO plugin, a security plugin, a speed tester, a backup tool — different dashboards, different logins, nothing talking to each other.</p>
+      <div class="scan-browser reveal" style="transition-delay:.1s" aria-hidden="true">
+        <div class="browser-chrome">
+          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+          <span class="chrome-url">yoursite.com</span>
+        </div>
+        <div class="scan-viewport">
+          <div class="scan-sweep"></div>
+          <div class="page-skeleton">
+            <div class="sk-nav"><span></span><span></span><span></span></div>
+            <div class="sk-hero">
+              <div class="sk-line sk-line-lg"></div>
+              <div class="sk-line sk-line-md"></div>
+              <div class="sk-btn"></div>
+            </div>
+            <div class="sk-grid">
+              <div class="sk-card"></div>
+              <div class="sk-card"></div>
+              <div class="sk-card"></div>
+            </div>
+          </div>
+          <div class="scan-pin pin-1"><span class="pin-dot pin-bad"></span></div>
+          <div class="scan-pin pin-2"><span class="pin-dot pin-warn"></span></div>
+          <div class="scan-pin pin-3"><span class="pin-dot pin-warn"></span></div>
+          <div class="scan-callout callout-1">Missing meta description</div>
+          <div class="scan-callout callout-2">Image not compressed — 2.1MB</div>
+          <div class="scan-callout callout-3">Plugin update available (security)</div>
+        </div>
       </div>
     </div>
   </section>
@@ -133,20 +153,37 @@
   <section class="section replaces-section">
     <p class="eyebrow reveal">What it replaces</p>
     <h2 class="reveal">One plugin, instead of a <span class="highlight">pile of separate tools.</span></h2>
-    <p class="section-sub reveal">You could run an SEO plugin, a security scanner, a speed tester and a backup tool separately — checking each one yourself, on no particular schedule. Or VuloPilot can do all four, in one place, and tell you what to do about it.</p>
+    <p class="section-sub reveal">You could run an SEO plugin, a security scanner, a speed tester and a backup tool separately — checking each one yourself, on no particular schedule. Or VuloPilot can do all four, in one place.</p>
 
-    <div class="compare-card reveal">
-      <div class="compare-row compare-head">
-        <span>What you need</span>
-        <span>Doing it yourself</span>
-        <span class="us">VuloPilot</span>
+    <div class="pile-diagram reveal">
+      <div class="pile-side pile-before">
+        <span class="pile-label">Doing it yourself</span>
+        <div class="pile-stack">
+          <div class="pile-card pc-1"><span class="pile-emoji">🔍</span>SEO plugin<small>separate login</small></div>
+          <div class="pile-card pc-2"><span class="pile-emoji">🛡️</span>Security scanner<small>separate login</small></div>
+          <div class="pile-card pc-3"><span class="pile-emoji">⚡</span>Speed tester<small>separate login</small></div>
+          <div class="pile-card pc-4"><span class="pile-emoji">💾</span>Backup tool<small>separate login</small></div>
+        </div>
       </div>
-      <div class="compare-row"><span>SEO &amp; AI visibility checks</span><span class="icon-x">✕ separate plugin</span><span class="icon-check">✓ built in</span></div>
-      <div class="compare-row"><span>Speed &amp; Core Web Vitals</span><span class="icon-x">✕ separate tool</span><span class="icon-check">✓ built in</span></div>
-      <div class="compare-row"><span>Security &amp; backup status</span><span class="icon-x">✕ separate plugin</span><span class="icon-check">✓ built in</span></div>
-      <div class="compare-row"><span>Plain-language explanations</span><span class="icon-x">✕ you interpret it</span><span class="icon-check">✓ written for you</span></div>
-      <div class="compare-row"><span>AI-drafted fixes</span><span class="icon-x">✕ not included</span><span class="icon-check">✓ included</span></div>
-      <div class="compare-row"><span>Runs on a schedule, unprompted</span><span class="icon-x">✕ you remember to check</span><span class="icon-check">✓ automatic</span></div>
+
+      <div class="pile-arrow" aria-hidden="true">
+        <svg viewBox="0 0 80 40" width="80" height="40">
+          <path d="M4,20 H70" stroke="#52503f" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+          <path d="M60,10 L72,20 L60,30" stroke="#52503f" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="pile-side pile-after">
+        <span class="pile-label">With VuloPilot</span>
+        <div class="pile-card pile-single">
+          <span class="pile-single-dot"></span>
+          <strong>VuloPilot</strong>
+          <small>One dashboard. Everything checked, explained, and fixable.</small>
+          <div class="pile-single-tags">
+            <span>SEO</span><span>Speed</span><span>Security</span><span>AI</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -424,26 +461,32 @@
     <h2 class="reveal">What a first scan <span class="highlight">usually turns up.</span></h2>
     <p class="section-sub reveal">Typical findings from a site that hadn't been audited before — the kind of thing that sits unnoticed for months.</p>
 
-    <div class="proof-grid reveal">
-      <div class="proof-card">
-        <strong class="proof-figure">11</strong>
-        <span class="proof-label">pages with missing or weak titles</span>
-        <p>Usually fixed in under a day with AI-drafted titles, reviewed and published.</p>
+    <div class="proof-screen reveal">
+      <div class="browser-chrome">
+        <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+        <span class="chrome-url">VuloPilot — Scan report</span>
       </div>
-      <div class="proof-card">
-        <strong class="proof-figure">4.2s</strong>
-        <span class="proof-label">average load time on the slowest pages</span>
-        <p>Most often oversized, uncompressed images — an easy, high-impact fix.</p>
-      </div>
-      <div class="proof-card">
-        <strong class="proof-figure">2</strong>
-        <span class="proof-label">plugins with known vulnerabilities</span>
-        <p>Flagged with the fix, not just the warning — most are a one-click update.</p>
-      </div>
-      <div class="proof-card">
-        <strong class="proof-figure">0</strong>
-        <span class="proof-label">verified backups, before setup</span>
-        <p>A surprisingly common finding — now checked and confirmed automatically.</p>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <strong class="proof-figure count-up" data-count="11">0</strong>
+          <span class="proof-label">pages with missing or weak titles</span>
+          <p>Usually fixed in under a day with AI-drafted titles, reviewed and published.</p>
+        </div>
+        <div class="proof-card">
+          <strong class="proof-figure">4.2s</strong>
+          <span class="proof-label">average load time on the slowest pages</span>
+          <p>Most often oversized, uncompressed images — an easy, high-impact fix.</p>
+        </div>
+        <div class="proof-card">
+          <strong class="proof-figure count-up" data-count="2">0</strong>
+          <span class="proof-label">plugins with known vulnerabilities</span>
+          <p>Flagged with the fix, not just the warning — most are a one-click update.</p>
+        </div>
+        <div class="proof-card">
+          <strong class="proof-figure count-up" data-count="0">0</strong>
+          <span class="proof-label">verified backups, before setup</span>
+          <p>A surprisingly common finding — now checked and confirmed automatically.</p>
+        </div>
       </div>
     </div>
     <p class="proof-caveat reveal">Illustrative, based on common first-scan patterns — your results depend on your site.</p>

@@ -1242,6 +1242,229 @@ h2.light { color: var(--cream); }
   .proof-grid { grid-template-columns: 1fr; }
 }
 
+/* ======================================================
+   SCREEN MOCKUPS & DIAGRAMS
+====================================================== */
+
+/* ---------- Reusable browser chrome ---------- */
+.browser-chrome {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+.chrome-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.chrome-dot:nth-child(1) { background: #e8a0a0; }
+.chrome-dot:nth-child(2) { background: #ecd28a; }
+.chrome-dot:nth-child(3) { background: #a8d6a8; }
+.chrome-url {
+  margin-left: 10px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+/* ---------- Scan browser mockup ---------- */
+.why-section .split { align-items: center; }
+.why-list { margin-top: 24px; }
+.why-list li strong { color: var(--ink); }
+
+.scan-browser {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.scan-viewport {
+  position: relative;
+  padding: 26px 24px 30px;
+  overflow: hidden;
+  min-height: 300px;
+}
+.scan-sweep {
+  position: absolute;
+  left: 0; right: 0; top: -40%;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(198,242,78,0) 0%, rgba(198,242,78,0.35) 50%, rgba(198,242,78,0) 100%);
+  animation: sweepDown 4s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+@keyframes sweepDown {
+  0% { top: -40%; }
+  60% { top: 100%; }
+  100% { top: 100%; }
+}
+
+.page-skeleton { display: flex; flex-direction: column; gap: 16px; }
+.sk-nav { display: flex; gap: 8px; }
+.sk-nav span { width: 46px; height: 8px; border-radius: 4px; background: var(--line); }
+.sk-hero { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.sk-line { height: 11px; border-radius: 4px; background: var(--line); }
+.sk-line-lg { width: 78%; }
+.sk-line-md { width: 55%; }
+.sk-btn { width: 110px; height: 26px; border-radius: 999px; background: var(--peach); margin-top: 4px; }
+.sk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+.sk-card { height: 60px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+
+.scan-pin { position: absolute; z-index: 4; }
+.pin-dot {
+  display: block;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  position: relative;
+  animation: pinPulse 2s ease-in-out infinite;
+}
+.pin-dot::after {
+  content: "";
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  opacity: 0.5;
+}
+.pin-bad { background: #c0585f; color: #c0585f; }
+.pin-warn { background: #d6a23a; color: #d6a23a; }
+@keyframes pinPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.pin-1 { top: 48px; left: 86px; }
+.pin-2 { top: 128px; right: 60px; }
+.pin-3 { top: 206px; left: 36px; }
+
+.scan-callout {
+  position: absolute;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 7px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  z-index: 5;
+  opacity: 0;
+  animation: calloutIn 0.5s ease forwards;
+}
+.callout-1 { top: 44px; left: 108px; animation-delay: 1.2s; }
+.callout-2 { top: 124px; right: 2px; animation-delay: 2s; }
+.callout-3 { top: 202px; left: 58px; animation-delay: 2.8s; }
+@keyframes calloutIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Tool pile diagram ---------- */
+.pile-diagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.pile-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  text-align: center;
+}
+.pile-stack { position: relative; min-height: 220px; }
+.pile-card {
+  position: absolute;
+  width: 68%;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pile-card small { font-weight: 500; color: var(--ink-soft); font-size: 10.5px; }
+.pile-emoji { font-size: 18px; }
+.pc-1 { top: 0; left: 4%; transform: rotate(-6deg); z-index: 4; }
+.pc-2 { top: 42px; left: 26%; transform: rotate(4deg); z-index: 3; }
+.pc-3 { top: 92px; left: 2%; transform: rotate(3deg); z-index: 2; }
+.pc-4 { top: 136px; left: 28%; transform: rotate(-4deg); z-index: 1; }
+
+.pile-arrow { display: flex; align-items: center; justify-content: center; opacity: 0.6; }
+
+.pile-after { display: flex; flex-direction: column; align-items: center; }
+.pile-single {
+  position: static;
+  width: 100%;
+  max-width: 260px;
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0 16px 32px rgba(22,22,15,0.18);
+}
+.pile-single-dot {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-bottom: 12px;
+  box-shadow: 0 0 0 6px rgba(198,242,78,0.2);
+}
+.pile-single strong { font-size: 17px; }
+.pile-single small { color: rgba(250,248,242,0.7); font-size: 12px; margin-top: 8px; display: block; }
+.pile-single-tags { display: flex; gap: 6px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+.pile-single-tags span {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(198,242,78,0.15);
+  color: var(--green);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+/* ---------- Proof screen wrapper ---------- */
+.proof-screen {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.proof-screen .proof-grid {
+  padding: 26px 24px;
+  gap: 18px;
+}
+.proof-screen .proof-card {
+  background: var(--bg);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .pile-diagram { grid-template-columns: 1fr; }
+  .pile-arrow { transform: rotate(90deg); margin: 4px 0; }
+  .scan-viewport { min-height: 260px; }
+}
+@media (max-width: 560px) {
+  .scan-callout { display: none; }
+  .pile-card { width: 90%; }
+}
+
 </style>
 </head>
 <body>
@@ -1340,25 +1563,45 @@ h2.light { color: var(--cream); }
 
   <!-- WHY IT MATTERS -->
   <section class="section why-section">
-    <p class="eyebrow reveal">Why this matters</p>
-    <h2 class="reveal">If you're not checking, <span class="highlight">you don't actually know.</span></h2>
-    <p class="section-sub reveal">Most WordPress sites don't fail loudly. They lose traffic to a weak title tag, lose a sale to a page that takes 6 seconds to load, or sit on an unpatched plugin for months — quietly, with no alert, until it's a real problem.</p>
+    <div class="split">
+      <div class="copy reveal">
+        <p class="eyebrow">Why this matters</p>
+        <h2>If you're not checking, <span class="highlight">you don't actually know.</span></h2>
+        <p class="card-copy">Most WordPress sites don't fail loudly. They lose traffic to a weak title tag, lose a sale to a page that takes 6 seconds to load, or sit on an unpatched plugin for months — quietly, with no alert, until it's a real problem.</p>
+        <ul class="check-list why-list">
+          <li><strong>It's invisible until it isn't.</strong> A slipping ranking or a slow page sends no notification — by the time you notice, you've likely lost visitors.</li>
+          <li><strong>Checking it by hand takes hours.</strong> Most owners properly audit none of this, regularly, because who has the time.</li>
+          <li><strong>Right now, it's scattered.</strong> An SEO plugin, a security plugin, a speed tester — different dashboards, nothing talking to each other.</li>
+        </ul>
+      </div>
 
-    <div class="grid-cards grid-cards-3 reveal">
-      <div class="tile tile-peach why-tile">
-        <span class="why-icon">👁️</span>
-        <p class="tile-title">It's invisible until it isn't.</p>
-        <p class="tile-copy">A slipping ranking or a slow page doesn't send you a notification. By the time you notice, you've likely already lost visitors.</p>
-      </div>
-      <div class="tile tile-mint why-tile">
-        <span class="why-icon">⏱️</span>
-        <p class="tile-title">Checking it all by hand takes hours.</p>
-        <p class="tile-copy">SEO, speed, content, security, backups — properly auditing even one of these takes real time. Most owners check none of them regularly.</p>
-      </div>
-      <div class="tile tile-blue why-tile">
-        <span class="why-icon">🧩</span>
-        <p class="tile-title">Right now, it's scattered across 4+ tools.</p>
-        <p class="tile-copy">An SEO plugin, a security plugin, a speed tester, a backup tool — different dashboards, different logins, nothing talking to each other.</p>
+      <div class="scan-browser reveal" style="transition-delay:.1s" aria-hidden="true">
+        <div class="browser-chrome">
+          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+          <span class="chrome-url">yoursite.com</span>
+        </div>
+        <div class="scan-viewport">
+          <div class="scan-sweep"></div>
+          <div class="page-skeleton">
+            <div class="sk-nav"><span></span><span></span><span></span></div>
+            <div class="sk-hero">
+              <div class="sk-line sk-line-lg"></div>
+              <div class="sk-line sk-line-md"></div>
+              <div class="sk-btn"></div>
+            </div>
+            <div class="sk-grid">
+              <div class="sk-card"></div>
+              <div class="sk-card"></div>
+              <div class="sk-card"></div>
+            </div>
+          </div>
+          <div class="scan-pin pin-1"><span class="pin-dot pin-bad"></span></div>
+          <div class="scan-pin pin-2"><span class="pin-dot pin-warn"></span></div>
+          <div class="scan-pin pin-3"><span class="pin-dot pin-warn"></span></div>
+          <div class="scan-callout callout-1">Missing meta description</div>
+          <div class="scan-callout callout-2">Image not compressed — 2.1MB</div>
+          <div class="scan-callout callout-3">Plugin update available (security)</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1367,20 +1610,37 @@ h2.light { color: var(--cream); }
   <section class="section replaces-section">
     <p class="eyebrow reveal">What it replaces</p>
     <h2 class="reveal">One plugin, instead of a <span class="highlight">pile of separate tools.</span></h2>
-    <p class="section-sub reveal">You could run an SEO plugin, a security scanner, a speed tester and a backup tool separately — checking each one yourself, on no particular schedule. Or VuloPilot can do all four, in one place, and tell you what to do about it.</p>
+    <p class="section-sub reveal">You could run an SEO plugin, a security scanner, a speed tester and a backup tool separately — checking each one yourself, on no particular schedule. Or VuloPilot can do all four, in one place.</p>
 
-    <div class="compare-card reveal">
-      <div class="compare-row compare-head">
-        <span>What you need</span>
-        <span>Doing it yourself</span>
-        <span class="us">VuloPilot</span>
+    <div class="pile-diagram reveal">
+      <div class="pile-side pile-before">
+        <span class="pile-label">Doing it yourself</span>
+        <div class="pile-stack">
+          <div class="pile-card pc-1"><span class="pile-emoji">🔍</span>SEO plugin<small>separate login</small></div>
+          <div class="pile-card pc-2"><span class="pile-emoji">🛡️</span>Security scanner<small>separate login</small></div>
+          <div class="pile-card pc-3"><span class="pile-emoji">⚡</span>Speed tester<small>separate login</small></div>
+          <div class="pile-card pc-4"><span class="pile-emoji">💾</span>Backup tool<small>separate login</small></div>
+        </div>
       </div>
-      <div class="compare-row"><span>SEO &amp; AI visibility checks</span><span class="icon-x">✕ separate plugin</span><span class="icon-check">✓ built in</span></div>
-      <div class="compare-row"><span>Speed &amp; Core Web Vitals</span><span class="icon-x">✕ separate tool</span><span class="icon-check">✓ built in</span></div>
-      <div class="compare-row"><span>Security &amp; backup status</span><span class="icon-x">✕ separate plugin</span><span class="icon-check">✓ built in</span></div>
-      <div class="compare-row"><span>Plain-language explanations</span><span class="icon-x">✕ you interpret it</span><span class="icon-check">✓ written for you</span></div>
-      <div class="compare-row"><span>AI-drafted fixes</span><span class="icon-x">✕ not included</span><span class="icon-check">✓ included</span></div>
-      <div class="compare-row"><span>Runs on a schedule, unprompted</span><span class="icon-x">✕ you remember to check</span><span class="icon-check">✓ automatic</span></div>
+
+      <div class="pile-arrow" aria-hidden="true">
+        <svg viewBox="0 0 80 40" width="80" height="40">
+          <path d="M4,20 H70" stroke="#52503f" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+          <path d="M60,10 L72,20 L60,30" stroke="#52503f" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="pile-side pile-after">
+        <span class="pile-label">With VuloPilot</span>
+        <div class="pile-card pile-single">
+          <span class="pile-single-dot"></span>
+          <strong>VuloPilot</strong>
+          <small>One dashboard. Everything checked, explained, and fixable.</small>
+          <div class="pile-single-tags">
+            <span>SEO</span><span>Speed</span><span>Security</span><span>AI</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1658,26 +1918,32 @@ h2.light { color: var(--cream); }
     <h2 class="reveal">What a first scan <span class="highlight">usually turns up.</span></h2>
     <p class="section-sub reveal">Typical findings from a site that hadn't been audited before — the kind of thing that sits unnoticed for months.</p>
 
-    <div class="proof-grid reveal">
-      <div class="proof-card">
-        <strong class="proof-figure">11</strong>
-        <span class="proof-label">pages with missing or weak titles</span>
-        <p>Usually fixed in under a day with AI-drafted titles, reviewed and published.</p>
+    <div class="proof-screen reveal">
+      <div class="browser-chrome">
+        <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+        <span class="chrome-url">VuloPilot — Scan report</span>
       </div>
-      <div class="proof-card">
-        <strong class="proof-figure">4.2s</strong>
-        <span class="proof-label">average load time on the slowest pages</span>
-        <p>Most often oversized, uncompressed images — an easy, high-impact fix.</p>
-      </div>
-      <div class="proof-card">
-        <strong class="proof-figure">2</strong>
-        <span class="proof-label">plugins with known vulnerabilities</span>
-        <p>Flagged with the fix, not just the warning — most are a one-click update.</p>
-      </div>
-      <div class="proof-card">
-        <strong class="proof-figure">0</strong>
-        <span class="proof-label">verified backups, before setup</span>
-        <p>A surprisingly common finding — now checked and confirmed automatically.</p>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <strong class="proof-figure count-up" data-count="11">0</strong>
+          <span class="proof-label">pages with missing or weak titles</span>
+          <p>Usually fixed in under a day with AI-drafted titles, reviewed and published.</p>
+        </div>
+        <div class="proof-card">
+          <strong class="proof-figure">4.2s</strong>
+          <span class="proof-label">average load time on the slowest pages</span>
+          <p>Most often oversized, uncompressed images — an easy, high-impact fix.</p>
+        </div>
+        <div class="proof-card">
+          <strong class="proof-figure count-up" data-count="2">0</strong>
+          <span class="proof-label">plugins with known vulnerabilities</span>
+          <p>Flagged with the fix, not just the warning — most are a one-click update.</p>
+        </div>
+        <div class="proof-card">
+          <strong class="proof-figure count-up" data-count="0">0</strong>
+          <span class="proof-label">verified backups, before setup</span>
+          <p>A surprisingly common finding — now checked and confirmed automatically.</p>
+        </div>
       </div>
     </div>
     <p class="proof-caveat reveal">Illustrative, based on common first-scan patterns — your results depend on your site.</p>
