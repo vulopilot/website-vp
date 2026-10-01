@@ -1201,8 +1201,8 @@ h2.light { color: var(--cream); }
   border-radius: 50%;
   background: var(--green);
   color: var(--green-dark);
-  font-size: 15px;
 }
+.wf-svg { width: 18px; height: 18px; }
 .wf-pulse { animation: wfPulse 2.4s ease-in-out infinite; }
 @keyframes wfPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(198,242,78,0.5); }
@@ -1452,7 +1452,7 @@ h2.light { color: var(--cream); }
   <section class="hero">
     <div class="pill-label reveal">AI SEO &amp; website monitoring for WordPress</div>
     <h1 class="reveal" style="transition-delay:.05s">What's really holding<br/>your website back?<br/><span class="highlight">VuloPilot finds out — and helps you solve it.</span></h1>
-    <p class="hero-sub reveal" style="transition-delay:.12s">One WordPress plugin that checks your SEO, content, speed and security — then helps you resolve what matters.</p>
+    <p class="hero-sub reveal" style="transition-delay:.12s">One WordPress plugin that checks your SEO, AI visibility, content, speed and security — then helps you resolve what matters.</p>
     <div class="hero-actions reveal" style="transition-delay:.2s">
       <a class="btn btn-dark btn-magnetic" href="#cta">Start free<span class="btn-dot"></span></a>
       <a class="btn btn-ghost" href="#mission-control">Explore the dashboard ↓</a>
@@ -1491,7 +1491,7 @@ h2.light { color: var(--cream); }
             <span class="task-num">01</span>
             <div>
               <strong>Find the issues</strong>
-              <p>See affected pages across SEO, AI visibility, speed and health.</p>
+              <p>See affected pages across SEO, AI visibility, content, speed and security.</p>
             </div>
           </div>
           <div class="hero-task">
@@ -1523,7 +1523,7 @@ h2.light { color: var(--cream); }
         <p class="card-copy">Most WordPress sites don't fail loudly. They lose traffic to a weak title tag, lose a sale to a page that takes 6 seconds to load, or sit on an unpatched plugin for months — quietly, with no alert, until it's a real problem.</p>
         <ul class="check-list why-list">
           <li><strong>It's invisible until it isn't.</strong> A slipping ranking or a slow page sends no notification — by the time you notice, you've likely lost visitors.</li>
-          <li><strong>Checking it by hand takes hours.</strong> Most owners properly audit none of this, regularly, because who has the time.</li>
+          <li><strong>Checking it by hand takes hours.</strong> Few owners ever properly audit all of it — there simply isn't time to do it regularly.</li>
           <li><strong>Right now, it's scattered.</strong> An SEO plugin, a security plugin, a speed tester — different dashboards, nothing talking to each other.</li>
         </ul>
       </div>
@@ -1563,7 +1563,7 @@ h2.light { color: var(--cream); }
   <section class="section" id="mission-control">
     <p class="eyebrow reveal">Meet your website's Mission Control</p>
     <h2 class="reveal">See exactly what's <span class="highlight">quietly holding you back.</span></h2>
-    <p class="section-sub reveal">Open one dashboard to review findings across your website. Choose an area, see what needs work, and find the affected pages. Explore the example findings below.</p>
+    <p class="section-sub reveal">Open one dashboard to review your website, area by area. Choose a category below, see what needs work, and jump straight to the affected pages.</p>
 
     <div class="mission reveal">
       <div class="mission-head">
@@ -1661,9 +1661,9 @@ h2.light { color: var(--cream); }
 
   <!-- PROBLEM INTRO -->
   <section class="section problem-intro">
-    <p class="eyebrow reveal">Why these checks belong together</p>
-    <h2 class="reveal">VuloPilot makes sure you're <span class="highlight">not just online — found.</span></h2>
-    <p class="section-sub reveal">Getting found is only the beginning. People need to find your pages, understand your offer, and use your site without friction. VuloPilot checks each part of that journey, including the WordPress health behind it.</p>
+    <p class="eyebrow reveal">Four checks, one journey</p>
+    <h2 class="reveal">From the moment someone <span class="highlight">searches, to the moment they trust you.</span></h2>
+    <p class="section-sub reveal">Getting found is only step one. A visitor still has to understand your offer, use the page without friction, and trust what's running behind it. Here's how VuloPilot covers each part of that journey.</p>
   </section>
 
   <!-- FEATURE STORY 1 -->
@@ -1827,7 +1827,7 @@ h2.light { color: var(--cream); }
       <div class="step-card step-mint">
         <span class="step-label">Step 2</span>
         <h3>Improve</h3>
-        <p>Use AI writing tools for content and Pro fixes for supported issues. Keep account and server changes with your admin or developer.</p>
+        <p>Use AI writing tools for content, or apply a supported fix with Pro. Bigger changes stay with your admin or developer.</p>
       </div>
       <div class="step-card step-peach">
         <span class="step-label">Step 3</span>
@@ -1846,8 +1846,8 @@ h2.light { color: var(--cream); }
         <h2>VuloPilot keeps checking <span class="highlight">even when you don't have time.</span></h2>
         <p class="card-copy">New pages and plugin updates can introduce new issues. Schedule recurring checks so you can return to current findings without remembering to start every scan.</p>
         <ul class="check-list">
-          <li>Start with Free: full site scan and website health automations.</li>
-          <li>Set your own rules with Pro: custom triggers, conditions and schedules, plus supported automatic fixes.</li>
+          <li>Free gets you a recurring full site scan and website health checks, ready to go.</li>
+          <li>Pro lets you set your own rules — custom triggers, conditions and schedules, plus automatic fixes where supported.</li>
         </ul>
         <a class="btn btn-dark" href="#pricing">Explore automation<span class="btn-dot"></span></a>
       </div>
@@ -1855,18 +1855,24 @@ h2.light { color: var(--cream); }
         <p class="card-eyebrow light">Example workflow</p>
         <div class="workflow">
           <div class="workflow-step">
-            <span class="workflow-icon wf-pulse">⏱</span>
+            <span class="workflow-icon wf-pulse">
+              <svg viewBox="0 0 20 20" class="wf-svg"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 6v4l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
             <div><strong>When</strong><p>On your chosen schedule</p></div>
           </div>
           <div class="workflow-arrow">↓</div>
           <div class="workflow-step">
-            <span class="workflow-icon wf-pulse" style="animation-delay:.6s">⟳</span>
+            <span class="workflow-icon wf-pulse" style="animation-delay:.6s">
+              <svg viewBox="0 0 20 20" class="wf-svg"><path d="M15.5 8a5.5 5.5 0 1 0-1.2 5.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15.5 4.5v3.5h-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
             <div><strong>Run</strong><p>A full site scan</p></div>
           </div>
           <div class="workflow-arrow">↓</div>
           <div class="workflow-step">
-            <span class="workflow-icon wf-pulse" style="animation-delay:1.2s">✓</span>
-            <div><strong>Review</strong><p>The latest findings</p></div>
+            <span class="workflow-icon wf-pulse" style="animation-delay:1.2s">
+              <svg viewBox="0 0 20 20" class="wf-svg"><path d="M4 10.5l4 4 8-8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div><strong>Review</strong><p>The latest results</p></div>
           </div>
         </div>
       </div>
@@ -1902,8 +1908,8 @@ h2.light { color: var(--cream); }
         </div>
         <div class="proof-card">
           <strong class="proof-figure count-up" data-count="0">0</strong>
-          <span class="proof-label">verified backups, before setup</span>
-          <p>A surprisingly common finding — now checked and confirmed automatically.</p>
+          <span class="proof-label">sites had a verified backup running</span>
+          <p>A surprisingly common gap — now checked and confirmed automatically.</p>
         </div>
       </div>
     </div>
@@ -1945,7 +1951,7 @@ h2.light { color: var(--cream); }
   <!-- FAQ -->
   <section class="section" id="faq">
     <p class="eyebrow reveal">FAQ</p>
-    <h2 class="reveal">Questions site owners ask first.</h2>
+    <h2 class="reveal">Questions people ask before they start.</h2>
 
     <div class="faq-list reveal">
       <details class="faq-item" open>
@@ -1973,7 +1979,7 @@ h2.light { color: var(--cream); }
       <div class="cta-copy">
         <p class="eyebrow light">Your first step</p>
         <h2 class="light">Find out what's really going on —<br/>VuloPilot helps you resolve it, today.</h2>
-        <p class="section-sub light">Start with Free to see your scores and issue lists. Choose your next step with the findings in front of you.</p>
+        <p class="section-sub light">Start with Free to see your scores and issue lists, then decide what's worth tackling first.</p>
         <ul class="cta-list">
           <li>✓ Scores and issue lists, instantly</li>
           <li>✓ 100 free AI credits included</li>
