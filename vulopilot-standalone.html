@@ -1133,11 +1133,31 @@ h2.light { color: var(--cream); }
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
-  color: var(--bad);
-  background: var(--yellow);
   padding: 6px 12px;
   border-radius: 999px;
+  margin-top: 10px;
 }
+.insight-tag-bad { color: var(--bad); background: var(--yellow); }
+.insight-tag-good { color: #1f7a45; background: #e3f5ea; margin-top: 16px; }
+
+.insight-fix {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.insight-fix-dot {
+  flex: none;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  margin-top: 4px;
+  background: var(--green-dark);
+  box-shadow: 0 0 0 4px rgba(0,41,145,0.12);
+}
+.insight-fix strong { font-size: 13px; display: block; }
+.insight-fix small { font-size: 11.5px; color: var(--ink-soft); }
 
 .vitals-row {
   display: grid;
@@ -1164,9 +1184,7 @@ h2.light { color: var(--cream); }
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 4px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
+  margin-top: 12px;
   color: var(--green-dark);
   font-size: 12.5px;
   font-weight: 700;
@@ -1696,6 +1714,10 @@ h2.light { color: var(--cream); }
             <li><span class="dot dot-good"></span>Schema markup <b>valid</b></li>
             <li><span class="dot dot-warn"></span>Internal links <b>thin</b></li>
           </ul>
+          <div class="insight-fix">
+            <span class="insight-fix-dot"></span>
+            <div><strong>3 internal links suggested</strong><small>Drafted by AI — review and add in one click</small></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1712,14 +1734,15 @@ h2.light { color: var(--cream); }
         <div class="insight-body insight-body-tight">
           <p class="insight-eyebrow">Visitor's question</p>
           <p class="insight-quote">"What's included in this service?"</p>
+          <span class="insight-tag insight-tag-bad">Page doesn't answer this</span>
           <div class="insight-divider"></div>
-          <p class="insight-eyebrow">VuloPilot's finding</p>
+          <p class="insight-eyebrow">AI-drafted answer</p>
           <div class="insight-typing">
             <span class="type-line type-line-1"></span>
             <span class="type-line type-line-2"></span>
             <span class="type-line type-line-3"></span>
           </div>
-          <span class="insight-tag">Answer coverage: thin</span>
+          <span class="insight-tag insight-tag-good">Ready to review and publish</span>
         </div>
       </div>
       <div class="copy">
@@ -1771,6 +1794,10 @@ h2.light { color: var(--cream); }
             <li><span class="dot dot-good"></span>Layout <b>stable</b></li>
             <li><span class="dot dot-warn"></span>Alt text <b>missing on 2 images</b></li>
           </ul>
+          <div class="insight-fix">
+            <span class="insight-fix-dot"></span>
+            <div><strong>Image compression ready</strong><small>Cuts load time by ~1.4s — apply in one click</small></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1791,12 +1818,16 @@ h2.light { color: var(--cream); }
             <li><span class="dot dot-good"></span>Backup <b>today, 03:00</b></li>
             <li><span class="dot dot-warn"></span>Plugin update <b>1 pending</b></li>
           </ul>
+          <div class="insight-fix">
+            <span class="insight-fix-dot"></span>
+            <div><strong>Known vulnerability patched</strong><small>Update it now in one click</small></div>
+          </div>
           <div class="insight-shield">
             <svg viewBox="0 0 28 32" class="mini-shield">
               <path d="M14 1 L26 6 V15 C26 23 20 28 14 31 C8 28 2 23 2 15 V6 Z" fill="none" stroke="currentColor" stroke-width="2"/>
               <path class="mini-shield-check" d="M8 16 L12 20 L20 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Protected</span>
+            <span>Protected once applied</span>
           </div>
         </div>
       </div>
