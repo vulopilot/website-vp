@@ -10,23 +10,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f4f1ea;
-  --ink: #16160f;
-  --ink-soft: #52503f;
-  --cream: #faf8f2;
-  --line: rgba(22, 22, 15, 0.1);
-  --green: #c6f24e;
-  --green-dark: #3a5a1f;
-  --peach: #f6d9c4;
-  --peach-2: #f3c9ad;
-  --mint: #d7ead6;
-  --blue: #cfe3f2;
-  --lilac: #ddd6f3;
-  --yellow: #f2e6b0;
+  /* VuloPilot brand palette */
+  --bg: #f7f9ff;
+  --ink: #0c1948;
+  --ink-soft: #59647b;
+  --cream: #ffffff;
+  --line: #e9edf7;
+  --green: #4f7fe0;       /* bright accent blue — dots, sparklines, progress */
+  --green-dark: #002991;  /* brand blue — buttons, links, highlighted text */
+  --peach: #eaf0ff;       /* light blue tint 1 */
+  --peach-2: #dce9ff;     /* light blue tint 2 */
+  --mint: #f2f6ff;        /* lightest blue tint */
+  --blue: #dde7fb;        /* soft blue tint */
+  --lilac: #e3e9fa;       /* pale indigo tint */
+  --yellow: #ffe9ee;      /* reserved for warnings/priority, matches brand's red accent */
+  --bad: #a62a43;
   --radius-lg: 28px;
   --radius-md: 20px;
   --radius-sm: 14px;
-  --shadow: 0 1px 2px rgba(22,22,15,0.04), 0 12px 30px rgba(22,22,15,0.06);
+  --shadow: 0 1px 2px rgba(12,25,72,0.04), 0 12px 30px rgba(12,25,72,0.08);
   font-size: 16px;
 }
 
@@ -148,7 +150,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-soft);
   margin: 0 0 14px;
 }
-.eyebrow.light { color: rgba(250,248,242,0.7); }
+.eyebrow.light { color: rgba(255,255,255,0.7); }
 
 h1, h2, h3 {
   font-weight: 800;
@@ -168,7 +170,7 @@ h2.light { color: var(--cream); }
   font-size: 16px;
   margin: 16px 0 44px;
 }
-.section-sub.light { color: rgba(250,248,242,0.75); }
+.section-sub.light { color: rgba(255,255,255,0.75); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -313,7 +315,7 @@ h2.light { color: var(--cream); }
   color: var(--ink-soft);
   margin: 0 0 18px;
 }
-.card-eyebrow.light { color: rgba(250,248,242,0.7); }
+.card-eyebrow.light { color: rgba(255,255,255,0.7); }
 
 .leak-list {
   list-style: none;
@@ -354,7 +356,7 @@ h2.light { color: var(--cream); }
 .bar-track {
   height: 8px;
   border-radius: 999px;
-  background: rgba(250,248,242,0.15);
+  background: rgba(255,255,255,0.15);
   margin-bottom: 26px;
   overflow: hidden;
 }
@@ -394,7 +396,7 @@ h2.light { color: var(--cream); }
   height: 36px;
   width: 70%;
   margin-bottom: 14px;
-  background: repeating-linear-gradient(90deg, rgba(22,22,15,0.5) 0 6px, transparent 6px 12px);
+  background: repeating-linear-gradient(90deg, rgba(12,25,72,0.5) 0 6px, transparent 6px 12px);
   mask-image: linear-gradient(180deg, black, transparent);
   opacity: 0.35;
 }
@@ -502,7 +504,7 @@ h2.light { color: var(--cream); }
   gap: 32px;
   margin-top: 22px;
   padding-top: 22px;
-  border-top: 1px solid rgba(22,22,15,0.12);
+  border-top: 1px solid rgba(12,25,72,0.12);
 }
 .stat-mini-row span { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
 .stat-mini-row strong { font-size: 18px; }
@@ -540,7 +542,7 @@ h2.light { color: var(--cream); }
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--ink-soft);
-  background: rgba(22,22,15,0.03);
+  background: rgba(12,25,72,0.03);
 }
 .compare-head .us { color: var(--green-dark); }
 .icon-x { color: #c05050; font-weight: 700; }
@@ -583,7 +585,7 @@ h2.light { color: var(--cream); }
 
 /* ---------- CTA ---------- */
 .cta-card {
-  background: linear-gradient(135deg, #4c6d3a, #7fae46 60%, #c6f24e);
+  background: linear-gradient(135deg, #0c1948, #1c3f8f 60%, #4f7fe0);
   border-radius: var(--radius-lg);
   padding: 56px;
   display: grid;
@@ -596,7 +598,7 @@ h2.light { color: var(--cream); }
   list-style: none;
   padding: 0;
   margin: 24px 0 0;
-  color: rgba(250,248,242,0.9);
+  color: rgba(255,255,255,0.9);
   font-size: 14.5px;
   display: flex;
   flex-direction: column;
@@ -720,7 +722,7 @@ h2.light { color: var(--cream); }
   font-weight: 700;
 }
 .check-list.light li::before { color: var(--green); }
-.check-list.light { color: rgba(250,248,242,0.85); }
+.check-list.light { color: rgba(255,255,255,0.85); }
 
 /* ---------- Split reverse ---------- */
 .split.reverse { direction: rtl; }
@@ -737,19 +739,19 @@ h2.light { color: var(--cream); }
   justify-content: space-between;
   gap: 16px;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(250,248,242,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
   font-size: 13px;
 }
-.finding-row span { color: rgba(250,248,242,0.6); }
+.finding-row span { color: rgba(255,255,255,0.6); }
 .finding-row strong { color: var(--cream); font-weight: 600; max-width: 220px; text-align: right; }
 .dark-note {
   font-size: 12.5px;
-  color: rgba(250,248,242,0.6);
+  color: rgba(255,255,255,0.6);
   margin-top: 18px;
 }
 .dark-note.light { color: var(--ink-soft); }
 
-.card-copy.light { color: rgba(250,248,242,0.75); }
+.card-copy.light { color: rgba(255,255,255,0.75); }
 
 /* ---------- Before/after ---------- */
 .beforeafter {
@@ -910,7 +912,7 @@ h2.light { color: var(--cream); }
 
 /* ---------- Nav scroll state ---------- */
 .nav { transition: box-shadow 0.25s ease, transform 0.25s ease; }
-.nav-wrap.scrolled .nav { box-shadow: 0 4px 24px rgba(22,22,15,0.1); }
+.nav-wrap.scrolled .nav { box-shadow: 0 4px 24px rgba(12,25,72,0.1); }
 
 /* ---------- Reveal on scroll ---------- */
 .reveal {
@@ -1025,7 +1027,7 @@ h2.light { color: var(--cream); }
 }
 
 .mc-card { transition: transform 0.25s ease, box-shadow 0.25s ease; cursor: default; }
-.mc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(22,22,15,0.08); }
+.mc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(12,25,72,0.08); }
 .mc-link { display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 700; color: var(--ink); }
 
 .panel-in { animation: panelFade 0.4s ease; }
@@ -1038,8 +1040,8 @@ h2.light { color: var(--cream); }
 .tile, .card, .step-card, .faq-item {
   transition: transform 0.3s cubic-bezier(.21,.9,.3,1), box-shadow 0.3s ease;
 }
-.tile:hover, .step-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 16px 32px rgba(22,22,15,0.1); }
-.card:hover { box-shadow: 0 16px 36px rgba(22,22,15,0.08); }
+.tile:hover, .step-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 16px 32px rgba(12,25,72,0.1); }
+.card:hover { box-shadow: 0 16px 36px rgba(12,25,72,0.08); }
 
 /* ---------- Problem intro ---------- */
 .problem-intro { text-align: center; padding-bottom: 20px; }
@@ -1066,7 +1068,7 @@ h2.light { color: var(--cream); }
 .story-visual-1 { }
 .orbit-ring {
   position: absolute;
-  border: 1.5px dashed rgba(22,22,15,0.15);
+  border: 1.5px dashed rgba(12,25,72,0.15);
   border-radius: 50%;
 }
 .ring-1 { width: 220px; height: 220px; animation: spin 30s linear infinite; }
@@ -1154,8 +1156,8 @@ h2.light { color: var(--cream); }
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(250,248,242,0.06);
-  border: 1px solid rgba(250,248,242,0.12);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-md);
   padding: 14px 20px;
   width: 100%;
@@ -1176,8 +1178,8 @@ h2.light { color: var(--cream); }
   50% { box-shadow: 0 0 0 8px rgba(198,242,78,0); }
 }
 .workflow-step strong { color: var(--cream); font-size: 14px; display: block; }
-.workflow-step p { color: rgba(250,248,242,0.65); font-size: 12.5px; margin: 2px 0 0; }
-.workflow-arrow { color: rgba(250,248,242,0.4); font-size: 16px; }
+.workflow-step p { color: rgba(255,255,255,0.65); font-size: 12.5px; margin: 2px 0 0; }
+.workflow-arrow { color: rgba(255,255,255,0.4); font-size: 16px; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -1218,7 +1220,7 @@ h2.light { color: var(--cream); }
   flex-direction: column;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.proof-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(22,22,15,0.08); }
+.proof-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(12,25,72,0.08); }
 .proof-figure {
   font-size: 34px;
   font-weight: 800;
@@ -1416,7 +1418,7 @@ h2.light { color: var(--cream); }
   padding: 26px 22px;
   text-align: center;
   align-items: center;
-  box-shadow: 0 16px 32px rgba(22,22,15,0.18);
+  box-shadow: 0 16px 32px rgba(12,25,72,0.18);
 }
 .pile-single-dot {
   display: inline-block;
@@ -1427,7 +1429,7 @@ h2.light { color: var(--cream); }
   box-shadow: 0 0 0 6px rgba(198,242,78,0.2);
 }
 .pile-single strong { font-size: 17px; }
-.pile-single small { color: rgba(250,248,242,0.7); font-size: 12px; margin-top: 8px; display: block; }
+.pile-single small { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 8px; display: block; }
 .pile-single-tags { display: flex; gap: 6px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
 .pile-single-tags span {
   font-size: 10px;
@@ -1522,13 +1524,13 @@ h2.light { color: var(--cream); }
         <svg class="hero-chart-svg" viewBox="0 0 360 80" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#c6f24e" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#c6f24e" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#4f7fe0" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#4f7fe0" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <path class="chart-area" d="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16 L360,80 L0,80 Z" fill="url(#chartFill)"/>
-          <path class="chart-line" d="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16" fill="none" stroke="#3a5a1f" stroke-width="2.5" stroke-linecap="round"/>
-          <circle class="chart-dot" r="4" fill="#3a5a1f">
+          <path class="chart-line" d="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16" fill="none" stroke="#002991" stroke-width="2.5" stroke-linecap="round"/>
+          <circle class="chart-dot" r="4" fill="#002991">
             <animateMotion dur="3.5s" repeatCount="indefinite" path="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16" />
           </circle>
         </svg>
@@ -1832,8 +1834,8 @@ h2.light { color: var(--cream); }
       <div class="story-visual story-visual-4" aria-hidden="true">
         <div class="shield-wrap">
           <svg viewBox="0 0 80 90" class="shield-svg">
-            <path d="M40 4 L74 16 V44 C74 66 58 80 40 86 C22 80 6 66 6 44 V16 Z" fill="none" stroke="#3a5a1f" stroke-width="3"/>
-            <path class="shield-check" d="M22 46 L35 59 L59 32" fill="none" stroke="#3a5a1f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M40 4 L74 16 V44 C74 66 58 80 40 86 C22 80 6 66 6 44 V16 Z" fill="none" stroke="#002991" stroke-width="3"/>
+            <path class="shield-check" d="M22 46 L35 59 L59 32" fill="none" stroke="#002991" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="float-chip chip-float-c">SSL valid ✓</div>
