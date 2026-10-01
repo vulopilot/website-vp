@@ -207,6 +207,28 @@ h2.light { color: var(--cream); }
   margin: 22px 0 28px;
 }
 
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 560px;
+  margin: 0 0 28px;
+}
+.hero-tag {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--green-dark);
+  background: var(--peach);
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+.hero-tag:nth-child(2) { background: var(--mint); }
+.hero-tag:nth-child(3) { background: var(--blue); }
+.hero-tag:nth-child(4) { background: var(--lilac); }
+.hero-tag:nth-child(5) { background: var(--peach-2); }
+.hero-tag:nth-child(6) { background: var(--mint); }
+
 .hero-actions {
   display: flex;
   align-items: center;
@@ -1406,7 +1428,15 @@ h2.light { color: var(--cream); }
   <section class="hero">
     <div class="pill-label reveal">WordPress Growth Operating System</div>
     <h1 class="reveal" style="transition-delay:.05s">Stop guessing what's wrong<br/>with your WordPress site.<br/><span class="highlight">VuloPilot finds what matters — and helps you fix it.</span></h1>
-    <p class="hero-sub reveal" style="transition-delay:.12s">One WordPress plugin that checks your SEO, AI visibility, content, speed and security — then helps you resolve what matters.</p>
+    <p class="hero-sub reveal" style="transition-delay:.12s">One WordPress plugin. Six things checked — then resolved.</p>
+    <div class="hero-tags reveal" style="transition-delay:.16s">
+      <span class="hero-tag">Search Visibility</span>
+      <span class="hero-tag">AI Visibility</span>
+      <span class="hero-tag">Content</span>
+      <span class="hero-tag">Performance</span>
+      <span class="hero-tag">Security &amp; Health</span>
+      <span class="hero-tag">Automation</span>
+    </div>
     <div class="hero-actions reveal" style="transition-delay:.2s">
       <a class="btn btn-dark btn-magnetic" href="#cta">Scan your website<span class="btn-dot"></span></a>
       <a class="btn btn-ghost" href="#mission-control">Explore the dashboard ↓</a>
