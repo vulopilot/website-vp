@@ -784,7 +784,7 @@ h2.light { color: var(--cream); }
 .mission-live { font-size: 12px; color: var(--green-dark); font-weight: 600; }
 .mission-body {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 248px 1fr;
 }
 .mission-tabs {
   padding: 16px 12px;
@@ -801,7 +801,8 @@ h2.light { color: var(--cream); }
   padding: 13px 14px;
   border-radius: var(--radius-sm);
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 12.5px;
+  line-height: 1.35;
   font-family: inherit;
   cursor: pointer;
 }
