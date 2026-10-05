@@ -357,15 +357,13 @@ img {
 }
 
 .finding-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .finding {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
+    padding: 14px;
     border: 1px solid var(--border);
     border-radius: 18px;
     background: var(--white);
@@ -373,7 +371,7 @@ img {
 }
 
 .finding-label {
-    margin-bottom: 12px;
+    margin: 0 0 10px 2px;
     color: var(--text-soft);
     font-size: 11px;
     font-weight: 800;
@@ -382,9 +380,17 @@ img {
     opacity: 0.7;
 }
 
+.finding-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 3px;
+}
+
 .finding-issue {
-    padding: 14px;
-    border-radius: 12px;
+    padding: 14px 20px 14px 16px;
+    border-radius: 12px 0 0 12px;
     background: #fdecec;
 }
 
@@ -422,21 +428,38 @@ img {
 }
 
 .finding-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin: 2px 0;
-    color: var(--accent);
-    font-weight: 800;
-    font-size: 14px;
-    opacity: 0.6;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--white);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 6px rgba(12,25,72,0.18);
+    font-size: 0;
+}
+.finding-arrow::after {
+    content: "";
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid var(--white);
 }
 
 .finding-solution {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    padding: 14px;
-    border-radius: 12px;
+    padding: 14px 16px 14px 20px;
+    border-radius: 0 12px 12px 0;
     background: var(--accent);
     color: var(--white);
 }
@@ -926,6 +949,21 @@ footer {
         display: none;
     }
 
+    .finding-row {
+        grid-template-columns: 1fr;
+    }
+    .finding-issue {
+        border-radius: 12px 12px 0 0;
+    }
+    .finding-solution {
+        border-radius: 0 0 12px 12px;
+    }
+    .finding-arrow {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
     .finding-grid,
     .problem-grid,
     .capability-grid,
@@ -1129,49 +1167,55 @@ footer {
 
                                     <div class="finding">
                                         <div class="finding-label">Titles &amp; meta</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>8 titles need attention</h4>
                                             <p>Missing or vague titles on important pages.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>AI Title &amp; Meta Writer</strong>
                                             <p>Reads each page and writes a clearer
                                             title and description for you to approve.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Internal links</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>14 pages have no inbound links</h4>
                                             <p>Pages nothing else on your site points to.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Internal Link Suggestions</strong>
                                             <p>Finds 3 relevant pages to link from
                                             and adds them for you to confirm.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Indexing</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>2 pages aren't indexed</h4>
                                             <p>Canonical URLs and structured data checked.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Schema &amp; Canonical Fixer</strong>
                                             <p>Rebuilds the missing canonical tag and
                                             structured data so search engines can index it.</p>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -1192,49 +1236,55 @@ footer {
 
                                     <div class="finding">
                                         <div class="finding-label">Business clarity</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>Details differ on 4 pages</h4>
                                             <p>Hours or pricing don't match everywhere.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Business Info Sync</strong>
                                             <p>Compares your details page by page and
                                             drafts the correction for you to approve.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Answer coverage</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>6 questions go unanswered</h4>
                                             <p>Buyer questions your pages don't answer yet.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>AI Answer Writer</strong>
                                             <p>Writes a direct answer to the question
                                             and adds it to the page for you to publish.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Crawler signals</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>GPTBot visited 12 times</h4>
                                             <p>Track which AI crawlers reach your site.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>AI Crawler Tracker</strong>
                                             <p>Logs every AI crawler visit automatically,
                                             so you see who's actually reading your site.</p>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -1255,49 +1305,55 @@ footer {
 
                                     <div class="finding">
                                         <div class="finding-label">Content findings</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>5 pages are thin or duplicate</h4>
                                             <p>Unlikely to rank or convert as they are.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>AI Writer</strong>
                                             <p>Rewrites the thin page with original
                                             content in seconds, ready for you to review.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">WooCommerce</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>12 products need descriptions</h4>
                                             <p>Product pages missing real copy.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Product Description Generator</strong>
                                             <p>Writes a description from the product's
                                             details, then publishes it to the page.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Page improvements</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>FAQs and schema missing</h4>
                                             <p>Details most pages leave blank.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>FAQ Builder</strong>
                                             <p>Generates a structured FAQ block with
                                             schema markup, ready to add to the page.</p>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -1318,49 +1374,55 @@ footer {
 
                                     <div class="finding">
                                         <div class="finding-label">Slow pages</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>3 pages need investigation</h4>
                                             <p>Identify the affected URLs and causes.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Image Compressor</strong>
                                             <p>Shrinks the oversized images causing the
                                             delay — applied in one click, saves ~1.4s.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Core Web Vitals</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>LCP failing on 2 pages</h4>
                                             <p>Loading speed affecting visitor experience.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Vitals Fix Advisor</strong>
                                             <p>Points to the exact element slowing the
                                             page down and what to change about it.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Speed history</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>Keep track after changes</h4>
                                             <p>Compare results after you apply a fix.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Speed Tracker</strong>
                                             <p>Reruns the test after your fix and shows
                                             whether load time actually improved.</p>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -1381,49 +1443,55 @@ footer {
 
                                     <div class="finding">
                                         <div class="finding-label">Security</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>1 known plugin vulnerability</h4>
                                             <p>Malware and SSL checks, with the cause named.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Vulnerability Patcher</strong>
                                             <p>Identifies the exact plugin at risk and
                                             applies the available patch in one click.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Backups</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>Backup status: unverified</h4>
                                             <p>Checks whether your backup plugin is running.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Backup Monitor</strong>
                                             <p>Checks that your backup plugin actually
                                             ran, not just that it's installed.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Accessibility</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>3 images missing alt text</h4>
                                             <p>Headings and image descriptions checked.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Alt Text Generator</strong>
                                             <p>Looks at each image and writes an accurate
                                             description, ready for you to review.</p>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -1444,49 +1512,55 @@ footer {
 
                                     <div class="finding">
                                         <div class="finding-label">Ready-made checks</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>Full site scan, on autopilot</h4>
                                             <p>Free includes a recurring scan, no setup.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Auto Scan</strong>
                                             <p>Runs the full site scan on its own, with
                                             no setup — next one starts at 03:00.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Schedules</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>Daily, weekly or custom cadence</h4>
                                             <p>Pick how often VuloPilot checks back in.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Custom Scheduler</strong>
                                             <p>Pick the cadence once, and VuloPilot
                                             checks back in on that schedule from then on.</p>
                                         </div>
+                                        </div>
                                     </div>
 
                                     <div class="finding">
                                         <div class="finding-label">Advanced workflows</div>
-                                        <div class="finding-issue">
+                                        <div class="finding-row">
+                                            <div class="finding-issue">
                                             <span class="finding-tag finding-tag-issue">Issue</span>
                                             <h4>"If a plugin update appears, apply it"</h4>
                                             <p>Pro lets you set rules like this one.</p>
                                         </div>
-                                        <div class="finding-arrow">↓</div>
-                                        <div class="finding-solution">
+                                            <div class="finding-arrow">→</div>
+                                            <div class="finding-solution">
                                             <span class="finding-tag finding-tag-fix">Fix</span>
                                             <strong>Workflow Rules</strong>
                                             <p>Set a trigger and a condition once, and
                                             Pro applies the fix automatically from then on.</p>
+                                        </div>
                                         </div>
                                     </div>
 
