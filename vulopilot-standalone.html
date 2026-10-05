@@ -1,2156 +1,1841 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VuloPilot — Find what holds your WordPress site back</title>
-<meta name="description" content="VuloPilot is a WordPress plugin that checks your SEO, AI search visibility, content, speed and security—and shows you which pages and issues need attention." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VuloPilot — The WordPress Growth Operating System</title>
+
+    <meta
+        name="description"
+        content="VuloPilot continuously finds what is holding your WordPress website back, tells you what to fix first, helps you fix it, verifies the result, and keeps watching."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;800&display=swap" rel="stylesheet">
+    <style>
 :root {
-  /* VuloPilot brand palette */
-  --bg: #f7f9ff;
-  --ink: #0c1948;
-  --ink-soft: #59647b;
-  --cream: #ffffff;
-  --line: #e9edf7;
-  --green: #4f7fe0;       /* bright accent blue — dots, sparklines, progress */
-  --green-dark: #002991;  /* brand blue — buttons, links, highlighted text */
-  --peach: #eaf0ff;       /* light blue tint 1 */
-  --peach-2: #dce9ff;     /* light blue tint 2 */
-  --mint: #f2f6ff;        /* lightest blue tint */
-  --blue: #dde7fb;        /* soft blue tint */
-  --lilac: #e3e9fa;       /* pale indigo tint */
-  --yellow: #ffe9ee;      /* reserved for warnings/priority, matches brand's red accent */
-  --bad: #a62a43;
-  --radius-lg: 28px;
-  --radius-md: 20px;
-  --radius-sm: 14px;
-  --shadow: 0 1px 2px rgba(12,25,72,0.04), 0 12px 30px rgba(12,25,72,0.08);
-  font-size: 16px;
+    --bg: #ffffff;
+    --bg-soft: #f7f7f9;
+    --bg-dark: #101014;
+    --text: #111114;
+    --text-soft: #686870;
+    --border: #e7e7eb;
+    --accent: #5007aa;
+    --accent-dark: #3d0782;
+    --white: #ffffff;
+    --max: 1180px;
+    --radius: 18px;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
+    margin: 0;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
 }
 
-a { color: inherit; text-decoration: none; }
-
-.highlight {
-  color: var(--green-dark);
-  position: relative;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-/* ---------- Nav ---------- */
-.nav-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  padding: 16px 24px 0;
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: min(var(--max), calc(100% - 40px));
+    margin: 0 auto;
+}
+
+/* ---------------------------------
+   Header
+--------------------------------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.94);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
 }
 
 .nav {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 10px 14px 10px 18px;
-  background: rgba(250, 248, 242, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  box-shadow: var(--shadow);
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: -0.01em;
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
 }
 
-.brand-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 4px rgba(198,242,78,0.25);
+.logo span {
+    color: var(--accent);
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 28px;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.nav-links a:hover { color: var(--ink); }
+.nav-links a {
+    color: #44444b;
+}
 
-/* ---------- Buttons ---------- */
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 11px 18px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-  white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    transition: .2s ease;
+    cursor: pointer;
 }
 
-.btn:hover { transform: translateY(-1px); }
-
-.btn-dark { background: var(--ink); color: var(--cream); }
-.btn-green { background: var(--green); color: var(--green-dark); }
-.btn-ghost { background: transparent; color: var(--ink); padding-left: 4px; padding-right: 4px; }
-.btn-block { width: 100%; }
-
-.btn-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
+.btn-primary {
+    color: var(--white);
+    background: var(--accent);
 }
-.btn-dot.dark { background: var(--ink); }
 
-/* ---------- Layout helpers ---------- */
-.section {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 90px 24px;
+.btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--white);
+    border-color: var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: #cfcfd5;
+}
+
+/* ---------------------------------
+   Hero
+--------------------------------- */
+
+.hero {
+    padding: 110px 0 90px;
+    text-align: center;
 }
 
 .eyebrow {
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--ink-soft);
-  margin: 0 0 14px;
-}
-.eyebrow.light { color: rgba(255,255,255,0.7); }
-
-h1, h2, h3 {
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 0;
-}
-
-h2 {
-  font-size: clamp(28px, 4vw, 42px);
-  max-width: 720px;
-}
-h2.light { color: var(--cream); }
-
-.section-sub {
-  max-width: 560px;
-  color: var(--ink-soft);
-  font-size: 16px;
-  margin: 16px 0 44px;
-}
-.section-sub.light { color: rgba(255,255,255,0.75); }
-
-/* ---------- Hero ---------- */
-.hero {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 80px 24px 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    padding: 7px 12px;
+    border: 1px solid #ddd2ea;
+    border-radius: 999px;
+    color: var(--accent);
+    background: #faf7fd;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
 }
 
-.pill-label {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 16px;
-  border-radius: 999px;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin-bottom: 24px;
+.eyebrow::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
 }
 
 .hero h1 {
-  font-size: clamp(38px, 6vw, 64px);
-  line-height: 1.05;
+    max-width: 900px;
+    margin: 0 auto 24px;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: .98;
+    letter-spacing: -.065em;
+    font-weight: 800;
 }
 
-.hero-sub {
-  max-width: 480px;
-  color: var(--ink-soft);
-  font-size: 17px;
-  margin: 22px 0 28px;
+.hero h1 span {
+    color: var(--accent);
 }
 
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  max-width: 560px;
-  margin: 0 0 28px;
-}
-.hero-tag {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--green-dark);
-  background: var(--peach);
-  padding: 7px 14px;
-  border-radius: 999px;
-}
-.hero-tag:nth-child(2) { background: var(--mint); }
-.hero-tag:nth-child(3) { background: var(--blue); }
-.hero-tag:nth-child(4) { background: var(--lilac); }
-.hero-tag:nth-child(5) { background: var(--peach-2); }
-.hero-tag:nth-child(6) { background: var(--mint); }
-.hero-tag-red { background: #fde3e3; color: #a62a43; }
-.hero-tag-purple { background: #ece3fb; color: #5a3cab; }
-.hero-tag-green { background: #e1f3e6; color: #1f7a45; }
-
-.hero-kicker {
-  font-size: 14px;
-  color: var(--ink-soft);
-  margin: 0 0 10px;
+.hero-copy {
+    max-width: 720px;
+    margin: 0 auto 34px;
+    color: var(--text-soft);
+    font-size: 20px;
+    line-height: 1.65;
 }
 
 .hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .hero-note {
-  font-size: 13px;
-  color: var(--ink-soft);
-  opacity: 0.8;
-  margin: 0 0 56px;
+    margin-top: 18px;
+    color: #85858d;
+    font-size: 13px;
 }
 
-.hero-card {
-  width: 100%;
-  max-width: 420px;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  padding: 22px;
-  text-align: left;
-}
-
-.hero-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin-bottom: 14px;
-}
-
-.badge {
-  background: var(--green);
-  color: var(--green-dark);
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-}
-
-.hero-task-list {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 18px;
-}
-.hero-task {
-  display: flex;
-  gap: 14px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-}
-.hero-task:last-child { border-bottom: none; }
-.task-num {
-  flex: 0 0 32px;
-  height: 32px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  background: var(--bg);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--ink-soft);
-}
-.hero-task strong { display: block; font-size: 14px; }
-.hero-task p { margin: 4px 0 0; font-size: 12.5px; color: var(--ink-soft); padding: 0; }
-
-/* ---------- Logo strip ---------- */
-.logos {
-  max-width: 1180px;
-  margin: 60px auto 0;
-  padding: 24px 24px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 36px;
-  color: var(--ink-soft);
-  font-weight: 600;
-  font-size: 14px;
-  opacity: 0.6;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-/* ---------- Cards / split ---------- */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.card {
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  border: 1px solid var(--line);
-}
-
-.card-list { background: var(--cream); }
-
-.card-eyebrow {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink-soft);
-  margin: 0 0 18px;
-}
-.card-eyebrow.light { color: rgba(255,255,255,0.7); }
-
-.leak-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  font-size: 15px;
-}
-.leak-list .x {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #f4d4d4;
-  color: #9a3b3b;
-  font-size: 11px;
-  margin-right: 10px;
-}
-
-.card-dark {
-  background: var(--ink);
-  color: var(--cream);
-  display: flex;
-  flex-direction: column;
-}
-
-.big-number {
-  font-size: 48px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 0 0 20px;
-}
-
-.bar-track {
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.15);
-  margin-bottom: 26px;
-  overflow: hidden;
-}
-.bar-fill {
-  width: 68%;
-  height: 100%;
-  background: var(--green);
-  border-radius: 999px;
-}
-
-/* ---------- Solution tiles ---------- */
-.grid-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.tile {
-  border-radius: var(--radius-md);
-  padding: 24px;
-  min-height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.tile-title { font-weight: 700; font-size: 16px; margin: 0; }
-
-.tile-peach { background: var(--peach); }
-.tile-mint { background: var(--mint); }
-.tile-blue { background: var(--blue); }
-.tile-lilac { background: var(--lilac); }
-.tile-yellow { background: var(--yellow); }
-.tile-peach-2 { background: var(--peach-2); }
-
-.mini-chart {
-  height: 36px;
-  width: 70%;
-  margin-bottom: 14px;
-  background: repeating-linear-gradient(90deg, rgba(12,25,72,0.5) 0 6px, transparent 6px 12px);
-  mask-image: linear-gradient(180deg, black, transparent);
-  opacity: 0.35;
-}
-
-/* ---------- Pill tabs ---------- */
-.pill-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 36px;
-}
-.pill-tab {
-  padding: 9px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--ink-soft);
-  background: var(--cream);
-}
-.pill-tab.active {
-  background: var(--ink);
-  color: var(--cream);
-  border-color: var(--ink);
-}
-
-.card-peach-lg {
-  background: var(--peach);
-  border: none;
-}
-.card-peach-lg h3 {
-  font-size: clamp(22px, 3vw, 30px);
-  margin: 0 0 14px;
-  max-width: 480px;
-}
-.card-copy {
-  color: var(--ink-soft);
-  max-width: 480px;
-  font-size: 15px;
-  margin: 0 0 28px;
-}
-
-.kpi-row {
-  display: flex;
-  gap: 36px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
-.kpi-row div { display: flex; flex-direction: column; gap: 4px; }
-.kpi-row span { font-size: 12px; color: var(--ink-soft); }
-.kpi-row strong { font-size: 22px; }
-
-/* ---------- Steps ---------- */
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.step-card {
-  border-radius: var(--radius-md);
-  padding: 24px;
-  min-height: 190px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.step-label {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.6;
-  margin-bottom: auto;
-}
-
-.step-card h3 { font-size: 20px; margin: 18px 0 8px; }
-.step-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
-
-.step-figure {
-  position: absolute;
-  bottom: 18px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: 800;
-  opacity: 0.35;
-}
-
-.step-blue { background: var(--blue); }
-.step-lilac { background: var(--lilac); }
-.step-mint { background: var(--mint); }
-.step-peach { background: var(--peach); }
-
-/* ---------- Results ---------- */
-.stat-card { display: flex; flex-direction: column; }
-.card-blue { background: var(--blue); border: none; }
-.stat-big {
-  font-size: 56px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin: 0 0 12px;
-}
-.stat-mini-row {
-  display: flex;
-  gap: 32px;
-  margin-top: 22px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(12,25,72,0.12);
-}
-.stat-mini-row span { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
-.stat-mini-row strong { font-size: 18px; }
-
-.stat-footer {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  margin-top: 40px;
-  padding-top: 36px;
-  border-top: 1px solid var(--line);
-}
-.stat-footer strong { display: block; font-size: 30px; font-weight: 800; }
-.stat-footer span { font-size: 13px; color: var(--ink-soft); }
-
-/* ---------- Compare table ---------- */
-.compare-card {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.compare-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  align-items: center;
-  padding: 18px 28px;
-  border-bottom: 1px solid var(--line);
-  font-size: 14.5px;
-}
-.compare-row:last-child { border-bottom: none; }
-.compare-head {
-  font-weight: 700;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ink-soft);
-  background: rgba(12,25,72,0.03);
-}
-.compare-head .us { color: var(--green-dark); }
-.icon-x { color: #c05050; font-weight: 700; }
-.icon-check { color: var(--green-dark); font-weight: 700; }
-.compare-row { justify-content: space-between; grid-template-columns: none; }
-.compare-row .mc-label {
-  background: var(--peach);
-  color: var(--green-dark);
-  padding: 5px 12px;
-  border-radius: 999px;
-  opacity: 1;
-}
-
-/* ---------- FAQ ---------- */
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 720px;
-}
-.faq-item {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 18px 24px;
-}
-.faq-item summary {
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  font-size: 15.5px;
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-icon {
-  font-size: 18px;
-  color: var(--ink-soft);
-  transition: transform 0.2s ease;
-}
-.faq-item[open] .faq-icon { transform: rotate(45deg); }
-.faq-item p {
-  color: var(--ink-soft);
-  font-size: 14.5px;
-  margin: 14px 0 0;
-}
-
-/* ---------- CTA ---------- */
-.cta-card {
-  background: linear-gradient(135deg, #0c1948, #1c3f8f 60%, #4f7fe0);
-  border-radius: var(--radius-lg);
-  padding: 56px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-.cta-copy h2 { font-size: clamp(28px, 4vw, 40px); }
-.cta-list {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 0;
-  color: rgba(255,255,255,0.9);
-  font-size: 14.5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.cta-form {
-  background: var(--cream);
-  border-radius: var(--radius-md);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.cta-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-.cta-form input {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 11px 14px;
-  font-family: inherit;
-  font-size: 14px;
-  background: var(--bg);
-}
-.cta-form input:focus { outline: 2px solid var(--green-dark); }
-.cta-form button { margin-top: 6px; }
-
-/* ---------- Footer ---------- */
-.footer {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 60px 24px 36px;
-}
-.footer-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid var(--line);
-}
-.footer-top p { color: var(--ink-soft); font-size: 14px; margin: 0; }
-.footer-cols {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  padding: 36px 0;
-}
-.footer-cols > div { display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
-.footer-cols a { color: var(--ink-soft); }
-.footer-head { font-weight: 700; color: var(--ink); margin: 0 0 4px; font-size: 13px; }
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--ink-soft);
-}
-.footer-legal { display: flex; gap: 20px; }
-
-/* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-  .nav-links { display: none; }
-  .split { grid-template-columns: 1fr; }
-  .grid-cards { grid-template-columns: repeat(2, 1fr); }
-  .steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .cta-card { grid-template-columns: 1fr; padding: 32px; }
-  .footer-cols { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 560px) {
-  .grid-cards { grid-template-columns: 1fr; }
-  .steps-grid { grid-template-columns: 1fr; }
-  .compare-row { grid-template-columns: 1.4fr 1fr 1fr; padding: 14px 16px; font-size: 13px; }
-  .section { padding: 64px 18px; }
-  .footer-cols { grid-template-columns: 1fr; }
-}
-
-/* ---------- Extra tiles (quote cards, 3-col grid) ---------- */
-.grid-cards-3 { grid-template-columns: repeat(3, 1fr); }
-.tile-quote { justify-content: flex-start; min-height: 220px; }
-.tile-quote-text {
-  font-size: 15px;
-  font-style: italic;
-  opacity: 0.75;
-  margin: 0 0 18px;
-}
-.tile-copy {
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  margin: 8px 0 0;
-}
-
-/* ---------- Check lists ---------- */
-.check-list {
-  list-style: none;
-  margin: 0 0 28px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  font-size: 14.5px;
-  max-width: 460px;
-}
-.check-list li { position: relative; padding-left: 26px; }
-.check-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--green-dark);
-  font-weight: 700;
-}
-.check-list.light li::before { color: var(--green); }
-.check-list.light { color: rgba(255,255,255,0.85); }
-
-/* ---------- Split reverse ---------- */
-.split.reverse { direction: rtl; }
-.split.reverse > * { direction: ltr; }
-
-/* ---------- Dark card extras ---------- */
-.dark-h3 {
-  color: var(--cream);
-  font-size: 20px;
-  margin: 0 0 20px;
-}
-.finding-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  font-size: 13px;
-}
-.finding-row span { color: rgba(255,255,255,0.6); }
-.finding-row strong { color: var(--cream); font-weight: 600; max-width: 220px; text-align: right; }
-.dark-note {
-  font-size: 12.5px;
-  color: rgba(255,255,255,0.6);
-  margin-top: 18px;
-}
-.dark-note.light { color: var(--ink-soft); }
-
-.card-copy.light { color: rgba(255,255,255,0.75); }
-
-/* ---------- Before/after ---------- */
-.beforeafter {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-.beforeafter div {
-  background: rgba(255,255,255,0.55);
-  border-radius: var(--radius-sm);
-  padding: 14px;
-  font-size: 13.5px;
-  line-height: 1.5;
-}
-.beforeafter small {
-  display: block;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--ink-soft);
-  margin-bottom: 6px;
-}
-
-/* ---------- Mission Control ---------- */
-.mission {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.mission-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 28px;
-  border-bottom: 1px solid var(--line);
-}
-.mission-head strong { font-size: 16px; }
-.mission-live { font-size: 12px; color: var(--green-dark); font-weight: 600; }
-.mission-body {
-  display: grid;
-  grid-template-columns: 248px 1fr;
-}
-.mission-tabs {
-  padding: 16px 12px;
-  background: var(--bg);
-  border-right: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.mtab {
-  border: 0;
-  background: transparent;
-  text-align: left;
-  padding: 13px 14px;
-  border-radius: var(--radius-sm);
-  color: var(--ink-soft);
-  font-size: 12.5px;
-  line-height: 1.35;
-  font-family: inherit;
-  cursor: pointer;
-}
-.mtab.active { background: var(--ink); color: var(--cream); font-weight: 600; }
-.mission-content { padding: 32px; min-height: 340px; }
-.mc-panel h3 { font-size: 24px; margin: 0 0 10px; max-width: 540px; }
-.mc-desc { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 26px; max-width: 540px; }
-.mc-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-.mc-card {
-  border-radius: var(--radius-md);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-.mc-label {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.6;
-}
-.mc-card h4 { font-size: 15.5px; margin: 14px 0 8px; }
-.mc-card p { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
-.mc-peach { background: var(--peach); }
-.mc-mint { background: var(--mint); }
-.mc-blue { background: var(--blue); }
-
-/* ---------- Pricing card extras ---------- */
-.plan-card { display: flex; flex-direction: column; }
-.plan-card h3 { font-size: 22px; margin: 0 0 10px; }
-
-.btn-ghost-outline {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line);
-}
-
-@media (max-width: 950px) {
-  .mission-body { grid-template-columns: 1fr; }
-  .mission-tabs { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); }
-  .mtab { white-space: nowrap; }
-  .mc-cards { grid-template-columns: 1fr; }
-  .grid-cards-3 { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 560px) {
-  .grid-cards-3 { grid-template-columns: 1fr; }
-  .beforeafter { grid-template-columns: 1fr; }
-}
-
-/* ======================================================
-   MOTION & GRAPHICS LAYER
-====================================================== */
+/* ---------------------------------
+   Product Preview
+--------------------------------- */
 
-/* ---------- Background blobs ---------- */
-.blob {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.35;
-  z-index: 0;
-  pointer-events: none;
-  will-change: transform;
+.product-preview {
+    margin-top: 70px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: #f4f4f6;
+    box-shadow: 0 30px 80px rgba(20,20,30,.08);
 }
-.blob-a {
-  width: 520px; height: 520px;
-  top: -180px; left: -120px;
-  background: radial-gradient(circle, var(--green) 0%, transparent 70%);
-  animation: blobFloatA 22s ease-in-out infinite;
-}
-.blob-b {
-  width: 460px; height: 460px;
-  top: 600px; right: -160px;
-  background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
-  animation: blobFloatB 26s ease-in-out infinite;
-}
-.blob-c {
-  width: 420px; height: 420px;
-  top: 1600px; left: -140px;
-  background: radial-gradient(circle, var(--peach) 0%, transparent 70%);
-  animation: blobFloatA 19s ease-in-out infinite reverse;
-}
-@keyframes blobFloatA {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(60px, 40px) scale(1.08); }
-}
-@keyframes blobFloatB {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-50px, 60px) scale(1.05); }
-}
 
-.nav-wrap, .hero, .section, .stats-strip, .footer { position: relative; z-index: 1; }
-
-/* ---------- Nav scroll state ---------- */
-.nav { transition: box-shadow 0.25s ease, transform 0.25s ease; }
-.nav-wrap.scrolled .nav { box-shadow: 0 4px 24px rgba(12,25,72,0.1); }
-
-/* ---------- Reveal on scroll ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.7s cubic-bezier(.21,.9,.3,1), transform 0.7s cubic-bezier(.21,.9,.3,1);
+.dashboard {
+    overflow: hidden;
+    border: 1px solid #dddde2;
+    border-radius: 16px;
+    background: #fff;
+    text-align: left;
 }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-/* ---------- Button motion ---------- */
-.btn-magnetic:hover { transform: translateY(-2px) scale(1.03); }
-.btn-dot { transition: transform 0.2s ease; }
-.btn:hover .btn-dot { transform: scale(1.3); }
-
-/* ---------- Hero extras ---------- */
-.hero-sub-tight { margin-top: -10px; }
-.hero-stage { position: relative; width: 100%; max-width: 460px; }
-
-.float-chip {
-  position: absolute;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 11px;
-  line-height: 1.5;
-  box-shadow: var(--shadow);
-  z-index: 2;
-  animation: chipBob 5s ease-in-out infinite;
+.dashboard-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
 }
-.float-chip em { font-style: normal; color: var(--ink-soft); }
-.chip-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; }
-.chip-dot-bad { background: #c0585f; }
-.chip-dot-warn { background: #d6a23a; }
-.chip-dot-good { background: var(--green-dark); }
-
-.chip-seo { top: -18px; left: -36px; animation-delay: 0s; }
-.chip-speed { top: 90px; right: -48px; animation-delay: 1.2s; }
-.chip-win { bottom: 40px; left: -44px; animation-delay: 2.1s; }
 
-@keyframes chipBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.dashboard-title {
+    font-weight: 800;
 }
 
-.hero-card-title { font-size: 20px; margin: 6px 0 16px; }
-
-.hero-chart-svg { width: 100%; height: 64px; display: block; margin-bottom: 18px; }
-.chart-line { stroke-dasharray: 420; stroke-dashoffset: 420; animation: drawLine 1.6s ease forwards 0.3s; }
-.chart-area { opacity: 0; animation: fadeIn 1s ease forwards 1s; }
-@keyframes drawLine { to { stroke-dashoffset: 0; } }
-@keyframes fadeIn { to { opacity: 1; } }
-
-.hero-demo-link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--green-dark);
-  font-size: 13px;
-  font-weight: 700;
-  padding-top: 18px;
+.dashboard-status {
+    color: #18854b;
+    font-size: 12px;
+    font-weight: 700;
 }
-.arrow-bounce { display: inline-block; animation: arrowBounce 1.6s ease-in-out infinite; }
-@keyframes arrowBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
-}
 
-/* ---------- Stats strip ---------- */
-.stats-strip {
-  max-width: 1180px;
-  margin: 70px auto 0;
-  padding: 0 24px 60px;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  flex-wrap: wrap;
-  gap: 24px;
+.dashboard-body {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 390px;
 }
-.stat-item { display: flex; flex-direction: column; align-items: center; }
-.stat-item .stat-number-row { display: flex; align-items: baseline; white-space: nowrap; }
-.stat-item .count-up,
-.stat-item .stat-suffix {
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-.stat-item .stat-suffix { margin-left: 1px; }
-.stat-item small { color: var(--ink-soft); font-size: 13px; margin-top: 6px; max-width: 180px; }
 
-/* ---------- Mission extras ---------- */
-.mission-foot {
-  padding: 16px 28px;
-  font-size: 11px;
-  color: var(--ink-soft);
-  opacity: 0.7;
-  border-top: 1px solid var(--line);
-}
-.live-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--green-dark);
-  margin-right: 6px;
-  animation: pulseDot 1.6s ease-in-out infinite;
+.dashboard-sidebar {
+    padding: 20px;
+    border-right: 1px solid var(--border);
+    background: #fafafa;
 }
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
-}
-
-.mc-card { transition: transform 0.25s ease, box-shadow 0.25s ease; cursor: default; }
-.mc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(12,25,72,0.08); }
-.mc-link { display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 700; color: var(--ink); }
 
-.panel-in { animation: panelFade 0.4s ease; }
-@keyframes panelFade {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+.sidebar-item {
+    padding: 10px 12px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    color: #66666d;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-/* ---------- Generic card/tile hover motion ---------- */
-.tile, .card, .step-card, .faq-item {
-  transition: transform 0.3s cubic-bezier(.21,.9,.3,1), box-shadow 0.3s ease;
+.sidebar-item.active {
+    color: var(--accent);
+    background: #f0eafa;
 }
-.tile:hover, .step-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 16px 32px rgba(12,25,72,0.1); }
-.card:hover { box-shadow: 0 16px 36px rgba(12,25,72,0.08); }
 
-/* ---------- Problem intro ---------- */
-.problem-intro { text-align: center; padding-bottom: 20px; }
-.problem-intro h2 { margin: 0 auto; }
-.problem-intro .section-sub { margin-left: auto; margin-right: auto; }
-
-/* ---------- Story rows ---------- */
-.story-row .split { align-items: center; }
-.story-row .copy h2 { margin: 10px 0 16px; }
-.story-row .eyebrow { margin-bottom: 0; }
-.story-links { display: flex; gap: 24px; margin-top: 22px; flex-wrap: wrap; }
-.text-link { font-size: 14px; font-weight: 700; color: var(--green-dark); display: inline-block; }
-.text-link:hover { text-decoration: underline; }
-
-/* ---------- Insight cards (feature story visuals) ---------- */
-.insight-card {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
+.dashboard-content {
+    padding: 30px;
 }
-.insight-body { padding: 24px; }
-.insight-body-tight { padding: 22px 24px; }
 
-.insight-score { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
-.ring-svg { width: 72px; height: 72px; flex: none; transform: rotate(-90deg); }
-.ring-track { stroke: var(--line); }
-.ring-fill {
-  stroke: var(--green-dark);
-  stroke-dasharray: 214;
-  stroke-dashoffset: 214;
-  stroke-linecap: round;
-  animation: ringFill 1.4s cubic-bezier(.21,.9,.3,1) forwards 0.3s;
+.dashboard-content h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    letter-spacing: -.03em;
 }
-@keyframes ringFill { to { stroke-dashoffset: 18; } }
-.ring-label strong { font-size: 24px; display: block; line-height: 1; }
-.ring-label small { font-size: 11px; color: var(--ink-soft); }
 
-.insight-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-size: 13.5px;
+.dashboard-subtitle {
+    margin-bottom: 25px;
+    color: var(--text-soft);
+    font-size: 14px;
 }
-.insight-list li { display: flex; align-items: center; gap: 10px; }
-.insight-list b { font-weight: 700; }
-.insight-list-tight { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
-.insight-list-security { margin-bottom: 20px; }
 
-.dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  flex: none;
+.finding-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
 }
-.dot-good { background: #2f9e5c; }
-.dot-warn { background: #d6a23a; }
 
-.insight-eyebrow {
-  font-size: 10.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  margin: 0 0 8px;
-}
-.insight-quote { font-size: 15px; font-weight: 600; margin: 0; }
-.insight-divider { height: 1px; background: var(--line); margin: 18px 0; }
-.insight-typing { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.type-line {
-  height: 9px;
-  border-radius: 4px;
-  background: var(--line);
-  display: block;
-  width: 0;
-  animation: typeGrow 0.6s ease forwards;
+.finding {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
 }
-.type-line-1 { width: 0; animation-delay: 0.3s; --tw: 92%; }
-.type-line-2 { width: 0; animation-delay: 0.6s; --tw: 76%; }
-.type-line-3 { width: 0; animation-delay: 0.9s; --tw: 55%; }
-@keyframes typeGrow { to { width: var(--tw); } }
-.insight-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 999px;
-  margin-top: 10px;
-}
-.insight-tag-bad { color: var(--bad); background: var(--yellow); }
-.insight-tag-good { color: #1f7a45; background: #e3f5ea; margin-top: 16px; }
 
-.insight-fix {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-.insight-fix-dot {
-  flex: none;
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  margin-top: 4px;
-  background: var(--green-dark);
-  box-shadow: 0 0 0 4px rgba(0,41,145,0.12);
+.finding-label {
+    margin-bottom: 10px;
+    color: #77777f;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
 }
-.insight-fix strong { font-size: 13px; display: block; }
-.insight-fix small { font-size: 11.5px; color: var(--ink-soft); }
 
-.vitals-row {
-  display: grid;
-  grid-template-columns: 90px 1fr 50px;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+.finding h4 {
+    margin: 0 0 8px;
+    font-size: 15px;
 }
-.vitals-label { font-size: 12px; font-weight: 700; }
-.vitals-label small { display: block; font-weight: 500; color: var(--ink-soft); font-size: 10px; }
-.vitals-bar { height: 7px; border-radius: 999px; background: var(--line); overflow: hidden; }
-.vitals-fill {
-  height: 100%;
-  border-radius: 999px;
-  width: 0;
-  animation: vitalsGrow 1.2s cubic-bezier(.21,.9,.3,1) forwards 0.3s;
-}
-@keyframes vitalsGrow { to { width: var(--w); } }
-.vitals-good { background: #2f9e5c; }
-.vitals-warn { background: #d6a23a; }
-.vitals-val { font-size: 12px; font-weight: 700; text-align: right; }
 
-.insight-shield {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  color: var(--green-dark);
-  font-size: 12.5px;
-  font-weight: 700;
+.finding p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 12px;
 }
-.mini-shield { width: 18px; height: 20px; }
-.mini-shield-check {
-  stroke-dasharray: 20;
-  stroke-dashoffset: 20;
-  animation: drawLine 0.6s ease forwards 1s;
-}
-
-/* ---------- Steps 3-col ---------- */
-.steps-grid-3 { grid-template-columns: repeat(3, 1fr); margin-bottom: 24px; }
 
-/* ---------- Workflow diagram ---------- */
-.workflow { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.workflow-step {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius-md);
-  padding: 14px 20px;
-  width: 100%;
-}
-.workflow-icon {
-  flex: 0 0 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--green);
-  color: var(--green-dark);
-}
-.wf-svg { width: 18px; height: 18px; }
-.wf-pulse { animation: wfPulse 2.4s ease-in-out infinite; }
-@keyframes wfPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(198,242,78,0.5); }
-  50% { box-shadow: 0 0 0 8px rgba(198,242,78,0); }
-}
-.workflow-step strong { color: var(--cream); font-size: 14px; display: block; }
-.workflow-step p { color: rgba(255,255,255,0.65); font-size: 12.5px; margin: 2px 0 0; }
-.workflow-arrow { color: rgba(255,255,255,0.4); font-size: 16px; }
+/* ---------------------------------
+   Section
+--------------------------------- */
 
-/* ---------- Reduced motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .blob, .float-chip, .live-dot, .arrow-bounce, .ring-1, .ring-2, .wf-pulse,
-  .chart-line, .chart-area, .shield-check, .gauge-fill, .qa-progress-fill {
-    animation: none !important;
-  }
-  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+section {
+    padding: 110px 0;
 }
 
-/* ---------- Responsive for new sections ---------- */
-@media (max-width: 900px) {
-  .stats-strip { gap: 32px; }
-  .insight-card { margin-top: 24px; }
-  .float-chip { display: none; }
-  .steps-grid-3 { grid-template-columns: 1fr; }
+.section-header {
+    max-width: 720px;
+    margin-bottom: 55px;
 }
-
-/* ---------- Why / Proof sections ---------- */
-.why-icon { font-size: 26px; display: block; margin-bottom: 14px; }
-.why-tile { justify-content: flex-start; min-height: 190px; }
-
-.compare-head .us { color: var(--green-dark); font-weight: 700; }
-.compare-row .icon-x { font-size: 13px; }
-.compare-row .icon-check { font-size: 13px; }
 
-/* ======================================================
-   SCREEN MOCKUPS & DIAGRAMS
-====================================================== */
-
-/* ---------- Reusable browser chrome ---------- */
-.browser-chrome {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 12px 16px;
-  background: var(--cream);
-  border-bottom: 1px solid var(--line);
-}
-.chrome-dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--line);
+.section-kicker {
+    margin-bottom: 14px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .1em;
 }
-.chrome-dot:nth-child(1) { background: #e8a0a0; }
-.chrome-dot:nth-child(2) { background: #ecd28a; }
-.chrome-dot:nth-child(3) { background: #a8d6a8; }
-.chrome-url {
-  margin-left: 10px;
-  font-size: 11px;
-  color: var(--ink-soft);
-  background: var(--bg);
-  border-radius: 999px;
-  padding: 4px 12px;
-}
 
-
-/* ---------- Recap section ---------- */
-.recap-section { padding-bottom: 50px; }
-.recap-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-.recap-item {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.section-header h2 {
+    margin: 0 0 18px;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -.055em;
 }
-.recap-item:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(12,25,72,0.08); }
-.recap-item p { font-size: 13.5px; margin: 0; line-height: 1.6; }
-.recap-item b { color: var(--green-dark); }
 
-@media (max-width: 900px) {
-  .recap-grid { grid-template-columns: repeat(2, 1fr); }
+.section-header p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 18px;
 }
-@media (max-width: 560px) {
-  .recap-grid { grid-template-columns: 1fr; }
-}
 
-/* ---------- Journey stat row ---------- */
-.journey-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.journey-card {
-  border-radius: var(--radius-md);
-  padding: 26px;
-  display: flex;
-  flex-direction: column;
-  min-height: 160px;
-}
-.journey-card h3 { font-size: 18px; margin: 0 0 8px; }
-.journey-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; flex: 1; }
-.journey-stat {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--green-dark);
-  margin-top: 16px;
-}
-.journey-lilac { background: var(--lilac); }
-.journey-mint { background: var(--mint); }
-.journey-blue { background: var(--blue); }
+/* ---------------------------------
+   Problem
+--------------------------------- */
 
-/* ---------- Footer comparison column ---------- */
-.footer-vs {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.footer-vs li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink-soft);
-  font-size: 14px;
+.problem {
+    background: var(--bg-soft);
 }
-.footer-vs .icon-check { color: var(--green-dark); font-weight: 700; }
 
-/* ---------- Problem ---------- */
 .problem-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
+
 .problem-card {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 28px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
 }
-.problem-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--peach);
-  color: var(--green-dark);
-  margin-bottom: 18px;
-}
-.problem-card h3 { font-size: 18px; margin: 0 0 10px; }
-.problem-card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
-/* ---------- Loop ---------- */
+.problem-number {
+    margin-bottom: 35px;
+    color: #aaaab1;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.problem-card h3 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    letter-spacing: -.03em;
+}
+
+.problem-card p {
+    margin: 0;
+    color: var(--text-soft);
+}
+
+/* ---------------------------------
+   Core Loop
+--------------------------------- */
+
+.loop {
+    text-align: center;
+}
+
+.loop .section-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .loop-grid {
-  display: flex;
-  align-items: stretch;
-  gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
 }
+
 .loop-step {
-  flex: 1;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 22px 18px;
-  text-align: center;
-}
-.loop-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--cream);
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-.loop-step h3 { font-size: 16px; margin: 0 0 8px; }
-.loop-step p { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
-.loop-arrow {
-  display: flex;
-  align-items: center;
-  color: var(--ink-soft);
-  opacity: 0.5;
-  font-size: 18px;
+    position: relative;
+    padding: 30px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff;
 }
 
-/* ---------- Capabilities (dark) ---------- */
-.capabilities-dark {
-  background: var(--ink);
-  border-radius: var(--radius-lg);
-  color: var(--cream);
-  padding: 70px 48px;
-}
-.highlight-light { color: var(--green); }
-.cap-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.cap-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius-md);
-  padding: 22px;
-}
-.cap-card h4 { font-size: 16px; margin: 0 0 14px; color: var(--cream); }
-.cap-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.75);
-}
-.cap-list li { position: relative; padding-left: 22px; }
-.cap-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--green);
-  font-weight: 700;
+.loop-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-weight: 800;
 }
 
-/* ---------- Monitor box ---------- */
+.loop-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #f0eafa;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.loop-step h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+
+.loop-step p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+/* ---------------------------------
+   Capabilities
+--------------------------------- */
+
+.capabilities {
+    background: var(--bg-dark);
+    color: var(--white);
+}
+
+.capabilities .section-header p {
+    color: #a7a7ae;
+}
+
+.capability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.capability {
+    padding: 32px;
+    border: 1px solid #29292f;
+    border-radius: var(--radius);
+    background: #17171c;
+}
+
+.capability h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    letter-spacing: -.03em;
+}
+
+.capability p {
+    margin: 0 0 18px;
+    color: #a7a7ae;
+}
+
+.capability-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.capability-list li {
+    position: relative;
+    padding: 7px 0 7px 20px;
+    color: #d0d0d5;
+    font-size: 14px;
+}
+
+.capability-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #b48de0;
+    font-weight: 800;
+}
+
+/* ---------------------------------
+   AI Visibility
+--------------------------------- */
+
+.ai-visibility {
+    background: #faf7fd;
+}
+
+.ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.ai-copy h2 {
+    margin: 0 0 20px;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -.055em;
+}
+
+.ai-copy p {
+    color: var(--text-soft);
+    font-size: 18px;
+}
+
+.ai-points {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.ai-point {
+    padding: 17px 20px;
+    border: 1px solid #e3d9ed;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.ai-visual {
+    padding: 30px;
+    border: 1px solid #e2d8ec;
+    border-radius: 22px;
+    background: #fff;
+}
+
+.ai-visual-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.ai-score {
+    color: var(--accent);
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -.05em;
+}
+
+.ai-result {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.ai-result:last-child {
+    border-bottom: 0;
+}
+
+.ai-result strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ai-result span {
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+/* ---------------------------------
+   Free / Pro
+--------------------------------- */
+
+.plans {
+    background: var(--bg-soft);
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.plan {
+    padding: 38px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background: #fff;
+}
+
+.plan.pro {
+    border-color: var(--accent);
+    box-shadow: 0 15px 45px rgba(80,7,170,.10);
+}
+
+.plan-label {
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.plan h3 {
+    margin: 0 0 12px;
+    font-size: 32px;
+    letter-spacing: -.04em;
+}
+
+.plan p {
+    min-height: 52px;
+    color: var(--text-soft);
+}
+
+.plan ul {
+    margin: 25px 0 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.plan li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+/* ---------------------------------
+   Retention
+--------------------------------- */
+
+.monitor {
+    text-align: center;
+}
+
+.monitor .section-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .monitor-box {
-  background: var(--ink);
-  border-radius: var(--radius-lg);
-  padding: 56px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 22px;
+    background: var(--bg-dark);
+    color: #fff;
 }
-.monitor-copy h2 { font-size: clamp(26px, 3.6vw, 36px); }
+
+.monitor-box h3 {
+    margin: 0 0 15px;
+    font-size: 32px;
+    letter-spacing: -.04em;
+}
+
+.monitor-box p {
+    max-width: 620px;
+    margin: 0 auto 28px;
+    color: #aaaab1;
+}
+
+.monitor-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.monitor-item {
+    padding: 18px;
+    border: 1px solid #29292f;
+    border-radius: 12px;
+    background: #17171c;
+    font-size: 13px;
+}
+
+/* ---------------------------------
+   CTA
+--------------------------------- */
+
+.final-cta {
+    padding: 130px 0;
+    text-align: center;
+}
+
+.final-cta h2 {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-size: clamp(42px, 6vw, 70px);
+    line-height: 1;
+    letter-spacing: -.06em;
+}
+
+.final-cta p {
+    max-width: 620px;
+    margin: 0 auto 30px;
+    color: var(--text-soft);
+    font-size: 18px;
+}
+
+/* ---------------------------------
+   Footer
+--------------------------------- */
+
+footer {
+    padding: 60px 0 30px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+.footer-brand p {
+    max-width: 340px;
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.footer-column h4 {
+    margin: 0 0 16px;
+    font-size: 13px;
+}
+
+.footer-column a {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+.footer-column a:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+    color: #898990;
+    font-size: 12px;
+}
+
+/* ---------------------------------
+   Responsive
+--------------------------------- */
 
 @media (max-width: 900px) {
-  .problem-grid { grid-template-columns: 1fr; }
-  .loop-grid { flex-direction: column; }
-  .loop-arrow { transform: rotate(90deg); align-self: center; }
-  .capabilities-dark { padding: 48px 24px; }
-  .cap-grid { grid-template-columns: 1fr 1fr; }
-  .monitor-box { grid-template-columns: 1fr; padding: 32px; }
+    .nav-links {
+        display: none;
+    }
+
+    .dashboard-body {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-sidebar {
+        display: none;
+    }
+
+    .finding-grid,
+    .problem-grid,
+    .capability-grid,
+    .plan-grid,
+    .ai-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .loop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .loop-step:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        top: auto;
+        bottom: -19px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .monitor-items {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
-@media (max-width: 560px) {
-  .cap-grid { grid-template-columns: 1fr; }
+
+@media (max-width: 600px) {
+    .container {
+        width: min(var(--max), calc(100% - 28px));
+    }
+
+    .hero {
+        padding: 75px 0 60px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero-copy {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 75px 0;
+    }
+
+    .nav-actions .btn-secondary {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding: 20px;
+    }
+
+    .finding-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 </style>
 </head>
+
 <body>
 
-<div class="blob blob-a" aria-hidden="true"></div>
-<div class="blob blob-b" aria-hidden="true"></div>
-<div class="blob blob-c" aria-hidden="true"></div>
+<header class="site-header">
+    <div class="container nav">
 
-<header class="nav-wrap" id="siteNav">
-  <nav class="nav">
-    <a class="brand" href="#top">
-      <span class="brand-dot"></span>
-      VuloPilot
-    </a>
-    <ul class="nav-links">
-      <li><a href="#how">How it Works</a></li>
-      <li><a href="#mission-control">Features</a></li>
-      <li><a href="#faq">Resources</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-    </ul>
-    <a class="btn btn-dark" href="#cta">
-      Get a Quote
-      <span class="btn-dot"></span>
-    </a>
-  </nav>
+        <a href="#top" class="logo">
+            Vulo<span>Pilot</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="#ai-visibility">AI Visibility</a>
+            <a href="#plans">Free vs Pro</a>
+            <a href="#faq">Resources</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#plans" class="btn btn-secondary">Pricing</a>
+            <a href="#cta" class="btn btn-primary">Scan My Website</a>
+        </div>
+
+    </div>
 </header>
+
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="pill-label reveal">WordPress Growth Operating System</div>
-    <p class="hero-kicker reveal" style="transition-delay:.02s">Stop guessing what's wrong with your WordPress site.</p>
-    <h1 class="reveal" style="transition-delay:.05s"><span class="highlight">VuloPilot finds what matters</span> — and fixes it.</h1>
-    <p class="hero-sub reveal" style="transition-delay:.12s">One WordPress plugin. Six things checked — then resolved.</p>
-    <div class="hero-tags reveal" style="transition-delay:.16s">
-      <span class="hero-tag hero-tag-red">Search Visibility</span>
-      <span class="hero-tag hero-tag-purple">AI Visibility</span>
-      <span class="hero-tag">Content</span>
-      <span class="hero-tag">Performance</span>
-      <span class="hero-tag hero-tag-green">Security &amp; Health</span>
-      <span class="hero-tag">Automation</span>
-    </div>
-    <div class="hero-actions reveal" style="transition-delay:.2s">
-      <a class="btn btn-dark btn-magnetic" href="#cta">Show me what's wrong<span class="btn-dot"></span></a>
-      <a class="btn btn-ghost-outline" href="#mission-control">Explore the dashboard</a>
-    </div>
-    <p class="hero-note reveal" style="transition-delay:.24s">Free scores &amp; issue lists · 100 free AI credits</p>
+    <!-- =====================================
+         HERO
+    ====================================== -->
 
-    <div class="hero-stage reveal" style="transition-delay:.28s">
-      <div class="float-chip chip-seo" aria-hidden="true"><span class="chip-dot chip-dot-bad"></span>Weak title tag<br/><em>/services/</em></div>
-      <div class="float-chip chip-speed" aria-hidden="true"><span class="chip-dot chip-dot-warn"></span>2.8s load time<br/><em>/shop/rugs/</em></div>
-      <div class="float-chip chip-win" aria-hidden="true"><span class="chip-dot chip-dot-good"></span>Backup verified<br/><em>Today, 03:00</em></div>
+    <section class="hero">
 
-      <div class="hero-card">
-        <div class="hero-card-top">
-          <span>VuloPilot / WordPress</span>
-          <span class="badge">Product preview</span>
-        </div>
-        <span class="small-label">From scan to action</span>
-        <h3 class="hero-card-title">Your next steps, in one place.</h3>
+        <div class="container">
 
-        <svg class="hero-chart-svg" viewBox="0 0 360 80" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#4f7fe0" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#4f7fe0" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path class="chart-area" d="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16 L360,80 L0,80 Z" fill="url(#chartFill)"/>
-          <path class="chart-line" d="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16" fill="none" stroke="#002991" stroke-width="2.5" stroke-linecap="round"/>
-          <circle class="chart-dot" r="4" fill="#002991">
-            <animateMotion dur="3.5s" repeatCount="indefinite" path="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16" />
-          </circle>
-        </svg>
-
-        <div class="hero-task-list">
-          <div class="hero-task">
-            <span class="task-num">01</span>
-            <div>
-              <strong>Find the issues</strong>
-              <p>See affected pages across SEO, AI visibility, content, speed and security.</p>
+            <div class="eyebrow">
+                WordPress Growth Operating System
             </div>
-          </div>
-          <div class="hero-task">
-            <span class="task-num">02</span>
-            <div>
-              <strong>Work on the fix</strong>
-              <p>Improve content with AI and apply supported fixes with Pro.</p>
+
+            <h1>
+                Stop guessing what your website needs.
+                <span>Know what to fix next.</span>
+            </h1>
+
+            <p class="hero-copy">
+                VuloPilot continuously finds what is holding your WordPress
+                website back, shows you what matters most, helps you fix it,
+                verifies the result, and keeps watching as your site changes.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#cta" class="btn btn-primary">
+                    Scan My Website
+                </a>
+
+                <a href="#how-it-works" class="btn btn-secondary">
+                    See How It Works
+                </a>
             </div>
-          </div>
-          <div class="hero-task">
-            <span class="task-num">03</span>
-            <div>
-              <strong>Keep checking</strong>
-              <p>Schedule scans and review new findings as your site changes.</p>
+
+            <div class="hero-note">
+                Free to start · No credit card · Built for WordPress
             </div>
-          </div>
-        </div>
-        <a class="hero-demo-link" href="#mission-control">Explore Mission Control <span class="arrow-bounce">↓</span></a>
-      </div>
-    </div>
-  </section>
 
-  <!-- MISSION CONTROL -->
-  <section class="section" id="mission-control">
-    <p class="eyebrow reveal">Meet your website's Mission Control</p>
-    <h2 class="reveal">See what's <span class="highlight">quietly holding you back.</span></h2>
-    <p class="section-sub reveal">Open one dashboard to review your website, area by area. Choose a category below, see what needs work, and jump straight to the affected pages.</p>
+            <div class="product-preview">
 
-    <div class="mission reveal">
-      <div class="mission-head">
-        <strong>VuloPilot Mission Control</strong>
-        <span class="mission-live"><span class="live-dot"></span>Interactive demo</span>
-      </div>
-      <div class="mission-body">
-        <div class="mission-tabs" role="tablist" aria-label="Website areas">
-          <button class="mtab active" data-tab="overview" role="tab" aria-selected="true">The big picture</button>
-          <button class="mtab" data-tab="search" role="tab" aria-selected="false">Can people find you?</button>
-          <button class="mtab" data-tab="ai" role="tab" aria-selected="false">Does AI know you exist?</button>
-          <button class="mtab" data-tab="content" role="tab" aria-selected="false">Are you answering them?</button>
-          <button class="mtab" data-tab="performance" role="tab" aria-selected="false">How slow, really?</button>
-          <button class="mtab" data-tab="health" role="tab" aria-selected="false">What's hiding underneath?</button>
-          <button class="mtab" data-tab="automation" role="tab" aria-selected="false">What happens while you sleep?</button>
-        </div>
+                <div class="dashboard">
 
-        <div class="mission-content">
+                    <div class="dashboard-top">
+                        <div class="dashboard-title">
+                            VuloPilot Mission Control
+                        </div>
 
-          <div class="mc-panel" data-panel="overview">
-            <h3>What needs your attention?</h3>
-            <p class="mc-desc">VuloPilot found issues across your website and grouped them by what deserves attention.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Visibility</span><h4>8 pages need SEO attention</h4><p>Missing or weak search signals affecting important pages.</p><span class="mc-link">Review search findings →</span></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Performance</span><h4>3 pages are slow</h4><p>Identify the affected URLs and investigate the causes.</p><span class="mc-link">View slow pages →</span></div>
-              <div class="mc-card mc-blue"><span class="mc-label">AI Visibility</span><h4>Improve business understanding</h4><p>Strengthen signals that help AI systems understand your website.</p><span class="mc-link">Explore AI findings →</span></div>
+                        <div class="dashboard-status">
+                            ● Site monitoring active
+                        </div>
+                    </div>
+
+                    <div class="dashboard-body">
+
+                        <aside class="dashboard-sidebar">
+
+                            <div class="sidebar-item active">
+                                Overview
+                            </div>
+
+                            <div class="sidebar-item">
+                                Search Visibility
+                            </div>
+
+                            <div class="sidebar-item">
+                                AI Visibility
+                            </div>
+
+                            <div class="sidebar-item">
+                                Content
+                            </div>
+
+                            <div class="sidebar-item">
+                                Performance
+                            </div>
+
+                            <div class="sidebar-item">
+                                Security &amp; Health
+                            </div>
+
+                            <div class="sidebar-item">
+                                Automation
+                            </div>
+
+                        </aside>
+
+                        <div class="dashboard-content">
+
+                            <h3>
+                                What needs your attention?
+                            </h3>
+
+                            <div class="dashboard-subtitle">
+                                VuloPilot found issues across your website
+                                and grouped them by what deserves attention.
+                            </div>
+
+                            <div class="finding-grid">
+
+                                <div class="finding">
+
+                                    <div class="finding-label">
+                                        Visibility
+                                    </div>
+
+                                    <h4>
+                                        8 pages need SEO attention
+                                    </h4>
+
+                                    <p>
+                                        Missing or weak search signals
+                                        affecting important pages.
+                                    </p>
+
+                                </div>
+
+                                <div class="finding">
+
+                                    <div class="finding-label">
+                                        Performance
+                                    </div>
+
+                                    <h4>
+                                        3 pages are slow
+                                    </h4>
+
+                                    <p>
+                                        Identify the affected URLs and
+                                        investigate the causes.
+                                    </p>
+
+                                </div>
+
+                                <div class="finding">
+
+                                    <div class="finding-label">
+                                        AI Visibility
+                                    </div>
+
+                                    <h4>
+                                        Improve business understanding
+                                    </h4>
+
+                                    <p>
+                                        Strengthen signals that help AI
+                                        systems understand your website.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="search" hidden>
-            <h3>Usually — just not as well as it should.</h3>
-            <p class="mc-desc">VuloPilot checks titles, descriptions, links and indexing signals, and tells you exactly which pages are holding themselves back.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Titles &amp; meta</span><h4>8 titles need attention</h4><p>See pages with missing or vague titles and review the suggested next steps.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Internal links</span><h4>14 pages have no inbound links</h4><p>Pages nothing else on your site points to — easy to miss, easy to fix.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Indexing &amp; schema</span><h4>2 pages aren't indexed</h4><p>Canonical URLs and structured data checked, with the cause named.</p></div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PROBLEM
+    ====================================== -->
+
+    <section class="problem">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    The real problem
+                </div>
+
+                <h2>
+                    Your website doesn't need another dashboard.
+                </h2>
+
+                <p>
+                    It needs a system that turns thousands of possible
+                    problems into a clear list of things worth doing.
+                </p>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="ai" hidden>
-            <h3>Not if your details change page to page.</h3>
-            <p class="mc-desc">VuloPilot checks business information, answer coverage and content structure, and shows exactly where AI systems lose the thread.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Business clarity</span><h4>Business details differ on 4 pages</h4><p>Hours, service area or pricing don't match everywhere VuloPilot checked.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Answer coverage</span><h4>6 common questions go unanswered</h4><p>Pages that could directly answer a buyer's question, but don't yet.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Crawler signals</span><h4>GPTBot visited 12 times this month</h4><p>Track which AI crawlers reach your site, and how often they return.</p></div>
+            <div class="problem-grid">
+
+                <article class="problem-card">
+
+                    <div class="problem-number">
+                        01
+                    </div>
+
+                    <h3>
+                        You don't know what changed.
+                    </h3>
+
+                    <p>
+                        Traffic drops. Rankings move. Pages slow down.
+                        Content changes. Plugins update. But the reason
+                        is often buried across different tools.
+                    </p>
+
+                </article>
+
+
+                <article class="problem-card">
+
+                    <div class="problem-number">
+                        02
+                    </div>
+
+                    <h3>
+                        You have too many warnings.
+                    </h3>
+
+                    <p>
+                        SEO tools, speed tools and security tools all
+                        produce reports. More warnings do not automatically
+                        tell you what deserves attention first.
+                    </p>
+
+                </article>
+
+
+                <article class="problem-card">
+
+                    <div class="problem-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Fixing one problem is not the finish line.
+                    </h3>
+
+                    <p>
+                        Your website keeps changing. A fix needs to be
+                        checked, measured and monitored instead of simply
+                        marked as complete.
+                    </p>
+
+                </article>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="content" hidden>
-            <h3>Not on the pages that matter most.</h3>
-            <p class="mc-desc">VuloPilot finds the thin, duplicate or outdated pages losing visitors, then helps you fill the gaps with AI writing tools.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Content findings</span><h4>5 pages are thin or duplicate</h4><p>Pages unlikely to rank or convert as they are, flagged for review.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Writing tools</span><h4>AI Writer drafts it in seconds</h4><p>Generate or rewrite a page with AI Writer and Blog Generator.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Page improvements</span><h4>FAQs, metadata and schema, drafted</h4><p>Pro tools fill in the details most pages leave blank.</p></div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         HOW IT WORKS
+    ====================================== -->
+
+    <section class="loop" id="how-it-works">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    How VuloPilot works
+                </div>
+
+                <h2>
+                    From website problems to continuous improvement.
+                </h2>
+
+                <p>
+                    VuloPilot turns website optimization into a repeatable
+                    operating loop instead of another monthly audit.
+                </p>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="performance" hidden>
-            <h3>Slower than you'd guess, on at least one page</h3>
-            <p class="mc-desc">VuloPilot surfaces slow pages and Core Web Vitals findings, so you know exactly what to fix and can test again after.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Slow pages</span><h4>3 pages need investigation</h4><p>Open the affected page and review its loading findings.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Core Web Vitals</span><h4>Check the visitor experience</h4><p>Review loading speed, responsiveness and layout stability.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Speed history</span><h4>Keep track after changes</h4><p>Run another test and compare performance results over time.</p></div>
+
+            <div class="loop-grid">
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        01
+                    </div>
+
+                    <h3>
+                        Scan
+                    </h3>
+
+                    <p>
+                        Understand your WordPress website,
+                        pages and important signals.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        02
+                    </div>
+
+                    <h3>
+                        Prioritize
+                    </h3>
+
+                    <p>
+                        Separate important issues from
+                        noise and show what needs attention.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        03
+                    </div>
+
+                    <h3>
+                        Fix
+                    </h3>
+
+                    <p>
+                        Make the change yourself or use
+                        VuloPilot's tools and AI assistance.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        04
+                    </div>
+
+                    <h3>
+                        Verify
+                    </h3>
+
+                    <p>
+                        Recheck the website and see whether
+                        the issue actually improved.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        05
+                    </div>
+
+                    <h3>
+                        Monitor
+                    </h3>
+
+                    <p>
+                        Keep watching as your website,
+                        content and environment change.
+                    </p>
+
+                </div>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="health" hidden>
-            <h3>An outdated plugin or two, most likely.</h3>
-            <p class="mc-desc">VuloPilot reviews security and WordPress health findings alongside backup status, and flags what needs your attention or a developer's.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Security</span><h4>1 known plugin vulnerability</h4><p>Malware, SSL and suspicious file checks, with the fix named — not just the warning.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Health &amp; backups</span><h4>Backup status: unverified</h4><p>VuloPilot checks whether your backup plugin is actually running, not just installed.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Accessibility</span><h4>3 images missing alt text</h4><p>Headings, form labels and image descriptions, checked page by page.</p></div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         FEATURES
+    ====================================== -->
+
+    <section class="capabilities" id="features">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    One operating layer
+                </div>
+
+                <h2>
+                    Everything your WordPress website needs to keep improving.
+                </h2>
+
+                <p>
+                    VuloPilot connects visibility, content, performance,
+                    security, health and automation into one continuous
+                    workflow.
+                </p>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="automation" hidden>
-            <h3>VuloPilot, still checking — on your schedule.</h3>
-            <p class="mc-desc">Recurring scans bring new findings back to your attention automatically, with history to compare results as your site changes.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Ready-made checks</span><h4>Full site scan, on autopilot</h4><p>Free includes a recurring scan and website health checks, no setup needed.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Schedules</span><h4>Daily, weekly, or your own cadence</h4><p>Pick how often VuloPilot checks back in, based on how fast your site changes.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Advanced workflows</span><h4>"If a plugin update appears, apply it"</h4><p>Pro lets you set rules like this — custom triggers, conditions and fixes.</p></div>
+
+            <div class="capability-grid">
+
+                <article class="capability">
+
+                    <h3>
+                        Search Visibility
+                    </h3>
+
+                    <p>
+                        Find the technical and on-page issues that affect
+                        how your pages are discovered and understood.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Titles and meta descriptions</li>
+                        <li>Headings and internal links</li>
+                        <li>Indexing and crawl signals</li>
+                        <li>Broken links and redirects</li>
+                        <li>Schema and structured data</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        AI Visibility
+                    </h3>
+
+                    <p>
+                        Understand how ready your website is for the
+                        growing world of AI-powered search and discovery.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>AI search readiness</li>
+                        <li>Entity and business clarity</li>
+                        <li>Answer and content opportunities</li>
+                        <li>AI crawler signals</li>
+                        <li>GEO and AEO insights</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Content
+                    </h3>
+
+                    <p>
+                        Find content that needs improvement before producing
+                        more content simply for the sake of publishing.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Content quality insights</li>
+                        <li>Thin and duplicate content</li>
+                        <li>Page improvement opportunities</li>
+                        <li>AI-assisted writing</li>
+                        <li>FAQs and structured answers</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Performance
+                    </h3>
+
+                    <p>
+                        Find the pages creating a poor experience and
+                        understand where performance work should begin.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Core Web Vitals</li>
+                        <li>Page performance</li>
+                        <li>Loading problems</li>
+                        <li>Responsiveness</li>
+                        <li>Layout stability</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Security &amp; Site Health
+                    </h3>
+
+                    <p>
+                        Keep important WordPress health and protection
+                        signals visible before they become business problems.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>WordPress health</li>
+                        <li>Security findings</li>
+                        <li>SSL status</li>
+                        <li>Plugin and environment checks</li>
+                        <li>Backup awareness</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Automation
+                    </h3>
+
+                    <p>
+                        Turn recurring website maintenance into workflows
+                        that continue after you leave the dashboard.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Scheduled scans</li>
+                        <li>Recurring health checks</li>
+                        <li>Triggers and conditions</li>
+                        <li>Automated workflows</li>
+                        <li>Continuous monitoring</li>
+                    </ul>
+
+                </article>
+
             </div>
-          </div>
 
         </div>
-      </div>
-      <div class="mission-foot">Demo findings only. This preview does not scan or modify a website.</div>
-    </div>
-  </section>
 
-  <!-- JOURNEY -->
-  <section class="section">
-    <p class="eyebrow reveal">From finding to fixed</p>
-    <h2 class="reveal">Three steps. <span class="highlight">Every time.</span></h2>
-    <div class="journey-grid reveal">
-      <div class="journey-card journey-lilac">
-        <h3>Understand</h3>
-        <p>See the issue as VuloPilot found it, where it happens and why it matters. Use the findings to decide where to begin.</p>
-        <span class="journey-stat">12+ data points reviewed per page</span>
-      </div>
-      <div class="journey-card journey-mint">
-        <h3>Improve</h3>
-        <p>Use AI writing tools for content or apply supported fixes with Pro. Bigger changes stay with your admin or developer.</p>
-        <span class="journey-stat">12+ fixes drafted before you ask</span>
-      </div>
-      <div class="journey-card journey-blue">
-        <h3>Recheck</h3>
-        <p>Run the scan again and confirm the change actually worked, instead of assuming the warning is gone.</p>
-        <span class="journey-stat">12+ checks re-run automatically</span>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROBLEM -->
-  <section class="section" id="problem">
-    <p class="eyebrow reveal">The problem</p>
-    <h2 class="reveal">Growth stalls <span class="highlight">in places you never check.</span></h2>
-    <p class="section-sub reveal">Your site runs fine on the surface. Underneath, small issues pile up quietly — and each one costs you traffic, trust, or a sale.</p>
 
-    <div class="problem-grid reveal">
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <h3>You can't see what's broken</h3>
-        <p>SEO gaps, slow pages and security risks hide across dozens of pages, with no single place to check them all.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2 2 20h20L12 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg>
-        </span>
-        <h3>AI search is passing you by</h3>
-        <p>Chatbots and AI answers now send real traffic — but only to sites whose content and data they can understand.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v6M12 16v6M2 12h6M16 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <h3>Fixing it takes too many tools</h3>
-        <p>One plugin for SEO, another for speed, another for security — none of them talking to each other, or to you.</p>
-      </div>
-    </div>
-  </section>
+    <!-- =====================================
+         AI VISIBILITY
+    ====================================== -->
 
-  <!-- PROBLEM INTRO -->
-  <section class="section problem-intro">
-    <p class="eyebrow reveal">One journey, every angle</p>
-    <h2 class="reveal">From first search <span class="highlight">to earned trust.</span></h2>
-    <p class="section-sub reveal">Getting found is only step one. A visitor still has to understand your offer, use the page without friction, and trust what's running behind it. Here's how VuloPilot covers each part of that journey.</p>
-  </section>
+    <section class="ai-visibility" id="ai-visibility">
 
-  <!-- FEATURE STORY 1 -->
-  <section class="section story-row reveal" id="how">
-    <div class="split">
-      <div class="copy">
-        <span class="eyebrow">01 / Get found</span>
-        <h2>Finds what AI and search need <span class="highlight">— then fixes it.</span></h2>
-        <p class="card-copy">A page can read perfectly to a human and still be invisible to AI — a missing title tag or thin internal linking is usually why. VuloPilot checks every page for these signals and tells you exactly which ones need attention.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Search visibility ↗</a>
-          <a class="text-link" href="#mission-control">AI search ↗</a>
+        <div class="container">
+
+            <div class="ai-grid">
+
+                <div class="ai-copy">
+
+                    <div class="section-kicker">
+                        Search is changing
+                    </div>
+
+                    <h2>
+                        Don't optimize only for search engines.
+                        Build visibility for AI discovery too.
+                    </h2>
+
+                    <p>
+                        Search is no longer limited to a list of blue links.
+                        People increasingly discover businesses, products
+                        and answers through AI-powered systems.
+                    </p>
+
+                    <p>
+                        VuloPilot helps you understand whether your website
+                        clearly communicates who you are, what you offer,
+                        what questions you answer and why your information
+                        should be understood.
+                    </p>
+
+                    <div class="ai-points">
+
+                        <div class="ai-point">
+                            Understand your AI search readiness
+                        </div>
+
+                        <div class="ai-point">
+                            Find content and entity clarity gaps
+                        </div>
+
+                        <div class="ai-point">
+                            Improve answers and structured information
+                        </div>
+
+                        <div class="ai-point">
+                            Monitor AI visibility signals over time
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-visual">
+
+                    <div class="ai-visual-header">
+
+                        <div>
+                            <strong>AI Visibility</strong>
+                            <div style="color:#777;font-size:13px;">
+                                Website analysis
+                            </div>
+                        </div>
+
+                        <div class="ai-score">
+                            78
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-result">
+
+                        <strong>
+                            Business understanding
+                        </strong>
+
+                        <span>
+                            Your core business information is clearly
+                            represented across important pages.
+                        </span>
+
+                    </div>
+
+
+                    <div class="ai-result">
+
+                        <strong>
+                            Answer coverage
+                        </strong>
+
+                        <span>
+                            Several high-value customer questions are
+                            not clearly answered.
+                        </span>
+
+                    </div>
+
+
+                    <div class="ai-result">
+
+                        <strong>
+                            Entity signals
+                        </strong>
+
+                        <span>
+                            Improve consistency across business,
+                            organization and service information.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">/services/web-design</span>
-        </div>
-        <div class="insight-body">
-          <div class="insight-score">
-            <svg viewBox="0 0 80 80" class="ring-svg">
-              <circle class="ring-track" cx="40" cy="40" r="34" fill="none" stroke-width="7"/>
-              <circle class="ring-fill" cx="40" cy="40" r="34" fill="none" stroke-width="7"/>
-            </svg>
-            <div class="ring-label"><strong>92</strong><small>page signal</small></div>
-          </div>
-          <ul class="insight-list">
-            <li><span class="dot dot-good"></span>Title tag <b>found</b></li>
-            <li><span class="dot dot-good"></span>Schema markup <b>valid</b></li>
-            <li><span class="dot dot-warn"></span>Internal links <b>thin</b></li>
-          </ul>
-          <div class="insight-fix">
-            <span class="insight-fix-dot"></span>
-            <div><strong>3 internal links suggested</strong><small>Drafted by AI — review and add in one click</small></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FEATURE STORY 2 -->
-  <section class="section story-row reverse reveal">
-    <div class="split reverse">
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">VuloPilot — Content check</span>
-        </div>
-        <div class="insight-body insight-body-tight">
-          <p class="insight-eyebrow">Visitor's question</p>
-          <p class="insight-quote">"What's included in this service?"</p>
-          <span class="insight-tag insight-tag-bad">Page doesn't answer this</span>
-          <div class="insight-divider"></div>
-          <p class="insight-eyebrow">AI-drafted answer</p>
-          <div class="insight-typing">
-            <span class="type-line type-line-1"></span>
-            <span class="type-line type-line-2"></span>
-            <span class="type-line type-line-3"></span>
-          </div>
-          <span class="insight-tag insight-tag-good">Ready to review and publish</span>
-        </div>
-      </div>
-      <div class="copy">
-        <span class="eyebrow">02 / Answer the question</span>
-        <h2>Catches the questions your page <span class="highlight">ignores.</span></h2>
-        <p class="card-copy">"What's included?" If the page doesn't say, visitors leave in seconds. VuloPilot flags exactly where content falls short and writes a clearer version with AI, ready for you to review — plus tools for FAQs, metadata and WooCommerce descriptions on Pro.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Content tools ↗</a>
-          <a class="text-link" href="#mission-control">WooCommerce ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FEATURE STORY 3 -->
-  <section class="section story-row reveal">
-    <div class="split">
-      <div class="copy">
-        <span class="eyebrow">03 / Make it easy to use</span>
-        <h2>Finds what's slowing you down <span class="highlight">— and speeds it up.</span></h2>
-        <p class="card-copy">A two-second delay is long enough to lose a sale. VuloPilot tests every page's load time, points to the real cause on the slow ones — usually an oversized image — and flags accessibility gaps like missing alt text or unlabeled forms.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Performance ↗</a>
-          <a class="text-link" href="#mission-control">Accessibility ↗</a>
+
+    <!-- =====================================
+         FREE / PRO
+    ====================================== -->
+
+    <section class="plans" id="plans">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Start free. Grow when you need more.
+                </div>
+
+                <h2>
+                    Understand first. Automate when you're ready.
+                </h2>
+
+                <p>
+                    VuloPilot's free experience gives you a clear picture
+                    of your website. Pro gives you deeper intelligence,
+                    more action and greater control over recurring work.
+                </p>
+
+            </div>
+
+
+            <div class="plan-grid">
+
+                <article class="plan">
+
+                    <div class="plan-label">
+                        Free
+                    </div>
+
+                    <h3>
+                        Know what needs attention.
+                    </h3>
+
+                    <p>
+                        Build your website's starting intelligence and
+                        discover the issues worth working on.
+                    </p>
+
+                    <ul>
+                        <li>SEO and visibility analysis</li>
+                        <li>GEO / AI visibility insights</li>
+                        <li>Website issue detection</li>
+                        <li>Full-site scanning</li>
+                        <li>Website health automation</li>
+                        <li>100 free AI credits</li>
+                    </ul>
+
+                    <a href="#cta" class="btn btn-secondary">
+                        Start Free
+                    </a>
+
+                </article>
+
+
+                <article class="plan pro">
+
+                    <div class="plan-label">
+                        Pro
+                    </div>
+
+                    <h3>
+                        Do more. Automate more.
+                    </h3>
+
+                    <p>
+                        Turn insights into action with deeper analysis,
+                        AI assistance, fixes and advanced workflows.
+                    </p>
+
+                    <ul>
+                        <li>Advanced AI visibility analysis</li>
+                        <li>AI-assisted content improvements</li>
+                        <li>SEO, schema and page assistance</li>
+                        <li>Advanced performance insights</li>
+                        <li>Custom triggers and workflows</li>
+                        <li>Scheduled automation</li>
+                        <li>Reports and historical insights</li>
+                    </ul>
+
+                    <a href="#plans" class="btn btn-primary">
+                        Explore Pro
+                    </a>
+
+                </article>
+
+            </div>
+
         </div>
-      </div>
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">Core Web Vitals — Mobile</span>
+
+    </section>
+
+
+    <!-- =====================================
+         MONITORING
+    ====================================== -->
+
+    <section class="monitor">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Your website keeps changing
+                </div>
+
+                <h2>
+                    Your optimization shouldn't stop after one scan.
+                </h2>
+
+                <p>
+                    A website is not a finished project. New content,
+                    plugins, updates, traffic and technical changes
+                    can create new problems.
+                </p>
+
+            </div>
+
+
+            <div class="monitor-box">
+
+                <h3>
+                    VuloPilot keeps watching.
+                </h3>
+
+                <p>
+                    Turn website maintenance from something you remember
+                    occasionally into a system that continuously brings
+                    important changes back to your attention.
+                </p>
+
+                <div class="monitor-items">
+
+                    <div class="monitor-item">
+                        New issues
+                    </div>
+
+                    <div class="monitor-item">
+                        Visibility changes
+                    </div>
+
+                    <div class="monitor-item">
+                        Performance problems
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="insight-body">
-          <div class="vitals-row">
-            <span class="vitals-label">LCP <small>Load</small></span>
-            <div class="vitals-bar"><div class="vitals-fill vitals-good" style="--w:78%"></div></div>
-            <span class="vitals-val">2.1s</span>
-          </div>
-          <div class="vitals-row">
-            <span class="vitals-label">CLS <small>Stability</small></span>
-            <div class="vitals-bar"><div class="vitals-fill vitals-warn" style="--w:46%"></div></div>
-            <span class="vitals-val">0.18</span>
-          </div>
-          <div class="vitals-row">
-            <span class="vitals-label">INP <small>Response</small></span>
-            <div class="vitals-bar"><div class="vitals-fill vitals-good" style="--w:85%"></div></div>
-            <span class="vitals-val">180ms</span>
-          </div>
-          <ul class="insight-list insight-list-tight">
-            <li><span class="dot dot-good"></span>Layout <b>stable</b></li>
-            <li><span class="dot dot-warn"></span>Alt text <b>missing on 2 images</b></li>
-          </ul>
-          <div class="insight-fix">
-            <span class="insight-fix-dot"></span>
-            <div><strong>Image compression ready</strong><small>Cuts load time by ~1.4s — apply in one click</small></div>
-          </div>
+
+    </section>
+
+
+    <!-- =====================================
+         FINAL CTA
+    ====================================== -->
+
+    <section class="final-cta" id="cta">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                Start with your website
+            </div>
+
+            <h2>
+                Find out what is holding your website back.
+            </h2>
+
+            <p>
+                Connect your WordPress website and get your first set
+                of actionable findings. No SEO expertise required.
+            </p>
+
+            <a href="#cta" class="btn btn-primary">
+                Scan My Website
+            </a>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FEATURE STORY 4 -->
-  <section class="section story-row reverse reveal">
-    <div class="split reverse">
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">VuloPilot — Security &amp; health</span>
-        </div>
-        <div class="insight-body">
-          <ul class="insight-list insight-list-security">
-            <li><span class="dot dot-good"></span>SSL certificate <b>valid</b></li>
-            <li><span class="dot dot-good"></span>Malware scan <b>clean</b></li>
-            <li><span class="dot dot-good"></span>Backup <b>today, 03:00</b></li>
-            <li><span class="dot dot-warn"></span>Plugin update <b>1 pending</b></li>
-          </ul>
-          <div class="insight-fix">
-            <span class="insight-fix-dot"></span>
-            <div><strong>Known vulnerability patched</strong><small>Update it now in one click</small></div>
-          </div>
-          <div class="insight-shield">
-            <svg viewBox="0 0 28 32" class="mini-shield">
-              <path d="M14 1 L26 6 V15 C26 23 20 28 14 31 C8 28 2 23 2 15 V6 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path class="mini-shield-check" d="M8 16 L12 20 L20 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>Protected once applied</span>
-          </div>
-        </div>
-      </div>
-      <div class="copy">
-        <span class="eyebrow">04 / Look after the foundations</span>
-        <h2>Flags the risks hiding <span class="highlight">behind your site.</span></h2>
-        <p class="card-copy">An outdated plugin never shows up on the homepage, until it does. VuloPilot scans for malware, vulnerable plugins, a lapsed SSL certificate and backups that quietly stopped running — and tells you exactly what to fix first.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Security ↗</a>
-          <a class="text-link" href="#mission-control">Health &amp; backups ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPARISON -->
-  <section class="section">
-    <p class="eyebrow reveal">Why it's one plugin, not five</p>
-    <h2 class="reveal">Because the problem <span class="highlight">rarely lives in one plugin.</span></h2>
-    <p class="section-sub reveal">A dedicated tool for each one means five logins, five dashboards and nothing talking to each other. VuloPilot checks all five from the same place.</p>
-
-    <div class="compare-card reveal">
-      <div class="compare-row">
-        <span>Can people find you?</span>
-        <span class="mc-label">Visibility</span>
-      </div>
-      <div class="compare-row">
-        <span>Do they understand you?</span>
-        <span class="mc-label">Content</span>
-      </div>
-      <div class="compare-row">
-        <span>Will the page make them wait?</span>
-        <span class="mc-label">Performance</span>
-      </div>
-      <div class="compare-row">
-        <span>Is the site in good shape?</span>
-        <span class="mc-label">Health &amp; protection</span>
-      </div>
-      <div class="compare-row">
-        <span>Will you know if something changes?</span>
-        <span class="mc-label">Automation</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section" id="pricing">
-    <p class="eyebrow reveal">Free &amp; Pro</p>
-    <h2 class="reveal">See the truth for free. <span class="highlight">Resolve it faster with Pro.</span></h2>
-
-    <div class="split">
-      <div class="card card-list plan-card reveal">
-        <p class="card-eyebrow">Free</p>
-        <h3>See what your website needs</h3>
-        <p class="card-copy">Get scores and issue lists, try AI content tools and set up recurring checks.</p>
-        <ul class="check-list">
-          <li>Scores and issue lists</li>
-          <li>Full site scan and website health automations</li>
-          <li>100 free AI credits for AI Writer, Blog Generator and Duplicate Content finder</li>
-        </ul>
-        <a class="btn btn-ghost-outline" href="#cta">Scan your website</a>
-      </div>
-      <div class="card card-dark plan-card reveal" style="transition-delay:.1s">
-        <p class="card-eyebrow light">Pro</p>
-        <h3 class="dark-h3">Let AI handle it while you move on</h3>
-        <p class="card-copy light">Apply supported AI fixes and build workflows around the needs of your website.</p>
-        <ul class="check-list light">
-          <li>Custom triggers, conditions and scheduled workflows</li>
-          <li>Supported AI fixes and bulk improvements</li>
-          <li>AI tools for metadata, FAQs and content refresh</li>
-          <li>Deeper AI visibility analysis and historical insights</li>
-        </ul>
-        <a class="btn btn-green" href="#cta">Explore Pro<span class="btn-dot dark"></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <p class="eyebrow reveal">FAQ</p>
-    <h2 class="reveal">Questions people ask before they start.</h2>
-
-    <div class="faq-list reveal">
-      <details class="faq-item" open>
-        <summary>Will VuloPilot change my site without asking?<span class="faq-icon">+</span></summary>
-        <p>No. VuloPilot shows you the issue and a suggested fix. Supported AI fixes are applied only when you choose, and account or server changes stay with your admin or developer.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Does it guarantee better rankings or AI citations?<span class="faq-icon">+</span></summary>
-        <p>No tool can promise that. VuloPilot strengthens the signals that support discovery — clearer titles, better answers, faster pages — which is what actually helps over time.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Do I need to be technical to use it?<span class="faq-icon">+</span></summary>
-        <p>Not for the Free plan. Findings are written in plain language, and AI tools help draft the fix. Some advanced items are better handled by a developer, and we'll tell you when that's the case.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What's included in the 100 free AI credits?</summary>
-        <p>They cover AI Writer, Blog Generator and the Duplicate Content finder — enough to try real fixes on your site before deciding on Pro.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" id="cta">
-    <div class="cta-card reveal">
-      <div class="cta-copy">
-        <p class="eyebrow light">Your first step</p>
-        <h2 class="light">That was one page.<br/>See your whole site.</h2>
-        <p class="section-sub light">Run a free scan and get the same kind of findings and fixes — ranked by what matters most, for every page on your site.</p>
-        <ul class="cta-list">
-          <li>✓ A full scan, issues ranked by priority</li>
-          <li>✓ AI drafts the fix — you just review and publish</li>
-          <li>✓ 100 free credits, no credit card, under 2 minutes to start</li>
-        </ul>
-      </div>
-      <form class="cta-form" onsubmit="return false;">
-        <label>WordPress site URL<input type="url" placeholder="yoursite.com" /></label>
-        <label>Work email<input type="email" placeholder="you@company.com" /></label>
-        <button class="btn btn-green btn-block" type="submit">Scan your website<span class="btn-dot dark"></span></button>
-      </form>
-    </div>
-  </section>
+    </section>
 
 </main>
 
-<footer class="footer">
-  <div class="footer-top">
-    <a class="brand" href="#top"><span class="brand-dot"></span>VuloPilot</a>
-    <p>Stay informed about your WordPress website. Understand issues, make improvements and keep checking.</p>
-    <a class="btn btn-dark" href="#cta">Scan your website<span class="btn-dot"></span></a>
-  </div>
-  <div class="footer-cols">
-    <div>
-      <p class="footer-head">Resources</p>
-      <a href="#">Documentation</a>
-      <a href="#">WordPress SEO guide</a>
-      <a href="#">Support</a>
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer id="faq">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="#top" class="logo">
+                    Vulo<span>Pilot</span>
+                </a>
+
+                <p>
+                    The WordPress Growth Operating System for finding,
+                    fixing and continuously improving what matters.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Product
+                </h4>
+
+                <a href="#features">Features</a>
+                <a href="#ai-visibility">AI Visibility</a>
+                <a href="#features">SEO</a>
+                <a href="#features">Performance</a>
+                <a href="#features">Security</a>
+                <a href="#features">Automation</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Resources
+                </h4>
+
+                <a href="#">Documentation</a>
+                <a href="#">Blog</a>
+                <a href="#">Changelog</a>
+                <a href="#">Support</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Company
+                </h4>
+
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#plans">Pricing</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 VuloPilot. All rights reserved.
+        </div>
+
     </div>
-    <div>
-      <p class="footer-head">Company</p>
-      <a href="#">About us</a>
-      <a href="#">Contact</a>
-      <a href="#pricing">Pricing</a>
-    </div>
-    <div>
-      <p class="footer-head">Explore</p>
-      <a href="#mission-control">Mission Control</a>
-      <a href="#">Website health</a>
-      <a href="#">Automation</a>
-    </div>
-    <div>
-      <p class="footer-head">VuloPilot vs</p>
-      <ul class="footer-vs">
-        <li><span class="icon-check">✓</span>SEO plugins</li>
-        <li><span class="icon-check">✓</span>Security plugins</li>
-        <li><span class="icon-check">✓</span>Performance plugins</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 VuloPilot. All rights reserved.</span>
-    <div class="footer-legal"><a href="#">Privacy policy</a><a href="#">Terms</a></div>
-  </div>
+
 </footer>
-
-<script>
-(function () {
-  // Tab switching with fade transition
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.mtab'));
-  var panels = Array.prototype.slice.call(document.querySelectorAll('.mc-panel'));
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var key = tab.getAttribute('data-tab');
-      if (tab.classList.contains('active')) return;
-      tabs.forEach(function (t) {
-        var active = t === tab;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', active);
-      });
-      panels.forEach(function (p) {
-        var match = p.getAttribute('data-panel') === key;
-        if (match) {
-          p.hidden = false;
-          p.classList.remove('panel-in');
-          void p.offsetWidth;
-          p.classList.add('panel-in');
-        } else {
-          p.hidden = true;
-        }
-      });
-    });
-  });
-
-  // Scroll reveal
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-  }
-
-  // Nav shadow on scroll
-  var nav = document.getElementById('siteNav');
-  function onScroll() {
-    if (window.scrollY > 12) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-</script>
 
 </body>
 </html>

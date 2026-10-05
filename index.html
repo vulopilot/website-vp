@@ -1,644 +1,989 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VuloPilot — Find what holds your WordPress site back</title>
-<meta name="description" content="VuloPilot is a WordPress plugin that checks your SEO, AI search visibility, content, speed and security—and shows you which pages and issues need attention." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VuloPilot — The WordPress Growth Operating System</title>
+
+    <meta
+        name="description"
+        content="VuloPilot continuously finds what is holding your WordPress website back, tells you what to fix first, helps you fix it, verifies the result, and keeps watching."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-<div class="blob blob-a" aria-hidden="true"></div>
-<div class="blob blob-b" aria-hidden="true"></div>
-<div class="blob blob-c" aria-hidden="true"></div>
+<header class="site-header">
+    <div class="container nav">
 
-<header class="nav-wrap" id="siteNav">
-  <nav class="nav">
-    <a class="brand" href="#top">
-      <span class="brand-dot"></span>
-      VuloPilot
-    </a>
-    <ul class="nav-links">
-      <li><a href="#how">How it Works</a></li>
-      <li><a href="#mission-control">Features</a></li>
-      <li><a href="#faq">Resources</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-    </ul>
-    <a class="btn btn-dark" href="#cta">
-      Get a Quote
-      <span class="btn-dot"></span>
-    </a>
-  </nav>
+        <a href="#top" class="logo">
+            Vulo<span>Pilot</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="#ai-visibility">AI Visibility</a>
+            <a href="#plans">Free vs Pro</a>
+            <a href="#faq">Resources</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#plans" class="btn btn-secondary">Pricing</a>
+            <a href="#cta" class="btn btn-primary">Scan My Website</a>
+        </div>
+
+    </div>
 </header>
+
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="pill-label reveal">WordPress Growth Operating System</div>
-    <p class="hero-kicker reveal" style="transition-delay:.02s">Stop guessing what's wrong with your WordPress site.</p>
-    <h1 class="reveal" style="transition-delay:.05s"><span class="highlight">VuloPilot finds what matters</span> — and fixes it.</h1>
-    <p class="hero-sub reveal" style="transition-delay:.12s">One WordPress plugin. Six things checked — then resolved.</p>
-    <div class="hero-tags reveal" style="transition-delay:.16s">
-      <span class="hero-tag hero-tag-red">Search Visibility</span>
-      <span class="hero-tag hero-tag-purple">AI Visibility</span>
-      <span class="hero-tag">Content</span>
-      <span class="hero-tag">Performance</span>
-      <span class="hero-tag hero-tag-green">Security &amp; Health</span>
-      <span class="hero-tag">Automation</span>
-    </div>
-    <div class="hero-actions reveal" style="transition-delay:.2s">
-      <a class="btn btn-dark btn-magnetic" href="#cta">Show me what's wrong<span class="btn-dot"></span></a>
-      <a class="btn btn-ghost-outline" href="#mission-control">Explore the dashboard</a>
-    </div>
-    <p class="hero-note reveal" style="transition-delay:.24s">Free scores &amp; issue lists · 100 free AI credits</p>
+    <!-- =====================================
+         HERO
+    ====================================== -->
 
-    <div class="hero-stage reveal" style="transition-delay:.28s">
-      <div class="float-chip chip-seo" aria-hidden="true"><span class="chip-dot chip-dot-bad"></span>Weak title tag<br/><em>/services/</em></div>
-      <div class="float-chip chip-speed" aria-hidden="true"><span class="chip-dot chip-dot-warn"></span>2.8s load time<br/><em>/shop/rugs/</em></div>
-      <div class="float-chip chip-win" aria-hidden="true"><span class="chip-dot chip-dot-good"></span>Backup verified<br/><em>Today, 03:00</em></div>
+    <section class="hero">
 
-      <div class="hero-card">
-        <div class="hero-card-top">
-          <span>VuloPilot / WordPress</span>
-          <span class="badge">Product preview</span>
-        </div>
-        <span class="small-label">From scan to action</span>
-        <h3 class="hero-card-title">Your next steps, in one place.</h3>
+        <div class="container">
 
-        <svg class="hero-chart-svg" viewBox="0 0 360 80" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#4f7fe0" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#4f7fe0" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path class="chart-area" d="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16 L360,80 L0,80 Z" fill="url(#chartFill)"/>
-          <path class="chart-line" d="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16" fill="none" stroke="#002991" stroke-width="2.5" stroke-linecap="round"/>
-          <circle class="chart-dot" r="4" fill="#002991">
-            <animateMotion dur="3.5s" repeatCount="indefinite" path="M0,60 C30,55 45,35 75,38 C105,41 120,20 150,24 C180,28 195,10 225,14 C255,18 270,42 300,36 C330,30 345,12 360,16" />
-          </circle>
-        </svg>
-
-        <div class="hero-task-list">
-          <div class="hero-task">
-            <span class="task-num">01</span>
-            <div>
-              <strong>Find the issues</strong>
-              <p>See affected pages across SEO, AI visibility, content, speed and security.</p>
+            <div class="eyebrow">
+                WordPress Growth Operating System
             </div>
-          </div>
-          <div class="hero-task">
-            <span class="task-num">02</span>
-            <div>
-              <strong>Work on the fix</strong>
-              <p>Improve content with AI and apply supported fixes with Pro.</p>
+
+            <h1>
+                Stop guessing what your website needs.
+                <span>Know what to fix next.</span>
+            </h1>
+
+            <p class="hero-copy">
+                VuloPilot continuously finds what is holding your WordPress
+                website back, shows you what matters most, helps you fix it,
+                verifies the result, and keeps watching as your site changes.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#cta" class="btn btn-primary">
+                    Scan My Website
+                </a>
+
+                <a href="#how-it-works" class="btn btn-secondary">
+                    See How It Works
+                </a>
             </div>
-          </div>
-          <div class="hero-task">
-            <span class="task-num">03</span>
-            <div>
-              <strong>Keep checking</strong>
-              <p>Schedule scans and review new findings as your site changes.</p>
+
+            <div class="hero-note">
+                Free to start · No credit card · Built for WordPress
             </div>
-          </div>
-        </div>
-        <a class="hero-demo-link" href="#mission-control">Explore Mission Control <span class="arrow-bounce">↓</span></a>
-      </div>
-    </div>
-  </section>
 
-  <!-- MISSION CONTROL -->
-  <section class="section" id="mission-control">
-    <p class="eyebrow reveal">Meet your website's Mission Control</p>
-    <h2 class="reveal">See what's <span class="highlight">quietly holding you back.</span></h2>
-    <p class="section-sub reveal">Open one dashboard to review your website, area by area. Choose a category below, see what needs work, and jump straight to the affected pages.</p>
+            <div class="product-preview">
 
-    <div class="mission reveal">
-      <div class="mission-head">
-        <strong>VuloPilot Mission Control</strong>
-        <span class="mission-live"><span class="live-dot"></span>Interactive demo</span>
-      </div>
-      <div class="mission-body">
-        <div class="mission-tabs" role="tablist" aria-label="Website areas">
-          <button class="mtab active" data-tab="overview" role="tab" aria-selected="true">The big picture</button>
-          <button class="mtab" data-tab="search" role="tab" aria-selected="false">Can people find you?</button>
-          <button class="mtab" data-tab="ai" role="tab" aria-selected="false">Does AI know you exist?</button>
-          <button class="mtab" data-tab="content" role="tab" aria-selected="false">Are you answering them?</button>
-          <button class="mtab" data-tab="performance" role="tab" aria-selected="false">How slow, really?</button>
-          <button class="mtab" data-tab="health" role="tab" aria-selected="false">What's hiding underneath?</button>
-          <button class="mtab" data-tab="automation" role="tab" aria-selected="false">What happens while you sleep?</button>
-        </div>
+                <div class="dashboard">
 
-        <div class="mission-content">
+                    <div class="dashboard-top">
+                        <div class="dashboard-title">
+                            VuloPilot Mission Control
+                        </div>
 
-          <div class="mc-panel" data-panel="overview">
-            <h3>What needs your attention?</h3>
-            <p class="mc-desc">VuloPilot found issues across your website and grouped them by what deserves attention.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Visibility</span><h4>8 pages need SEO attention</h4><p>Missing or weak search signals affecting important pages.</p><span class="mc-link">Review search findings →</span></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Performance</span><h4>3 pages are slow</h4><p>Identify the affected URLs and investigate the causes.</p><span class="mc-link">View slow pages →</span></div>
-              <div class="mc-card mc-blue"><span class="mc-label">AI Visibility</span><h4>Improve business understanding</h4><p>Strengthen signals that help AI systems understand your website.</p><span class="mc-link">Explore AI findings →</span></div>
+                        <div class="dashboard-status">
+                            ● Site monitoring active
+                        </div>
+                    </div>
+
+                    <div class="dashboard-body">
+
+                        <aside class="dashboard-sidebar">
+
+                            <div class="sidebar-item active">
+                                Overview
+                            </div>
+
+                            <div class="sidebar-item">
+                                Search Visibility
+                            </div>
+
+                            <div class="sidebar-item">
+                                AI Visibility
+                            </div>
+
+                            <div class="sidebar-item">
+                                Content
+                            </div>
+
+                            <div class="sidebar-item">
+                                Performance
+                            </div>
+
+                            <div class="sidebar-item">
+                                Security &amp; Health
+                            </div>
+
+                            <div class="sidebar-item">
+                                Automation
+                            </div>
+
+                        </aside>
+
+                        <div class="dashboard-content">
+
+                            <h3>
+                                What needs your attention?
+                            </h3>
+
+                            <div class="dashboard-subtitle">
+                                VuloPilot found issues across your website
+                                and grouped them by what deserves attention.
+                            </div>
+
+                            <div class="finding-grid">
+
+                                <div class="finding">
+
+                                    <div class="finding-label">
+                                        Visibility
+                                    </div>
+
+                                    <h4>
+                                        8 pages need SEO attention
+                                    </h4>
+
+                                    <p>
+                                        Missing or weak search signals
+                                        affecting important pages.
+                                    </p>
+
+                                </div>
+
+                                <div class="finding">
+
+                                    <div class="finding-label">
+                                        Performance
+                                    </div>
+
+                                    <h4>
+                                        3 pages are slow
+                                    </h4>
+
+                                    <p>
+                                        Identify the affected URLs and
+                                        investigate the causes.
+                                    </p>
+
+                                </div>
+
+                                <div class="finding">
+
+                                    <div class="finding-label">
+                                        AI Visibility
+                                    </div>
+
+                                    <h4>
+                                        Improve business understanding
+                                    </h4>
+
+                                    <p>
+                                        Strengthen signals that help AI
+                                        systems understand your website.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="search" hidden>
-            <h3>Usually — just not as well as it should.</h3>
-            <p class="mc-desc">VuloPilot checks titles, descriptions, links and indexing signals, and tells you exactly which pages are holding themselves back.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Titles &amp; meta</span><h4>8 titles need attention</h4><p>See pages with missing or vague titles and review the suggested next steps.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Internal links</span><h4>14 pages have no inbound links</h4><p>Pages nothing else on your site points to — easy to miss, easy to fix.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Indexing &amp; schema</span><h4>2 pages aren't indexed</h4><p>Canonical URLs and structured data checked, with the cause named.</p></div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         PROBLEM
+    ====================================== -->
+
+    <section class="problem">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    The real problem
+                </div>
+
+                <h2>
+                    Your website doesn't need another dashboard.
+                </h2>
+
+                <p>
+                    It needs a system that turns thousands of possible
+                    problems into a clear list of things worth doing.
+                </p>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="ai" hidden>
-            <h3>Not if your details change page to page.</h3>
-            <p class="mc-desc">VuloPilot checks business information, answer coverage and content structure, and shows exactly where AI systems lose the thread.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Business clarity</span><h4>Business details differ on 4 pages</h4><p>Hours, service area or pricing don't match everywhere VuloPilot checked.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Answer coverage</span><h4>6 common questions go unanswered</h4><p>Pages that could directly answer a buyer's question, but don't yet.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Crawler signals</span><h4>GPTBot visited 12 times this month</h4><p>Track which AI crawlers reach your site, and how often they return.</p></div>
+            <div class="problem-grid">
+
+                <article class="problem-card">
+
+                    <div class="problem-number">
+                        01
+                    </div>
+
+                    <h3>
+                        You don't know what changed.
+                    </h3>
+
+                    <p>
+                        Traffic drops. Rankings move. Pages slow down.
+                        Content changes. Plugins update. But the reason
+                        is often buried across different tools.
+                    </p>
+
+                </article>
+
+
+                <article class="problem-card">
+
+                    <div class="problem-number">
+                        02
+                    </div>
+
+                    <h3>
+                        You have too many warnings.
+                    </h3>
+
+                    <p>
+                        SEO tools, speed tools and security tools all
+                        produce reports. More warnings do not automatically
+                        tell you what deserves attention first.
+                    </p>
+
+                </article>
+
+
+                <article class="problem-card">
+
+                    <div class="problem-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Fixing one problem is not the finish line.
+                    </h3>
+
+                    <p>
+                        Your website keeps changing. A fix needs to be
+                        checked, measured and monitored instead of simply
+                        marked as complete.
+                    </p>
+
+                </article>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="content" hidden>
-            <h3>Not on the pages that matter most.</h3>
-            <p class="mc-desc">VuloPilot finds the thin, duplicate or outdated pages losing visitors, then helps you fill the gaps with AI writing tools.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Content findings</span><h4>5 pages are thin or duplicate</h4><p>Pages unlikely to rank or convert as they are, flagged for review.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Writing tools</span><h4>AI Writer drafts it in seconds</h4><p>Generate or rewrite a page with AI Writer and Blog Generator.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Page improvements</span><h4>FAQs, metadata and schema, drafted</h4><p>Pro tools fill in the details most pages leave blank.</p></div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         HOW IT WORKS
+    ====================================== -->
+
+    <section class="loop" id="how-it-works">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    How VuloPilot works
+                </div>
+
+                <h2>
+                    From website problems to continuous improvement.
+                </h2>
+
+                <p>
+                    VuloPilot turns website optimization into a repeatable
+                    operating loop instead of another monthly audit.
+                </p>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="performance" hidden>
-            <h3>Slower than you'd guess, on at least one page</h3>
-            <p class="mc-desc">VuloPilot surfaces slow pages and Core Web Vitals findings, so you know exactly what to fix and can test again after.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Slow pages</span><h4>3 pages need investigation</h4><p>Open the affected page and review its loading findings.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Core Web Vitals</span><h4>Check the visitor experience</h4><p>Review loading speed, responsiveness and layout stability.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Speed history</span><h4>Keep track after changes</h4><p>Run another test and compare performance results over time.</p></div>
+
+            <div class="loop-grid">
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        01
+                    </div>
+
+                    <h3>
+                        Scan
+                    </h3>
+
+                    <p>
+                        Understand your WordPress website,
+                        pages and important signals.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        02
+                    </div>
+
+                    <h3>
+                        Prioritize
+                    </h3>
+
+                    <p>
+                        Separate important issues from
+                        noise and show what needs attention.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        03
+                    </div>
+
+                    <h3>
+                        Fix
+                    </h3>
+
+                    <p>
+                        Make the change yourself or use
+                        VuloPilot's tools and AI assistance.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        04
+                    </div>
+
+                    <h3>
+                        Verify
+                    </h3>
+
+                    <p>
+                        Recheck the website and see whether
+                        the issue actually improved.
+                    </p>
+
+                </div>
+
+
+                <div class="loop-step">
+
+                    <div class="loop-icon">
+                        05
+                    </div>
+
+                    <h3>
+                        Monitor
+                    </h3>
+
+                    <p>
+                        Keep watching as your website,
+                        content and environment change.
+                    </p>
+
+                </div>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="health" hidden>
-            <h3>An outdated plugin or two, most likely.</h3>
-            <p class="mc-desc">VuloPilot reviews security and WordPress health findings alongside backup status, and flags what needs your attention or a developer's.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Security</span><h4>1 known plugin vulnerability</h4><p>Malware, SSL and suspicious file checks, with the fix named — not just the warning.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Health &amp; backups</span><h4>Backup status: unverified</h4><p>VuloPilot checks whether your backup plugin is actually running, not just installed.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Accessibility</span><h4>3 images missing alt text</h4><p>Headings, form labels and image descriptions, checked page by page.</p></div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         FEATURES
+    ====================================== -->
+
+    <section class="capabilities" id="features">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    One operating layer
+                </div>
+
+                <h2>
+                    Everything your WordPress website needs to keep improving.
+                </h2>
+
+                <p>
+                    VuloPilot connects visibility, content, performance,
+                    security, health and automation into one continuous
+                    workflow.
+                </p>
+
             </div>
-          </div>
 
-          <div class="mc-panel" data-panel="automation" hidden>
-            <h3>VuloPilot, still checking — on your schedule.</h3>
-            <p class="mc-desc">Recurring scans bring new findings back to your attention automatically, with history to compare results as your site changes.</p>
-            <div class="mc-cards">
-              <div class="mc-card mc-peach"><span class="mc-label">Ready-made checks</span><h4>Full site scan, on autopilot</h4><p>Free includes a recurring scan and website health checks, no setup needed.</p></div>
-              <div class="mc-card mc-mint"><span class="mc-label">Schedules</span><h4>Daily, weekly, or your own cadence</h4><p>Pick how often VuloPilot checks back in, based on how fast your site changes.</p></div>
-              <div class="mc-card mc-blue"><span class="mc-label">Advanced workflows</span><h4>"If a plugin update appears, apply it"</h4><p>Pro lets you set rules like this — custom triggers, conditions and fixes.</p></div>
+
+            <div class="capability-grid">
+
+                <article class="capability">
+
+                    <h3>
+                        Search Visibility
+                    </h3>
+
+                    <p>
+                        Find the technical and on-page issues that affect
+                        how your pages are discovered and understood.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Titles and meta descriptions</li>
+                        <li>Headings and internal links</li>
+                        <li>Indexing and crawl signals</li>
+                        <li>Broken links and redirects</li>
+                        <li>Schema and structured data</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        AI Visibility
+                    </h3>
+
+                    <p>
+                        Understand how ready your website is for the
+                        growing world of AI-powered search and discovery.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>AI search readiness</li>
+                        <li>Entity and business clarity</li>
+                        <li>Answer and content opportunities</li>
+                        <li>AI crawler signals</li>
+                        <li>GEO and AEO insights</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Content
+                    </h3>
+
+                    <p>
+                        Find content that needs improvement before producing
+                        more content simply for the sake of publishing.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Content quality insights</li>
+                        <li>Thin and duplicate content</li>
+                        <li>Page improvement opportunities</li>
+                        <li>AI-assisted writing</li>
+                        <li>FAQs and structured answers</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Performance
+                    </h3>
+
+                    <p>
+                        Find the pages creating a poor experience and
+                        understand where performance work should begin.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Core Web Vitals</li>
+                        <li>Page performance</li>
+                        <li>Loading problems</li>
+                        <li>Responsiveness</li>
+                        <li>Layout stability</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Security &amp; Site Health
+                    </h3>
+
+                    <p>
+                        Keep important WordPress health and protection
+                        signals visible before they become business problems.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>WordPress health</li>
+                        <li>Security findings</li>
+                        <li>SSL status</li>
+                        <li>Plugin and environment checks</li>
+                        <li>Backup awareness</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="capability">
+
+                    <h3>
+                        Automation
+                    </h3>
+
+                    <p>
+                        Turn recurring website maintenance into workflows
+                        that continue after you leave the dashboard.
+                    </p>
+
+                    <ul class="capability-list">
+                        <li>Scheduled scans</li>
+                        <li>Recurring health checks</li>
+                        <li>Triggers and conditions</li>
+                        <li>Automated workflows</li>
+                        <li>Continuous monitoring</li>
+                    </ul>
+
+                </article>
+
             </div>
-          </div>
 
         </div>
-      </div>
-      <div class="mission-foot">Demo findings only. This preview does not scan or modify a website.</div>
-    </div>
-  </section>
 
-  <!-- JOURNEY -->
-  <section class="section">
-    <p class="eyebrow reveal">From finding to fixed</p>
-    <h2 class="reveal">Three steps. <span class="highlight">Every time.</span></h2>
-    <div class="journey-grid reveal">
-      <div class="journey-card journey-lilac">
-        <h3>Understand</h3>
-        <p>See the issue as VuloPilot found it, where it happens and why it matters. Use the findings to decide where to begin.</p>
-        <span class="journey-stat">12+ data points reviewed per page</span>
-      </div>
-      <div class="journey-card journey-mint">
-        <h3>Improve</h3>
-        <p>Use AI writing tools for content or apply supported fixes with Pro. Bigger changes stay with your admin or developer.</p>
-        <span class="journey-stat">12+ fixes drafted before you ask</span>
-      </div>
-      <div class="journey-card journey-blue">
-        <h3>Recheck</h3>
-        <p>Run the scan again and confirm the change actually worked, instead of assuming the warning is gone.</p>
-        <span class="journey-stat">12+ checks re-run automatically</span>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROBLEM -->
-  <section class="section" id="problem">
-    <p class="eyebrow reveal">The problem</p>
-    <h2 class="reveal">Growth stalls <span class="highlight">in places you never check.</span></h2>
-    <p class="section-sub reveal">Your site runs fine on the surface. Underneath, small issues pile up quietly — and each one costs you traffic, trust, or a sale.</p>
 
-    <div class="problem-grid reveal">
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <h3>You can't see what's broken</h3>
-        <p>SEO gaps, slow pages and security risks hide across dozens of pages, with no single place to check them all.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2 2 20h20L12 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg>
-        </span>
-        <h3>AI search is passing you by</h3>
-        <p>Chatbots and AI answers now send real traffic — but only to sites whose content and data they can understand.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v6M12 16v6M2 12h6M16 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <h3>Fixing it takes too many tools</h3>
-        <p>One plugin for SEO, another for speed, another for security — none of them talking to each other, or to you.</p>
-      </div>
-    </div>
-  </section>
+    <!-- =====================================
+         AI VISIBILITY
+    ====================================== -->
 
-  <!-- PROBLEM INTRO -->
-  <section class="section problem-intro">
-    <p class="eyebrow reveal">One journey, every angle</p>
-    <h2 class="reveal">From first search <span class="highlight">to earned trust.</span></h2>
-    <p class="section-sub reveal">Getting found is only step one. A visitor still has to understand your offer, use the page without friction, and trust what's running behind it. Here's how VuloPilot covers each part of that journey.</p>
-  </section>
+    <section class="ai-visibility" id="ai-visibility">
 
-  <!-- FEATURE STORY 1 -->
-  <section class="section story-row reveal" id="how">
-    <div class="split">
-      <div class="copy">
-        <span class="eyebrow">01 / Get found</span>
-        <h2>Finds what AI and search need <span class="highlight">— then fixes it.</span></h2>
-        <p class="card-copy">A page can read perfectly to a human and still be invisible to AI — a missing title tag or thin internal linking is usually why. VuloPilot checks every page for these signals and tells you exactly which ones need attention.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Search visibility ↗</a>
-          <a class="text-link" href="#mission-control">AI search ↗</a>
+        <div class="container">
+
+            <div class="ai-grid">
+
+                <div class="ai-copy">
+
+                    <div class="section-kicker">
+                        Search is changing
+                    </div>
+
+                    <h2>
+                        Don't optimize only for search engines.
+                        Build visibility for AI discovery too.
+                    </h2>
+
+                    <p>
+                        Search is no longer limited to a list of blue links.
+                        People increasingly discover businesses, products
+                        and answers through AI-powered systems.
+                    </p>
+
+                    <p>
+                        VuloPilot helps you understand whether your website
+                        clearly communicates who you are, what you offer,
+                        what questions you answer and why your information
+                        should be understood.
+                    </p>
+
+                    <div class="ai-points">
+
+                        <div class="ai-point">
+                            Understand your AI search readiness
+                        </div>
+
+                        <div class="ai-point">
+                            Find content and entity clarity gaps
+                        </div>
+
+                        <div class="ai-point">
+                            Improve answers and structured information
+                        </div>
+
+                        <div class="ai-point">
+                            Monitor AI visibility signals over time
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-visual">
+
+                    <div class="ai-visual-header">
+
+                        <div>
+                            <strong>AI Visibility</strong>
+                            <div style="color:#777;font-size:13px;">
+                                Website analysis
+                            </div>
+                        </div>
+
+                        <div class="ai-score">
+                            78
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-result">
+
+                        <strong>
+                            Business understanding
+                        </strong>
+
+                        <span>
+                            Your core business information is clearly
+                            represented across important pages.
+                        </span>
+
+                    </div>
+
+
+                    <div class="ai-result">
+
+                        <strong>
+                            Answer coverage
+                        </strong>
+
+                        <span>
+                            Several high-value customer questions are
+                            not clearly answered.
+                        </span>
+
+                    </div>
+
+
+                    <div class="ai-result">
+
+                        <strong>
+                            Entity signals
+                        </strong>
+
+                        <span>
+                            Improve consistency across business,
+                            organization and service information.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">/services/web-design</span>
-        </div>
-        <div class="insight-body">
-          <div class="insight-score">
-            <svg viewBox="0 0 80 80" class="ring-svg">
-              <circle class="ring-track" cx="40" cy="40" r="34" fill="none" stroke-width="7"/>
-              <circle class="ring-fill" cx="40" cy="40" r="34" fill="none" stroke-width="7"/>
-            </svg>
-            <div class="ring-label"><strong>92</strong><small>page signal</small></div>
-          </div>
-          <ul class="insight-list">
-            <li><span class="dot dot-good"></span>Title tag <b>found</b></li>
-            <li><span class="dot dot-good"></span>Schema markup <b>valid</b></li>
-            <li><span class="dot dot-warn"></span>Internal links <b>thin</b></li>
-          </ul>
-          <div class="insight-fix">
-            <span class="insight-fix-dot"></span>
-            <div><strong>3 internal links suggested</strong><small>Drafted by AI — review and add in one click</small></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FEATURE STORY 2 -->
-  <section class="section story-row reverse reveal">
-    <div class="split reverse">
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">VuloPilot — Content check</span>
-        </div>
-        <div class="insight-body insight-body-tight">
-          <p class="insight-eyebrow">Visitor's question</p>
-          <p class="insight-quote">"What's included in this service?"</p>
-          <span class="insight-tag insight-tag-bad">Page doesn't answer this</span>
-          <div class="insight-divider"></div>
-          <p class="insight-eyebrow">AI-drafted answer</p>
-          <div class="insight-typing">
-            <span class="type-line type-line-1"></span>
-            <span class="type-line type-line-2"></span>
-            <span class="type-line type-line-3"></span>
-          </div>
-          <span class="insight-tag insight-tag-good">Ready to review and publish</span>
-        </div>
-      </div>
-      <div class="copy">
-        <span class="eyebrow">02 / Answer the question</span>
-        <h2>Catches the questions your page <span class="highlight">ignores.</span></h2>
-        <p class="card-copy">"What's included?" If the page doesn't say, visitors leave in seconds. VuloPilot flags exactly where content falls short and writes a clearer version with AI, ready for you to review — plus tools for FAQs, metadata and WooCommerce descriptions on Pro.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Content tools ↗</a>
-          <a class="text-link" href="#mission-control">WooCommerce ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FEATURE STORY 3 -->
-  <section class="section story-row reveal">
-    <div class="split">
-      <div class="copy">
-        <span class="eyebrow">03 / Make it easy to use</span>
-        <h2>Finds what's slowing you down <span class="highlight">— and speeds it up.</span></h2>
-        <p class="card-copy">A two-second delay is long enough to lose a sale. VuloPilot tests every page's load time, points to the real cause on the slow ones — usually an oversized image — and flags accessibility gaps like missing alt text or unlabeled forms.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Performance ↗</a>
-          <a class="text-link" href="#mission-control">Accessibility ↗</a>
+
+    <!-- =====================================
+         FREE / PRO
+    ====================================== -->
+
+    <section class="plans" id="plans">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Start free. Grow when you need more.
+                </div>
+
+                <h2>
+                    Understand first. Automate when you're ready.
+                </h2>
+
+                <p>
+                    VuloPilot's free experience gives you a clear picture
+                    of your website. Pro gives you deeper intelligence,
+                    more action and greater control over recurring work.
+                </p>
+
+            </div>
+
+
+            <div class="plan-grid">
+
+                <article class="plan">
+
+                    <div class="plan-label">
+                        Free
+                    </div>
+
+                    <h3>
+                        Know what needs attention.
+                    </h3>
+
+                    <p>
+                        Build your website's starting intelligence and
+                        discover the issues worth working on.
+                    </p>
+
+                    <ul>
+                        <li>SEO and visibility analysis</li>
+                        <li>GEO / AI visibility insights</li>
+                        <li>Website issue detection</li>
+                        <li>Full-site scanning</li>
+                        <li>Website health automation</li>
+                        <li>100 free AI credits</li>
+                    </ul>
+
+                    <a href="#cta" class="btn btn-secondary">
+                        Start Free
+                    </a>
+
+                </article>
+
+
+                <article class="plan pro">
+
+                    <div class="plan-label">
+                        Pro
+                    </div>
+
+                    <h3>
+                        Do more. Automate more.
+                    </h3>
+
+                    <p>
+                        Turn insights into action with deeper analysis,
+                        AI assistance, fixes and advanced workflows.
+                    </p>
+
+                    <ul>
+                        <li>Advanced AI visibility analysis</li>
+                        <li>AI-assisted content improvements</li>
+                        <li>SEO, schema and page assistance</li>
+                        <li>Advanced performance insights</li>
+                        <li>Custom triggers and workflows</li>
+                        <li>Scheduled automation</li>
+                        <li>Reports and historical insights</li>
+                    </ul>
+
+                    <a href="#plans" class="btn btn-primary">
+                        Explore Pro
+                    </a>
+
+                </article>
+
+            </div>
+
         </div>
-      </div>
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">Core Web Vitals — Mobile</span>
+
+    </section>
+
+
+    <!-- =====================================
+         MONITORING
+    ====================================== -->
+
+    <section class="monitor">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Your website keeps changing
+                </div>
+
+                <h2>
+                    Your optimization shouldn't stop after one scan.
+                </h2>
+
+                <p>
+                    A website is not a finished project. New content,
+                    plugins, updates, traffic and technical changes
+                    can create new problems.
+                </p>
+
+            </div>
+
+
+            <div class="monitor-box">
+
+                <h3>
+                    VuloPilot keeps watching.
+                </h3>
+
+                <p>
+                    Turn website maintenance from something you remember
+                    occasionally into a system that continuously brings
+                    important changes back to your attention.
+                </p>
+
+                <div class="monitor-items">
+
+                    <div class="monitor-item">
+                        New issues
+                    </div>
+
+                    <div class="monitor-item">
+                        Visibility changes
+                    </div>
+
+                    <div class="monitor-item">
+                        Performance problems
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="insight-body">
-          <div class="vitals-row">
-            <span class="vitals-label">LCP <small>Load</small></span>
-            <div class="vitals-bar"><div class="vitals-fill vitals-good" style="--w:78%"></div></div>
-            <span class="vitals-val">2.1s</span>
-          </div>
-          <div class="vitals-row">
-            <span class="vitals-label">CLS <small>Stability</small></span>
-            <div class="vitals-bar"><div class="vitals-fill vitals-warn" style="--w:46%"></div></div>
-            <span class="vitals-val">0.18</span>
-          </div>
-          <div class="vitals-row">
-            <span class="vitals-label">INP <small>Response</small></span>
-            <div class="vitals-bar"><div class="vitals-fill vitals-good" style="--w:85%"></div></div>
-            <span class="vitals-val">180ms</span>
-          </div>
-          <ul class="insight-list insight-list-tight">
-            <li><span class="dot dot-good"></span>Layout <b>stable</b></li>
-            <li><span class="dot dot-warn"></span>Alt text <b>missing on 2 images</b></li>
-          </ul>
-          <div class="insight-fix">
-            <span class="insight-fix-dot"></span>
-            <div><strong>Image compression ready</strong><small>Cuts load time by ~1.4s — apply in one click</small></div>
-          </div>
+
+    </section>
+
+
+    <!-- =====================================
+         FINAL CTA
+    ====================================== -->
+
+    <section class="final-cta" id="cta">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                Start with your website
+            </div>
+
+            <h2>
+                Find out what is holding your website back.
+            </h2>
+
+            <p>
+                Connect your WordPress website and get your first set
+                of actionable findings. No SEO expertise required.
+            </p>
+
+            <a href="#cta" class="btn btn-primary">
+                Scan My Website
+            </a>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FEATURE STORY 4 -->
-  <section class="section story-row reverse reveal">
-    <div class="split reverse">
-      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
-        <div class="browser-chrome">
-          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">VuloPilot — Security &amp; health</span>
-        </div>
-        <div class="insight-body">
-          <ul class="insight-list insight-list-security">
-            <li><span class="dot dot-good"></span>SSL certificate <b>valid</b></li>
-            <li><span class="dot dot-good"></span>Malware scan <b>clean</b></li>
-            <li><span class="dot dot-good"></span>Backup <b>today, 03:00</b></li>
-            <li><span class="dot dot-warn"></span>Plugin update <b>1 pending</b></li>
-          </ul>
-          <div class="insight-fix">
-            <span class="insight-fix-dot"></span>
-            <div><strong>Known vulnerability patched</strong><small>Update it now in one click</small></div>
-          </div>
-          <div class="insight-shield">
-            <svg viewBox="0 0 28 32" class="mini-shield">
-              <path d="M14 1 L26 6 V15 C26 23 20 28 14 31 C8 28 2 23 2 15 V6 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path class="mini-shield-check" d="M8 16 L12 20 L20 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>Protected once applied</span>
-          </div>
-        </div>
-      </div>
-      <div class="copy">
-        <span class="eyebrow">04 / Look after the foundations</span>
-        <h2>Flags the risks hiding <span class="highlight">behind your site.</span></h2>
-        <p class="card-copy">An outdated plugin never shows up on the homepage, until it does. VuloPilot scans for malware, vulnerable plugins, a lapsed SSL certificate and backups that quietly stopped running — and tells you exactly what to fix first.</p>
-        <div class="story-links">
-          <a class="text-link" href="#mission-control">Security ↗</a>
-          <a class="text-link" href="#mission-control">Health &amp; backups ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPARISON -->
-  <section class="section">
-    <p class="eyebrow reveal">Why it's one plugin, not five</p>
-    <h2 class="reveal">Because the problem <span class="highlight">rarely lives in one plugin.</span></h2>
-    <p class="section-sub reveal">A dedicated tool for each one means five logins, five dashboards and nothing talking to each other. VuloPilot checks all five from the same place.</p>
-
-    <div class="compare-card reveal">
-      <div class="compare-row">
-        <span>Can people find you?</span>
-        <span class="mc-label">Visibility</span>
-      </div>
-      <div class="compare-row">
-        <span>Do they understand you?</span>
-        <span class="mc-label">Content</span>
-      </div>
-      <div class="compare-row">
-        <span>Will the page make them wait?</span>
-        <span class="mc-label">Performance</span>
-      </div>
-      <div class="compare-row">
-        <span>Is the site in good shape?</span>
-        <span class="mc-label">Health &amp; protection</span>
-      </div>
-      <div class="compare-row">
-        <span>Will you know if something changes?</span>
-        <span class="mc-label">Automation</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="section" id="pricing">
-    <p class="eyebrow reveal">Free &amp; Pro</p>
-    <h2 class="reveal">See the truth for free. <span class="highlight">Resolve it faster with Pro.</span></h2>
-
-    <div class="split">
-      <div class="card card-list plan-card reveal">
-        <p class="card-eyebrow">Free</p>
-        <h3>See what your website needs</h3>
-        <p class="card-copy">Get scores and issue lists, try AI content tools and set up recurring checks.</p>
-        <ul class="check-list">
-          <li>Scores and issue lists</li>
-          <li>Full site scan and website health automations</li>
-          <li>100 free AI credits for AI Writer, Blog Generator and Duplicate Content finder</li>
-        </ul>
-        <a class="btn btn-ghost-outline" href="#cta">Scan your website</a>
-      </div>
-      <div class="card card-dark plan-card reveal" style="transition-delay:.1s">
-        <p class="card-eyebrow light">Pro</p>
-        <h3 class="dark-h3">Let AI handle it while you move on</h3>
-        <p class="card-copy light">Apply supported AI fixes and build workflows around the needs of your website.</p>
-        <ul class="check-list light">
-          <li>Custom triggers, conditions and scheduled workflows</li>
-          <li>Supported AI fixes and bulk improvements</li>
-          <li>AI tools for metadata, FAQs and content refresh</li>
-          <li>Deeper AI visibility analysis and historical insights</li>
-        </ul>
-        <a class="btn btn-green" href="#cta">Explore Pro<span class="btn-dot dark"></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <p class="eyebrow reveal">FAQ</p>
-    <h2 class="reveal">Questions people ask before they start.</h2>
-
-    <div class="faq-list reveal">
-      <details class="faq-item" open>
-        <summary>Will VuloPilot change my site without asking?<span class="faq-icon">+</span></summary>
-        <p>No. VuloPilot shows you the issue and a suggested fix. Supported AI fixes are applied only when you choose, and account or server changes stay with your admin or developer.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Does it guarantee better rankings or AI citations?<span class="faq-icon">+</span></summary>
-        <p>No tool can promise that. VuloPilot strengthens the signals that support discovery — clearer titles, better answers, faster pages — which is what actually helps over time.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Do I need to be technical to use it?<span class="faq-icon">+</span></summary>
-        <p>Not for the Free plan. Findings are written in plain language, and AI tools help draft the fix. Some advanced items are better handled by a developer, and we'll tell you when that's the case.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What's included in the 100 free AI credits?</summary>
-        <p>They cover AI Writer, Blog Generator and the Duplicate Content finder — enough to try real fixes on your site before deciding on Pro.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" id="cta">
-    <div class="cta-card reveal">
-      <div class="cta-copy">
-        <p class="eyebrow light">Your first step</p>
-        <h2 class="light">That was one page.<br/>See your whole site.</h2>
-        <p class="section-sub light">Run a free scan and get the same kind of findings and fixes — ranked by what matters most, for every page on your site.</p>
-        <ul class="cta-list">
-          <li>✓ A full scan, issues ranked by priority</li>
-          <li>✓ AI drafts the fix — you just review and publish</li>
-          <li>✓ 100 free credits, no credit card, under 2 minutes to start</li>
-        </ul>
-      </div>
-      <form class="cta-form" onsubmit="return false;">
-        <label>WordPress site URL<input type="url" placeholder="yoursite.com" /></label>
-        <label>Work email<input type="email" placeholder="you@company.com" /></label>
-        <button class="btn btn-green btn-block" type="submit">Scan your website<span class="btn-dot dark"></span></button>
-      </form>
-    </div>
-  </section>
+    </section>
 
 </main>
 
-<footer class="footer">
-  <div class="footer-top">
-    <a class="brand" href="#top"><span class="brand-dot"></span>VuloPilot</a>
-    <p>Stay informed about your WordPress website. Understand issues, make improvements and keep checking.</p>
-    <a class="btn btn-dark" href="#cta">Scan your website<span class="btn-dot"></span></a>
-  </div>
-  <div class="footer-cols">
-    <div>
-      <p class="footer-head">Resources</p>
-      <a href="#">Documentation</a>
-      <a href="#">WordPress SEO guide</a>
-      <a href="#">Support</a>
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer id="faq">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="#top" class="logo">
+                    Vulo<span>Pilot</span>
+                </a>
+
+                <p>
+                    The WordPress Growth Operating System for finding,
+                    fixing and continuously improving what matters.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Product
+                </h4>
+
+                <a href="#features">Features</a>
+                <a href="#ai-visibility">AI Visibility</a>
+                <a href="#features">SEO</a>
+                <a href="#features">Performance</a>
+                <a href="#features">Security</a>
+                <a href="#features">Automation</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Resources
+                </h4>
+
+                <a href="#">Documentation</a>
+                <a href="#">Blog</a>
+                <a href="#">Changelog</a>
+                <a href="#">Support</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Company
+                </h4>
+
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#plans">Pricing</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 VuloPilot. All rights reserved.
+        </div>
+
     </div>
-    <div>
-      <p class="footer-head">Company</p>
-      <a href="#">About us</a>
-      <a href="#">Contact</a>
-      <a href="#pricing">Pricing</a>
-    </div>
-    <div>
-      <p class="footer-head">Explore</p>
-      <a href="#mission-control">Mission Control</a>
-      <a href="#">Website health</a>
-      <a href="#">Automation</a>
-    </div>
-    <div>
-      <p class="footer-head">VuloPilot vs</p>
-      <ul class="footer-vs">
-        <li><span class="icon-check">✓</span>SEO plugins</li>
-        <li><span class="icon-check">✓</span>Security plugins</li>
-        <li><span class="icon-check">✓</span>Performance plugins</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 VuloPilot. All rights reserved.</span>
-    <div class="footer-legal"><a href="#">Privacy policy</a><a href="#">Terms</a></div>
-  </div>
+
 </footer>
-
-<script>
-(function () {
-  // Tab switching with fade transition
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.mtab'));
-  var panels = Array.prototype.slice.call(document.querySelectorAll('.mc-panel'));
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var key = tab.getAttribute('data-tab');
-      if (tab.classList.contains('active')) return;
-      tabs.forEach(function (t) {
-        var active = t === tab;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', active);
-      });
-      panels.forEach(function (p) {
-        var match = p.getAttribute('data-panel') === key;
-        if (match) {
-          p.hidden = false;
-          p.classList.remove('panel-in');
-          void p.offsetWidth;
-          p.classList.add('panel-in');
-        } else {
-          p.hidden = true;
-        }
-      });
-    });
-  });
-
-  // Scroll reveal
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-  }
-
-  // Nav shadow on scroll
-  var nav = document.getElementById('siteNav');
-  function onScroll() {
-    if (window.scrollY > 12) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-</script>
 
 </body>
 </html>
