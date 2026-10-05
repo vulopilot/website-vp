@@ -16,16 +16,24 @@
     <style>
 :root {
     --bg: #ffffff;
-    --bg-soft: #f7f7f9;
-    --bg-dark: #101014;
-    --text: #111114;
-    --text-soft: #686870;
-    --border: #e7e7eb;
-    --accent: #5007aa;
-    --accent-dark: #3d0782;
+    --bg-soft: #f7f9ff;
+    --bg-dark: #0c1948;
+    --text: #0c1948;
+    --text-soft: #59647b;
+    --border: #e9edf7;
+    --accent: #002991;
+    --accent-dark: #001c66;
+    --accent-bright: #4f7fe0;
     --white: #ffffff;
+    --pastel-1: #eaf0ff;
+    --pastel-2: #fde3e3;
+    --pastel-3: #ece3fb;
+    --pastel-4: #e1f3e6;
+    --pastel-5: #dce9ff;
+    --pastel-6: #fff3e0;
     --max: 1180px;
-    --radius: 18px;
+    --radius: 24px;
+    --shadow: 0 1px 2px rgba(12,25,72,0.04), 0 16px 36px rgba(12,25,72,0.08);
 }
 
 * {
@@ -122,8 +130,8 @@ img {
     align-items: center;
     justify-content: center;
     min-height: 46px;
-    padding: 0 20px;
-    border-radius: 10px;
+    padding: 0 22px;
+    border-radius: 999px;
     font-size: 14px;
     font-weight: 700;
     border: 1px solid transparent;
@@ -133,7 +141,7 @@ img {
 
 .btn-primary {
     color: var(--white);
-    background: var(--accent);
+    background: var(--bg-dark);
 }
 
 .btn-primary:hover {
@@ -147,7 +155,8 @@ img {
 }
 
 .btn-secondary:hover {
-    border-color: #cfcfd5;
+    border-color: var(--accent-bright);
+    color: var(--accent);
 }
 
 /* ---------------------------------
@@ -165,10 +174,10 @@ img {
     gap: 8px;
     margin-bottom: 22px;
     padding: 7px 12px;
-    border: 1px solid #ddd2ea;
+    border: 1px solid var(--border);
     border-radius: 999px;
     color: var(--accent);
-    background: #faf7fd;
+    background: var(--pastel-1);
     font-size: 12px;
     font-weight: 800;
     letter-spacing: .08em;
@@ -204,6 +213,28 @@ img {
     line-height: 1.65;
 }
 
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 560px;
+    margin: 0 auto 28px;
+}
+.hero-tag {
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 999px;
+    color: var(--accent);
+    background: var(--pastel-1);
+}
+.hero-tag:nth-child(1) { background: var(--pastel-2); color: #a62a43; }
+.hero-tag:nth-child(2) { background: var(--pastel-3); color: #5a3cab; }
+.hero-tag:nth-child(3) { background: var(--pastel-5); }
+.hero-tag:nth-child(4) { background: var(--pastel-6); color: #93600f; }
+.hero-tag:nth-child(5) { background: var(--pastel-4); color: #1f7a45; }
+
 .hero-actions {
     display: flex;
     justify-content: center;
@@ -225,15 +256,15 @@ img {
     margin-top: 70px;
     padding: 14px;
     border: 1px solid var(--border);
-    border-radius: 24px;
-    background: #f4f4f6;
-    box-shadow: 0 30px 80px rgba(20,20,30,.08);
+    border-radius: 28px;
+    background: var(--bg-soft);
+    box-shadow: var(--shadow);
 }
 
 .dashboard {
     overflow: hidden;
-    border: 1px solid #dddde2;
-    border-radius: 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
     background: #fff;
     text-align: left;
 }
@@ -265,22 +296,30 @@ img {
 .dashboard-sidebar {
     padding: 20px;
     border-right: 1px solid var(--border);
-    background: #fafafa;
+    background: var(--bg-soft);
 }
 
 .sidebar-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px 12px;
     margin-bottom: 5px;
-    border-radius: 8px;
-    color: #66666d;
+    border-radius: 10px;
+    color: var(--text-soft);
     font-size: 13px;
     font-weight: 600;
+}
+.sidebar-item::after {
+    content: "›";
+    opacity: 0.4;
 }
 
 .sidebar-item.active {
     color: var(--accent);
-    background: #f0eafa;
+    background: var(--pastel-1);
 }
+.sidebar-item.active::after { opacity: 1; }
 
 .dashboard-content {
     padding: 30px;
@@ -306,17 +345,21 @@ img {
 
 .finding {
     padding: 18px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border: none;
+    border-radius: 16px;
+    background: var(--pastel-1);
 }
+.finding-grid .finding:nth-child(2) { background: var(--pastel-4); }
+.finding-grid .finding:nth-child(3) { background: var(--pastel-3); }
 
 .finding-label {
     margin-bottom: 10px;
-    color: #77777f;
+    color: var(--text-soft);
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .06em;
+    opacity: 0.7;
 }
 
 .finding h4 {
@@ -449,7 +492,7 @@ section {
     display: grid;
     place-items: center;
     border-radius: 12px;
-    background: #f0eafa;
+    background: var(--pastel-1);
     color: var(--accent);
     font-weight: 800;
 }
@@ -486,9 +529,9 @@ section {
 
 .capability {
     padding: 32px;
-    border: 1px solid #29292f;
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: var(--radius);
-    background: #17171c;
+    background: #132257;
 }
 
 .capability h3 {
@@ -519,7 +562,7 @@ section {
     content: "✓";
     position: absolute;
     left: 0;
-    color: #b48de0;
+    color: var(--accent-bright);
     font-weight: 800;
 }
 
@@ -528,7 +571,7 @@ section {
 --------------------------------- */
 
 .ai-visibility {
-    background: #faf7fd;
+    background: var(--pastel-1);
 }
 
 .ai-grid {
@@ -558,7 +601,7 @@ section {
 
 .ai-point {
     padding: 17px 20px;
-    border: 1px solid #e3d9ed;
+    border: 1px solid var(--border);
     border-radius: 12px;
     background: #fff;
     font-size: 14px;
@@ -567,7 +610,7 @@ section {
 
 .ai-visual {
     padding: 30px;
-    border: 1px solid #e2d8ec;
+    border: 1px solid var(--border);
     border-radius: 22px;
     background: #fff;
 }
@@ -628,7 +671,7 @@ section {
 
 .plan.pro {
     border-color: var(--accent);
-    box-shadow: 0 15px 45px rgba(80,7,170,.10);
+    box-shadow: 0 15px 45px rgba(0,41,145,.12);
 }
 
 .plan-label {
@@ -705,9 +748,9 @@ section {
 
 .monitor-item {
     padding: 18px;
-    border: 1px solid #29292f;
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 12px;
-    background: #17171c;
+    background: #132257;
     font-size: 13px;
 }
 
@@ -918,6 +961,14 @@ footer {
                 website back, shows you what matters most, helps you fix it,
                 verifies the result, and keeps watching as your site changes.
             </p>
+
+            <div class="hero-tags">
+                <span class="hero-tag">Search Visibility</span>
+                <span class="hero-tag">AI Visibility</span>
+                <span class="hero-tag">Content</span>
+                <span class="hero-tag">Performance</span>
+                <span class="hero-tag">Security &amp; Health</span>
+            </div>
 
             <div class="hero-actions">
                 <a href="#cta" class="btn btn-primary">
