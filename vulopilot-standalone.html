@@ -1278,44 +1278,6 @@ h2.light { color: var(--cream); }
 .compare-row .icon-x { font-size: 13px; }
 .compare-row .icon-check { font-size: 13px; }
 
-.proof-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-.proof-card {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 22px 20px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.proof-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(12,25,72,0.08); }
-.proof-figure {
-  font-size: 34px;
-  font-weight: 800;
-  color: var(--green-dark);
-  letter-spacing: -0.02em;
-}
-.proof-label {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--ink);
-  margin: 6px 0 12px;
-  line-height: 1.4;
-}
-.proof-card p { font-size: 12px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
-.proof-caveat { font-size: 12px; color: var(--ink-soft); opacity: 0.75; margin-top: 18px; }
-
-@media (max-width: 900px) {
-  .proof-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  .proof-grid { grid-template-columns: 1fr; }
-}
-
 /* ======================================================
    SCREEN MOCKUPS & DIAGRAMS
 ====================================================== */
@@ -1346,22 +1308,6 @@ h2.light { color: var(--cream); }
   padding: 4px 12px;
 }
 
-
-/* ---------- Proof screen wrapper ---------- */
-.proof-screen {
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.proof-screen .proof-grid {
-  padding: 26px 24px;
-  gap: 18px;
-}
-.proof-screen .proof-card {
-  background: var(--bg);
-}
 
 /* ---------- Recap section ---------- */
 .recap-section { padding-bottom: 50px; }
@@ -1766,25 +1712,30 @@ h2.light { color: var(--cream); }
 
   <!-- FROM FINDING TO ACTION -->
   <section class="section">
-    <p class="eyebrow reveal">From finding to action</p>
-    <h2 class="reveal">Stop guessing. <span class="highlight">Start resolving what actually matters.</span></h2>
-    <p class="section-sub reveal">Start with the affected page and the explanation. Then use the right kind of help for the change.</p>
+    <p class="eyebrow reveal">The work becomes clearer</p>
+    <h2 class="reveal">That means less time <span class="highlight">wondering what to fix first.</span></h2>
+    <p class="section-sub reveal">Use the findings to make a manageable plan for your site, whether you do the work yourself or pass it to someone who helps you.</p>
 
-    <div class="steps-grid steps-grid-3 reveal">
+    <div class="steps-grid reveal">
       <div class="step-card step-blue">
-        <span class="step-label">Step 1</span>
-        <h3>Understand</h3>
-        <p>See the issue in context. Review what was found, where it appears and why it matters. Use the findings to decide where to begin.</p>
+        <span class="step-label">01 / Start here</span>
+        <h3>Know what deserves attention.</h3>
+        <p>See the issues affecting important pages alongside site-wide risks, so every warning doesn't feel equally urgent.</p>
       </div>
       <div class="step-card step-mint">
-        <span class="step-label">Step 2</span>
-        <h3>Improve</h3>
-        <p>Use AI writing tools for content, or apply a supported fix with Pro. Bigger changes stay with your admin or developer.</p>
+        <span class="step-label">02 / Act on it</span>
+        <h3>Know what you can do next.</h3>
+        <p>Open the affected page, review the explanation and choose a manual fix, a built-in tool or AI assistance where it helps.</p>
       </div>
       <div class="step-card step-peach">
-        <span class="step-label">Step 3</span>
-        <h3>Recheck</h3>
-        <p>Run another scan after making changes. Review the updated findings before moving on to the next issue.</p>
+        <span class="step-label">03 / Check again</span>
+        <h3>Know whether it improved.</h3>
+        <p>Recheck the site after a change instead of hoping the warning went away.</p>
+      </div>
+      <div class="step-card step-lilac">
+        <span class="step-label">04 / Keep watching</span>
+        <h3>Know when something new appears.</h3>
+        <p>Let recurring checks make site care part of your routine, even when you're focused on running your business.</p>
       </div>
     </div>
     <a class="text-link reveal" href="#how">See how VuloPilot works ↗</a>
@@ -1831,42 +1782,6 @@ h2.light { color: var(--cream); }
     </div>
   </section>
 
-  <!-- PROOF -->
-  <section class="section proof-section">
-    <p class="eyebrow reveal">After the first scan</p>
-    <h2 class="reveal">What VuloPilot usually finds <span class="highlight">in your very first scan.</span></h2>
-    <p class="section-sub reveal">Typical findings from a site that hadn't been audited before — the kind of thing that sits unnoticed for months.</p>
-
-    <div class="proof-screen reveal">
-      <div class="browser-chrome">
-        <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-        <span class="chrome-url">VuloPilot — Scan report</span>
-      </div>
-      <div class="proof-grid">
-        <div class="proof-card">
-          <strong class="proof-figure count-up" data-count="11">0</strong>
-          <span class="proof-label">pages with missing or weak titles</span>
-          <p>Usually fixed in under a day with AI-drafted titles, reviewed and published.</p>
-        </div>
-        <div class="proof-card">
-          <strong class="proof-figure">4.2s</strong>
-          <span class="proof-label">average load time on the slowest pages</span>
-          <p>Most often oversized, uncompressed images — an easy, high-impact fix.</p>
-        </div>
-        <div class="proof-card">
-          <strong class="proof-figure count-up" data-count="2">0</strong>
-          <span class="proof-label">plugins with known vulnerabilities</span>
-          <p>Flagged with the fix, not just the warning — most are a one-click update.</p>
-        </div>
-        <div class="proof-card">
-          <strong class="proof-figure count-up" data-count="0">0</strong>
-          <span class="proof-label">sites had a verified backup running</span>
-          <p>A surprisingly common gap — now checked and confirmed automatically.</p>
-        </div>
-      </div>
-    </div>
-    <p class="proof-caveat reveal">Illustrative, based on common first-scan patterns — your results depend on your site.</p>
-  </section>
 
   <!-- PRICING -->
   <section class="section" id="pricing">
@@ -2048,42 +1963,6 @@ h2.light { color: var(--cream); }
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-  }
-
-  // Count-up stats
-  var counters = Array.prototype.slice.call(document.querySelectorAll('.count-up'));
-  var countersDone = false;
-  function runCounters() {
-    if (countersDone) return;
-    countersDone = true;
-    counters.forEach(function (el) {
-      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-      var start = 0;
-      var duration = 900;
-      var startTime = null;
-      function step(ts) {
-        if (!startTime) startTime = ts;
-        var progress = Math.min((ts - startTime) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(start + (target - start) * eased);
-        if (progress < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    });
-  }
-  var statsStrip = document.querySelector('.stats-strip');
-  if (statsStrip && 'IntersectionObserver' in window) {
-    var statsIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          runCounters();
-          statsIo.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    statsIo.observe(statsStrip);
-  } else {
-    runCounters();
   }
 
   // Nav shadow on scroll
