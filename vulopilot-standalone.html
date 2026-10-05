@@ -303,12 +303,23 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 10px 12px;
     margin-bottom: 5px;
+    border: none;
     border-radius: 10px;
+    background: transparent;
     color: var(--text-soft);
+    font-family: inherit;
     font-size: 13px;
     font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+.sidebar-item:hover:not(.active) {
+    background: rgba(12,25,72,0.04);
+    color: var(--text);
 }
 .sidebar-item::after {
     content: "›";
@@ -323,6 +334,14 @@ img {
 
 .dashboard-content {
     padding: 30px;
+}
+
+.dashboard-panel {
+    animation: panelFade .3s ease;
+}
+@keyframes panelFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .dashboard-content h3 {
@@ -1029,116 +1048,300 @@ footer {
 
                     <div class="dashboard-body">
 
-                        <aside class="dashboard-sidebar">
+                        <aside class="dashboard-sidebar" role="tablist" aria-label="Website areas">
 
-                            <div class="sidebar-item active">
-                                Overview
-                            </div>
-
-                            <div class="sidebar-item">
+                            <button class="sidebar-item active" data-tab="search" role="tab" aria-selected="true">
                                 Search Visibility
-                            </div>
+                            </button>
 
-                            <div class="sidebar-item">
+                            <button class="sidebar-item" data-tab="ai" role="tab" aria-selected="false">
                                 AI Visibility
-                            </div>
+                            </button>
 
-                            <div class="sidebar-item">
+                            <button class="sidebar-item" data-tab="content" role="tab" aria-selected="false">
                                 Content
-                            </div>
+                            </button>
 
-                            <div class="sidebar-item">
+                            <button class="sidebar-item" data-tab="performance" role="tab" aria-selected="false">
                                 Performance
-                            </div>
+                            </button>
 
-                            <div class="sidebar-item">
+                            <button class="sidebar-item" data-tab="health" role="tab" aria-selected="false">
                                 Security &amp; Health
-                            </div>
+                            </button>
 
-                            <div class="sidebar-item">
+                            <button class="sidebar-item" data-tab="automation" role="tab" aria-selected="false">
                                 Automation
-                            </div>
+                            </button>
 
                         </aside>
 
                         <div class="dashboard-content">
 
-                            <h3>
-                                Found, and already being fixed.
-                            </h3>
+                            <div class="dashboard-panel" data-panel="search">
 
-                            <div class="dashboard-subtitle">
-                                VuloPilot found issues across your website,
-                                ranked them, and started drafting the fix.
+                                <h3>Found, and already being fixed.</h3>
+
+                                <div class="dashboard-subtitle">
+                                    VuloPilot checks titles, links and
+                                    indexing signals, then drafts the fix.
+                                </div>
+
+                                <div class="finding-grid">
+
+                                    <div class="finding">
+                                        <div class="finding-label">Titles &amp; meta</div>
+                                        <h4>8 titles need attention</h4>
+                                        <p>Missing or vague titles on important pages.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            AI-drafted titles ready to review
+                                        </div>
+                                    </div>
+
+                                    <div class="finding">
+                                        <div class="finding-label">Internal links</div>
+                                        <h4>14 pages have no inbound links</h4>
+                                        <p>Pages nothing else on your site points to.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            3 links suggested — add in one click
+                                        </div>
+                                    </div>
+
+                                    <div class="finding">
+                                        <div class="finding-label">Indexing</div>
+                                        <h4>2 pages aren't indexed</h4>
+                                        <p>Canonical URLs and structured data checked.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Canonical fix applied in one click
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            <div class="finding-grid">
+                            <div class="dashboard-panel" data-panel="ai" hidden>
 
-                                <div class="finding">
+                                <h3>Found, and already being fixed.</h3>
 
-                                    <div class="finding-label">
-                                        Visibility
+                                <div class="dashboard-subtitle">
+                                    VuloPilot checks business details and
+                                    answer coverage, then drafts the fix.
+                                </div>
+
+                                <div class="finding-grid">
+
+                                    <div class="finding">
+                                        <div class="finding-label">Business clarity</div>
+                                        <h4>Details differ on 4 pages</h4>
+                                        <p>Hours or pricing don't match everywhere.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Consistent details drafted for review
+                                        </div>
                                     </div>
 
-                                    <h4>
-                                        8 pages need SEO attention
-                                    </h4>
+                                    <div class="finding">
+                                        <div class="finding-label">Answer coverage</div>
+                                        <h4>6 questions go unanswered</h4>
+                                        <p>Buyer questions your pages don't answer yet.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            AI-drafted answers ready to publish
+                                        </div>
+                                    </div>
 
-                                    <p>
-                                        Missing or weak search signals
-                                        affecting important pages.
-                                    </p>
-
-                                    <div class="finding-fix">
-                                        <span class="finding-fix-dot"></span>
-                                        3 internal links drafted — review
-                                        and add in one click
+                                    <div class="finding">
+                                        <div class="finding-label">Crawler signals</div>
+                                        <h4>GPTBot visited 12 times</h4>
+                                        <p>Track which AI crawlers reach your site.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Crawl activity tracked automatically
+                                        </div>
                                     </div>
 
                                 </div>
 
-                                <div class="finding">
+                            </div>
 
-                                    <div class="finding-label">
-                                        Performance
+                            <div class="dashboard-panel" data-panel="content" hidden>
+
+                                <h3>Found, and already being fixed.</h3>
+
+                                <div class="dashboard-subtitle">
+                                    VuloPilot finds thin or outdated pages,
+                                    then drafts the rewrite.
+                                </div>
+
+                                <div class="finding-grid">
+
+                                    <div class="finding">
+                                        <div class="finding-label">Content findings</div>
+                                        <h4>5 pages are thin or duplicate</h4>
+                                        <p>Unlikely to rank or convert as they are.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            AI Writer drafts a rewrite in seconds
+                                        </div>
                                     </div>
 
-                                    <h4>
-                                        3 pages are slow
-                                    </h4>
+                                    <div class="finding">
+                                        <div class="finding-label">WooCommerce</div>
+                                        <h4>12 products need descriptions</h4>
+                                        <p>Product pages missing real copy.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Descriptions drafted, ready to publish
+                                        </div>
+                                    </div>
 
-                                    <p>
-                                        Identify the affected URLs and
-                                        investigate the causes.
-                                    </p>
-
-                                    <div class="finding-fix">
-                                        <span class="finding-fix-dot"></span>
-                                        Image compression ready — cuts
-                                        load time by ~1.4s
+                                    <div class="finding">
+                                        <div class="finding-label">Page improvements</div>
+                                        <h4>FAQs and schema missing</h4>
+                                        <p>Details most pages leave blank.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            FAQ block drafted, ready to add
+                                        </div>
                                     </div>
 
                                 </div>
 
-                                <div class="finding">
+                            </div>
 
-                                    <div class="finding-label">
-                                        AI Visibility
+                            <div class="dashboard-panel" data-panel="performance" hidden>
+
+                                <h3>Found, and already being fixed.</h3>
+
+                                <div class="dashboard-subtitle">
+                                    VuloPilot tests every page's load time,
+                                    then names the fix.
+                                </div>
+
+                                <div class="finding-grid">
+
+                                    <div class="finding">
+                                        <div class="finding-label">Slow pages</div>
+                                        <h4>3 pages need investigation</h4>
+                                        <p>Identify the affected URLs and causes.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Image compression ready — saves ~1.4s
+                                        </div>
                                     </div>
 
-                                    <h4>
-                                        Improve business understanding
-                                    </h4>
+                                    <div class="finding">
+                                        <div class="finding-label">Core Web Vitals</div>
+                                        <h4>LCP failing on 2 pages</h4>
+                                        <p>Loading speed affecting visitor experience.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Fix recommendation ready to apply
+                                        </div>
+                                    </div>
 
-                                    <p>
-                                        Strengthen signals that help AI
-                                        systems understand your website.
-                                    </p>
+                                    <div class="finding">
+                                        <div class="finding-label">Speed history</div>
+                                        <h4>Keep track after changes</h4>
+                                        <p>Compare results after you apply a fix.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Retest scheduled automatically
+                                        </div>
+                                    </div>
 
-                                    <div class="finding-fix">
-                                        <span class="finding-fix-dot"></span>
-                                        AI-drafted answer ready to review
-                                        and publish
+                                </div>
+
+                            </div>
+
+                            <div class="dashboard-panel" data-panel="health" hidden>
+
+                                <h3>Found, and already being fixed.</h3>
+
+                                <div class="dashboard-subtitle">
+                                    VuloPilot checks security and site
+                                    health, then names what to do.
+                                </div>
+
+                                <div class="finding-grid">
+
+                                    <div class="finding">
+                                        <div class="finding-label">Security</div>
+                                        <h4>1 known plugin vulnerability</h4>
+                                        <p>Malware and SSL checks, with the cause named.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Patch applied in one click
+                                        </div>
+                                    </div>
+
+                                    <div class="finding">
+                                        <div class="finding-label">Backups</div>
+                                        <h4>Backup status: unverified</h4>
+                                        <p>Checks whether your backup plugin is running.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Backup check scheduled automatically
+                                        </div>
+                                    </div>
+
+                                    <div class="finding">
+                                        <div class="finding-label">Accessibility</div>
+                                        <h4>3 images missing alt text</h4>
+                                        <p>Headings and image descriptions checked.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Alt text drafted, ready to review
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="dashboard-panel" data-panel="automation" hidden>
+
+                                <h3>Found, and already being fixed.</h3>
+
+                                <div class="dashboard-subtitle">
+                                    VuloPilot keeps checking on your
+                                    schedule, no setup required.
+                                </div>
+
+                                <div class="finding-grid">
+
+                                    <div class="finding">
+                                        <div class="finding-label">Ready-made checks</div>
+                                        <h4>Full site scan, on autopilot</h4>
+                                        <p>Free includes a recurring scan, no setup.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Running today at 03:00
+                                        </div>
+                                    </div>
+
+                                    <div class="finding">
+                                        <div class="finding-label">Schedules</div>
+                                        <h4>Daily, weekly or custom cadence</h4>
+                                        <p>Pick how often VuloPilot checks back in.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Schedule set and confirmed
+                                        </div>
+                                    </div>
+
+                                    <div class="finding">
+                                        <div class="finding-label">Advanced workflows</div>
+                                        <h4>"If a plugin update appears, apply it"</h4>
+                                        <p>Pro lets you set rules like this one.</p>
+                                        <div class="finding-fix">
+                                            <span class="finding-fix-dot"></span>
+                                            Custom triggers available on Pro
+                                        </div>
                                     </div>
 
                                 </div>
@@ -1948,6 +2151,27 @@ footer {
     </div>
 
 </footer>
+
+<script>
+(function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.sidebar-item'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.dashboard-panel'));
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            var key = tab.getAttribute('data-tab');
+            if (tab.classList.contains('active')) return;
+            tabs.forEach(function (t) {
+                var active = t === tab;
+                t.classList.toggle('active', active);
+                t.setAttribute('aria-selected', active);
+            });
+            panels.forEach(function (p) {
+                p.hidden = p.getAttribute('data-panel') !== key;
+            });
+        });
+    });
+})();
+</script>
 
 </body>
 </html>

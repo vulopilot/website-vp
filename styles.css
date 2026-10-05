@@ -287,12 +287,23 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 10px 12px;
     margin-bottom: 5px;
+    border: none;
     border-radius: 10px;
+    background: transparent;
     color: var(--text-soft);
+    font-family: inherit;
     font-size: 13px;
     font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+.sidebar-item:hover:not(.active) {
+    background: rgba(12,25,72,0.04);
+    color: var(--text);
 }
 .sidebar-item::after {
     content: "›";
@@ -307,6 +318,14 @@ img {
 
 .dashboard-content {
     padding: 30px;
+}
+
+.dashboard-panel {
+    animation: panelFade .3s ease;
+}
+@keyframes panelFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .dashboard-content h3 {
