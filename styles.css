@@ -176,6 +176,13 @@ img {
     background: var(--accent);
 }
 
+.hero-kicker {
+    max-width: 640px;
+    margin: 0 auto 10px;
+    color: var(--text-soft);
+    font-size: 16px;
+}
+
 .hero h1 {
     max-width: 900px;
     margin: 0 auto 24px;
@@ -474,6 +481,10 @@ section {
     line-height: 1.05;
     letter-spacing: -.055em;
 }
+.section-header h2 span,
+.highlight {
+    color: var(--accent);
+}
 
 .section-header p {
     margin: 0;
@@ -531,6 +542,47 @@ section {
 .problem-solution strong {
     display: block;
     margin-bottom: 2px;
+    color: var(--text);
+}
+
+/* ---------------------------------
+   Process grid (6-step intro)
+--------------------------------- */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.process-card {
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+}
+.process-num {
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 800;
+}
+.process-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    letter-spacing: -.02em;
+}
+.process-card p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.section-closing {
+    max-width: 640px;
+    margin: 44px auto 0;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -.02em;
     color: var(--text);
 }
 
@@ -595,6 +647,18 @@ section {
     font-size: 13px;
 }
 
+.loop-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.loop-grid-6 .loop-arrow {
+    display: none;
+}
+.loop-grid-6 .loop-step::after {
+    display: none;
+}
+
 /* ---------------------------------
    Capabilities
 --------------------------------- */
@@ -605,12 +669,12 @@ section {
 
 .capability-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
 
 .capability {
-    padding: 32px;
+    padding: 26px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--white);
@@ -676,18 +740,21 @@ section {
 }
 
 .ai-points {
-    display: grid;
-    gap: 12px;
-    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 8px;
 }
 
 .ai-point {
-    padding: 17px 20px;
+    padding: 12px 20px;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 999px;
     background: #fff;
     font-size: 14px;
-    font-weight: 650;
+    font-weight: 700;
+    color: var(--accent);
 }
 
 .ai-visual {
@@ -822,6 +889,304 @@ section {
     color: #aaaab1;
 }
 
+/* ---------------------------------
+   Timeline
+--------------------------------- */
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    text-align: left;
+}
+.timeline-step {
+    position: relative;
+    padding: 22px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+}
+.timeline-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-weight: 800;
+    z-index: 1;
+}
+.timeline-time {
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .06em;
+}
+.timeline-step h4 {
+    margin: 0 0 6px;
+    font-size: 15.5px;
+}
+.timeline-step p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+/* ---------------------------------
+   Mission Control tiles
+--------------------------------- */
+.mission-control {
+    background: var(--bg-soft);
+}
+.mc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+.mc-tile {
+    padding: 22px;
+    border-radius: var(--radius);
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+.mc-tile-label {
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+.mc-tile p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 14px;
+}
+.mc-tile p strong {
+    color: var(--text);
+}
+.mc-actions {
+    justify-content: center;
+    margin-top: 28px;
+}
+
+/* ---------------------------------
+   Mission Control dashboard
+--------------------------------- */
+.mc-dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(12,25,72,0.04), 0 16px 36px rgba(12,25,72,0.06);
+}
+
+.mc-sidebar {
+    padding: 14px;
+    background: var(--bg-soft);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mc-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-soft);
+    transition: background .15s ease, color .15s ease;
+}
+.mc-tab:hover:not(.active) {
+    background: rgba(12,25,72,0.04);
+}
+
+.mc-tab-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--pastel-1);
+    color: var(--accent);
+}
+.mc-tab.active .mc-tab-icon {
+    background: rgba(255,255,255,0.18);
+    color: var(--white);
+}
+
+.mc-tab-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.mc-tab-text strong {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mc-tab-text small {
+    font-size: 11.5px;
+    color: var(--text-soft);
+}
+.mc-tab.active .mc-tab-text strong {
+    color: var(--white);
+}
+.mc-tab.active .mc-tab-text small {
+    color: rgba(255,255,255,0.75);
+}
+
+.mc-tab-chevron {
+    flex: none;
+    font-size: 18px;
+    color: var(--text-soft);
+    opacity: 0.5;
+}
+.mc-tab.active .mc-tab-chevron {
+    color: var(--white);
+    opacity: 1;
+}
+
+.mc-tab.active {
+    background: var(--accent);
+}
+
+.mc-content {
+    padding: 32px;
+    min-height: 420px;
+}
+
+.mc-panel {
+    animation: panelFade .3s ease;
+}
+
+.mc-panel h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    letter-spacing: -.02em;
+}
+
+.mc-panel-sub {
+    margin: 0 0 24px;
+    color: var(--text-soft);
+    font-size: 14.5px;
+    max-width: 560px;
+}
+
+/* ---------------------------------
+   AI, when AI helps
+--------------------------------- */
+.ai-help {
+    background: var(--pastel-1);
+}
+.ai-help-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.ai-help-grid .section-header {
+    margin-bottom: 0;
+}
+.ai-help-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 16px;
+}
+.ai-help-list li {
+    position: relative;
+    padding: 14px 16px 14px 36px;
+    border-radius: 12px;
+    background: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+}
+.ai-help-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 14px;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+/* ---------------------------------
+   Actionable intelligence
+--------------------------------- */
+.intelligence-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+}
+.intel-card {
+    padding: 22px 18px;
+    border-radius: var(--radius);
+    background: var(--pastel-1);
+}
+.intel-card h4 {
+    margin: 0 0 8px;
+    font-size: 15.5px;
+    color: var(--accent);
+}
+.intel-card p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+/* ---------------------------------
+   Roles
+--------------------------------- */
+.role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.role-card {
+    padding: 24px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-soft);
+}
+.role-card h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+.role-card p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 13.5px;
+}
+
+/* ---------------------------------
+   The difference
+--------------------------------- */
+.difference {
+    text-align: center;
+}
+.difference .section-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .monitor-items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -852,6 +1217,9 @@ section {
     line-height: 1;
     letter-spacing: -.06em;
 }
+.final-cta h2 span {
+    color: var(--accent);
+}
 
 .final-cta p {
     max-width: 620px;
@@ -874,6 +1242,10 @@ footer {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 50px;
     padding-bottom: 50px;
+}
+
+.footer-grid-5 {
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
 }
 
 .footer-brand p {
@@ -926,11 +1298,40 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .mc-dashboard {
+        grid-template-columns: 1fr;
+    }
+    .mc-sidebar {
+        flex-direction: row;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .mc-tab {
+        white-space: nowrap;
+    }
+
     .problem-grid,
     .capability-grid,
     .plan-grid,
-    .ai-grid {
+    .ai-grid,
+    .process-grid,
+    .loop-grid-6,
+    .timeline,
+    .mc-grid,
+    .ai-help-grid,
+    .ai-help-list,
+    .intelligence-grid,
+    .role-grid {
         grid-template-columns: 1fr;
+    }
+    .timeline-step:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        top: auto;
+        bottom: -22px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .loop-grid {

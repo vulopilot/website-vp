@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="VuloPilot continuously finds what is holding your WordPress website back, tells you what to fix first, helps you fix it, verifies the result, and keeps watching."
+        content="VuloPilot continuously checks your website, finds the issues and opportunities that matter, shows you what to fix first, helps you take action, and keeps watching."
     >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -190,6 +190,13 @@ img {
     height: 7px;
     border-radius: 50%;
     background: var(--accent);
+}
+
+.hero-kicker {
+    max-width: 640px;
+    margin: 0 auto 10px;
+    color: var(--text-soft);
+    font-size: 16px;
 }
 
 .hero h1 {
@@ -490,6 +497,10 @@ section {
     line-height: 1.05;
     letter-spacing: -.055em;
 }
+.section-header h2 span,
+.highlight {
+    color: var(--accent);
+}
 
 .section-header p {
     margin: 0;
@@ -547,6 +558,47 @@ section {
 .problem-solution strong {
     display: block;
     margin-bottom: 2px;
+    color: var(--text);
+}
+
+/* ---------------------------------
+   Process grid (6-step intro)
+--------------------------------- */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.process-card {
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+}
+.process-num {
+    margin-bottom: 18px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 800;
+}
+.process-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    letter-spacing: -.02em;
+}
+.process-card p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.section-closing {
+    max-width: 640px;
+    margin: 44px auto 0;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -.02em;
     color: var(--text);
 }
 
@@ -611,6 +663,18 @@ section {
     font-size: 13px;
 }
 
+.loop-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.loop-grid-6 .loop-arrow {
+    display: none;
+}
+.loop-grid-6 .loop-step::after {
+    display: none;
+}
+
 /* ---------------------------------
    Capabilities
 --------------------------------- */
@@ -621,12 +685,12 @@ section {
 
 .capability-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
 
 .capability {
-    padding: 32px;
+    padding: 26px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--white);
@@ -692,18 +756,21 @@ section {
 }
 
 .ai-points {
-    display: grid;
-    gap: 12px;
-    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 8px;
 }
 
 .ai-point {
-    padding: 17px 20px;
+    padding: 12px 20px;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 999px;
     background: #fff;
     font-size: 14px;
-    font-weight: 650;
+    font-weight: 700;
+    color: var(--accent);
 }
 
 .ai-visual {
@@ -838,6 +905,304 @@ section {
     color: #aaaab1;
 }
 
+/* ---------------------------------
+   Timeline
+--------------------------------- */
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    text-align: left;
+}
+.timeline-step {
+    position: relative;
+    padding: 22px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+}
+.timeline-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-weight: 800;
+    z-index: 1;
+}
+.timeline-time {
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .06em;
+}
+.timeline-step h4 {
+    margin: 0 0 6px;
+    font-size: 15.5px;
+}
+.timeline-step p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+/* ---------------------------------
+   Mission Control tiles
+--------------------------------- */
+.mission-control {
+    background: var(--bg-soft);
+}
+.mc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+.mc-tile {
+    padding: 22px;
+    border-radius: var(--radius);
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+.mc-tile-label {
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+.mc-tile p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 14px;
+}
+.mc-tile p strong {
+    color: var(--text);
+}
+.mc-actions {
+    justify-content: center;
+    margin-top: 28px;
+}
+
+/* ---------------------------------
+   Mission Control dashboard
+--------------------------------- */
+.mc-dashboard {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(12,25,72,0.04), 0 16px 36px rgba(12,25,72,0.06);
+}
+
+.mc-sidebar {
+    padding: 14px;
+    background: var(--bg-soft);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mc-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-soft);
+    transition: background .15s ease, color .15s ease;
+}
+.mc-tab:hover:not(.active) {
+    background: rgba(12,25,72,0.04);
+}
+
+.mc-tab-icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--pastel-1);
+    color: var(--accent);
+}
+.mc-tab.active .mc-tab-icon {
+    background: rgba(255,255,255,0.18);
+    color: var(--white);
+}
+
+.mc-tab-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.mc-tab-text strong {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mc-tab-text small {
+    font-size: 11.5px;
+    color: var(--text-soft);
+}
+.mc-tab.active .mc-tab-text strong {
+    color: var(--white);
+}
+.mc-tab.active .mc-tab-text small {
+    color: rgba(255,255,255,0.75);
+}
+
+.mc-tab-chevron {
+    flex: none;
+    font-size: 18px;
+    color: var(--text-soft);
+    opacity: 0.5;
+}
+.mc-tab.active .mc-tab-chevron {
+    color: var(--white);
+    opacity: 1;
+}
+
+.mc-tab.active {
+    background: var(--accent);
+}
+
+.mc-content {
+    padding: 32px;
+    min-height: 420px;
+}
+
+.mc-panel {
+    animation: panelFade .3s ease;
+}
+
+.mc-panel h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    letter-spacing: -.02em;
+}
+
+.mc-panel-sub {
+    margin: 0 0 24px;
+    color: var(--text-soft);
+    font-size: 14.5px;
+    max-width: 560px;
+}
+
+/* ---------------------------------
+   AI, when AI helps
+--------------------------------- */
+.ai-help {
+    background: var(--pastel-1);
+}
+.ai-help-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.ai-help-grid .section-header {
+    margin-bottom: 0;
+}
+.ai-help-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 16px;
+}
+.ai-help-list li {
+    position: relative;
+    padding: 14px 16px 14px 36px;
+    border-radius: 12px;
+    background: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+}
+.ai-help-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 14px;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+/* ---------------------------------
+   Actionable intelligence
+--------------------------------- */
+.intelligence-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+}
+.intel-card {
+    padding: 22px 18px;
+    border-radius: var(--radius);
+    background: var(--pastel-1);
+}
+.intel-card h4 {
+    margin: 0 0 8px;
+    font-size: 15.5px;
+    color: var(--accent);
+}
+.intel-card p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+/* ---------------------------------
+   Roles
+--------------------------------- */
+.role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.role-card {
+    padding: 24px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-soft);
+}
+.role-card h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+.role-card p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 13.5px;
+}
+
+/* ---------------------------------
+   The difference
+--------------------------------- */
+.difference {
+    text-align: center;
+}
+.difference .section-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .monitor-items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -868,6 +1233,9 @@ section {
     line-height: 1;
     letter-spacing: -.06em;
 }
+.final-cta h2 span {
+    color: var(--accent);
+}
 
 .final-cta p {
     max-width: 620px;
@@ -890,6 +1258,10 @@ footer {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 50px;
     padding-bottom: 50px;
+}
+
+.footer-grid-5 {
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
 }
 
 .footer-brand p {
@@ -942,11 +1314,40 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .mc-dashboard {
+        grid-template-columns: 1fr;
+    }
+    .mc-sidebar {
+        flex-direction: row;
+        overflow-x: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .mc-tab {
+        white-space: nowrap;
+    }
+
     .problem-grid,
     .capability-grid,
     .plan-grid,
-    .ai-grid {
+    .ai-grid,
+    .process-grid,
+    .loop-grid-6,
+    .timeline,
+    .mc-grid,
+    .ai-help-grid,
+    .ai-help-list,
+    .intelligence-grid,
+    .role-grid {
         grid-template-columns: 1fr;
+    }
+    .timeline-step:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        top: auto;
+        bottom: -22px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .loop-grid {
@@ -1052,24 +1453,22 @@ footer {
                 WordPress Growth Operating System
             </div>
 
+            <p class="hero-kicker">
+                Stop guessing what's wrong with your WordPress site.
+            </p>
+
             <h1>
-                Stop guessing what your website needs.
-                <span>Know what to fix next.</span>
+                VuloPilot finds what matters
+                <span>— and helps you fix it.</span>
             </h1>
 
             <p class="hero-copy">
-                VuloPilot continuously finds what is holding your WordPress
-                website back, shows you what matters most, helps you fix it,
-                verifies the result, and keeps watching as your site changes.
+                Your website is constantly changing. Pages get published, plugins get
+                updated, content gets modified, performance shifts and search keeps
+                evolving. VuloPilot continuously checks your website, finds the issues
+                and opportunities that matter, shows you what to fix first, helps you
+                take action, and keeps watching.
             </p>
-
-            <div class="hero-tags">
-                <span class="hero-tag">Search Visibility</span>
-                <span class="hero-tag">AI Visibility</span>
-                <span class="hero-tag">Content</span>
-                <span class="hero-tag">Performance</span>
-                <span class="hero-tag">Security &amp; Health</span>
-            </div>
 
             <div class="hero-actions">
                 <a href="#cta" class="btn btn-primary">
@@ -1082,532 +1481,7 @@ footer {
             </div>
 
             <div class="hero-note">
-                Free to start · No credit card · Built for WordPress
-            </div>
-
-            <div class="product-preview">
-
-                <div class="dashboard">
-
-                    <div class="dashboard-top">
-                        <div class="dashboard-title">
-                            VuloPilot Mission Control
-                        </div>
-
-                        <div class="dashboard-status">
-                            ● Site monitoring active
-                        </div>
-                    </div>
-
-                    <div class="dashboard-stats">
-                        <div class="dstat">
-                            <strong>47</strong>
-                            <span>issues found</span>
-                        </div>
-                        <div class="dstat dstat-accent">
-                            <strong>31</strong>
-                            <span>fixes already drafted</span>
-                        </div>
-                        <div class="dstat">
-                            <strong>4.2 hrs</strong>
-                            <span>of manual work saved</span>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-body">
-
-                        <aside class="dashboard-sidebar" role="tablist" aria-label="Website areas">
-
-                            <button class="sidebar-item active" data-tab="search" role="tab" aria-selected="true">
-                                Search Visibility
-                            </button>
-
-                            <button class="sidebar-item" data-tab="ai" role="tab" aria-selected="false">
-                                AI Visibility
-                            </button>
-
-                            <button class="sidebar-item" data-tab="content" role="tab" aria-selected="false">
-                                Content
-                            </button>
-
-                            <button class="sidebar-item" data-tab="performance" role="tab" aria-selected="false">
-                                Performance
-                            </button>
-
-                            <button class="sidebar-item" data-tab="health" role="tab" aria-selected="false">
-                                Security &amp; Health
-                            </button>
-
-                            <button class="sidebar-item" data-tab="automation" role="tab" aria-selected="false">
-                                Automation
-                            </button>
-
-                        </aside>
-
-                        <div class="dashboard-content">
-
-                            <div class="dashboard-panel" data-panel="search">
-
-                                <h3>Found, and already being fixed.</h3>
-
-                                <div class="dashboard-subtitle">
-                                    VuloPilot checks titles, links and
-                                    indexing signals, then drafts the fix.
-                                </div>
-
-                                <div class="finding-grid-3">
-                                    <div class="finding-card fc-lavender">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="43.0"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">62</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Titles &amp; meta</div>
-                                        <h4>AI rewrites the title and description</h4>
-                                        <p>For all 8 pages — you just review and approve.</p>
-                                    </div>
-
-                                    <div class="finding-card fc-features">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/>
-                                                <circle cx="16" cy="16" r="3" fill="#2f9e5c"/>
-                                                <circle cx="16" cy="28" r="3" fill="#c0585f"/>
-                                                <circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/>
-                                                <rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Search Visibility</div>
-                                        <h4>What VuloPilot checks</h4>
-                                        <ul class="finding-card-list">
-                                            <li>Titles &amp; meta descriptions</li>
-                                            <li>Internal linking checks</li>
-                                            <li>Indexing &amp; schema validation</li>
-                                            <li>Broken link detection</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="finding-card fc-pink">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="47.5"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">58</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Indexing</div>
-                                        <h4>VuloPilot rebuilds the missing tags</h4>
-                                        <p>Canonical URL and structured data, fixed automatically.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="dashboard-panel" data-panel="ai" hidden>
-
-                                <h3>Found, and already being fixed.</h3>
-
-                                <div class="dashboard-subtitle">
-                                    VuloPilot checks business details and
-                                    answer coverage, then drafts the fix.
-                                </div>
-
-                                <div class="finding-grid-3">
-                                    <div class="finding-card fc-lavender">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="40.7"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">64</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Business clarity</div>
-                                        <h4>VuloPilot finds where the details don't match</h4>
-                                        <p>And drafts the correction for you to approve.</p>
-                                    </div>
-
-                                    <div class="finding-card fc-features">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/>
-                                                <circle cx="16" cy="16" r="3" fill="#2f9e5c"/>
-                                                <circle cx="16" cy="28" r="3" fill="#c0585f"/>
-                                                <circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/>
-                                                <rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">AI Visibility</div>
-                                        <h4>What VuloPilot checks</h4>
-                                        <ul class="finding-card-list">
-                                            <li>Business detail consistency</li>
-                                            <li>Answer coverage checks</li>
-                                            <li>AI crawler activity tracking</li>
-                                            <li>Entity &amp; schema clarity</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="finding-card fc-pink">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="50.9"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">55</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Crawler signals</div>
-                                        <h4>VuloPilot logs every AI crawler visit</h4>
-                                        <p>So you see which AI systems are actually reading your site.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="dashboard-panel" data-panel="content" hidden>
-
-                                <h3>Found, and already being fixed.</h3>
-
-                                <div class="dashboard-subtitle">
-                                    VuloPilot finds thin or outdated pages,
-                                    then drafts the rewrite.
-                                </div>
-
-                                <div class="finding-grid-3">
-                                    <div class="finding-card fc-lavender">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="30.5"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">73</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Content findings</div>
-                                        <h4>AI rewrites the page</h4>
-                                        <p>With original content in seconds, ready to review.</p>
-                                    </div>
-
-                                    <div class="finding-card fc-features">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/>
-                                                <circle cx="16" cy="16" r="3" fill="#2f9e5c"/>
-                                                <circle cx="16" cy="28" r="3" fill="#c0585f"/>
-                                                <circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/>
-                                                <rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Content</div>
-                                        <h4>What VuloPilot checks</h4>
-                                        <ul class="finding-card-list">
-                                            <li>Thin &amp; duplicate detection</li>
-                                            <li>AI Writer &amp; Blog Generator</li>
-                                            <li>FAQ &amp; metadata drafting</li>
-                                            <li>WooCommerce description tools</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="finding-card fc-pink">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="38.5"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">66</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Page improvements</div>
-                                        <h4>AI generates an FAQ block</h4>
-                                        <p>Complete with schema markup, ready to add.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="dashboard-panel" data-panel="performance" hidden>
-
-                                <h3>Found, and already being fixed.</h3>
-
-                                <div class="dashboard-subtitle">
-                                    VuloPilot tests every page's load time,
-                                    then names the fix.
-                                </div>
-
-                                <div class="finding-grid-3">
-                                    <div class="finding-card fc-lavender">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="46.4"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">59</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Slow pages</div>
-                                        <h4>VuloPilot compresses the oversized images</h4>
-                                        <p>One click, saves about 1.4 seconds of load time.</p>
-                                    </div>
-
-                                    <div class="finding-card fc-features">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/>
-                                                <circle cx="16" cy="16" r="3" fill="#2f9e5c"/>
-                                                <circle cx="16" cy="28" r="3" fill="#c0585f"/>
-                                                <circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/>
-                                                <rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Performance</div>
-                                        <h4>What VuloPilot checks</h4>
-                                        <ul class="finding-card-list">
-                                            <li>Core Web Vitals tracking</li>
-                                            <li>Page load time testing</li>
-                                            <li>One-click image compression</li>
-                                            <li>Speed history comparisons</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="finding-card fc-pink">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="41.8"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">63</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Speed history</div>
-                                        <h4>VuloPilot retests after your fix</h4>
-                                        <p>And shows whether the load time actually improved.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="dashboard-panel" data-panel="health" hidden>
-
-                                <h3>Found, and already being fixed.</h3>
-
-                                <div class="dashboard-subtitle">
-                                    VuloPilot checks security and site
-                                    health, then names what to do.
-                                </div>
-
-                                <div class="finding-grid-3">
-                                    <div class="finding-card fc-lavender">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="48.6"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">57</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Security</div>
-                                        <h4>VuloPilot patches the plugin</h4>
-                                        <p>Identifies the exact risk and applies the fix in one click.</p>
-                                    </div>
-
-                                    <div class="finding-card fc-features">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/>
-                                                <circle cx="16" cy="16" r="3" fill="#2f9e5c"/>
-                                                <circle cx="16" cy="28" r="3" fill="#c0585f"/>
-                                                <circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/>
-                                                <rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Security &amp; Health</div>
-                                        <h4>What VuloPilot checks</h4>
-                                        <ul class="finding-card-list">
-                                            <li>Malware &amp; vulnerability scans</li>
-                                            <li>SSL certificate monitoring</li>
-                                            <li>Backup status verification</li>
-                                            <li>Accessibility checks</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="finding-card fc-pink">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="44.1"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">61</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Accessibility</div>
-                                        <h4>AI writes the missing alt text</h4>
-                                        <p>For all 3 images — ready for you to review.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="dashboard-panel" data-panel="automation" hidden>
-
-                                <h3>Found, and already being fixed.</h3>
-
-                                <div class="dashboard-subtitle">
-                                    VuloPilot keeps checking on your
-                                    schedule, no setup required.
-                                </div>
-
-                                <div class="finding-grid-3">
-                                    <div class="finding-card fc-lavender">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="33.9"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">70</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Ready-made checks</div>
-                                        <h4>VuloPilot scans the site on its own</h4>
-                                        <p>No setup needed — the next scan starts at 03:00.</p>
-                                    </div>
-
-                                    <div class="finding-card fc-features">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/>
-                                                <circle cx="16" cy="16" r="3" fill="#2f9e5c"/>
-                                                <circle cx="16" cy="28" r="3" fill="#c0585f"/>
-                                                <circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/>
-                                                <rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/>
-                                                <rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Automation</div>
-                                        <h4>What VuloPilot checks</h4>
-                                        <ul class="finding-card-list">
-                                            <li>Recurring full site scans</li>
-                                            <li>Custom triggers &amp; conditions</li>
-                                            <li>Supported auto-fixes on Pro</li>
-                                            <li>Change history &amp; comparisons</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="finding-card fc-pink">
-                                        <div class="finding-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 72 72" width="64" height="64">
-                                                <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
-                                                <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
-                                                <circle cx="20" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="27" cy="15.5" r="1.8" fill="#fff"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/>
-                                                <circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5"
-                                                    stroke-linecap="round" stroke-dasharray="113.1"
-                                                    stroke-dashoffset="31.7"
-                                                    transform="rotate(-90 36 44)"/>
-                                                <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">72</text>
-                                            </svg>
-                                        </div>
-                                        <div class="finding-card-label">Advanced workflows</div>
-                                        <h4>You set the rule, once (Pro)</h4>
-                                        <p>VuloPilot applies the fix automatically after that.</p>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="dashboard-foot">
-                        Example findings for illustration — run a free
-                        scan to see your own site's numbers.
-                    </div>
-
-                </div>
-
+                Free to start · No credit card · No SEO expertise required
             </div>
 
         </div>
@@ -1616,7 +1490,7 @@ footer {
 
 
     <!-- =====================================
-         PROBLEM
+         MORE THAN A SCORE
     ====================================== -->
 
     <section class="problem">
@@ -1626,215 +1500,60 @@ footer {
             <div class="section-header">
 
                 <div class="section-kicker">
-                    How VuloPilot solves it
+                    Your website is more than an SEO score
                 </div>
 
                 <h2>
-                    Not another dashboard. A system that fixes things.
+                    You don't need another dashboard full of numbers.
+                    You need to <span>know what to do next.</span>
                 </h2>
 
                 <p>
-                    Three problems every WordPress site runs into — and
-                    what VuloPilot does about each one.
+                    A good SEO score can still lose visibility. A page can be indexed
+                    but never perform. Content can be useful but unclear to search
+                    engines and AI systems. A site can be fast today and slow after
+                    tomorrow's plugin update. When something changes, most tools
+                    simply give you another warning. VuloPilot connects the dots.
                 </p>
 
             </div>
 
-            <div class="problem-grid">
+            <div class="process-grid">
 
-                <article class="problem-card">
-
-                    <div class="problem-number">
-                        01
-                    </div>
-
-                    <h3>
-                        You don't know what changed.
-                    </h3>
-
-                    <p>
-                        Traffic drops. Rankings move. Pages slow down.
-                        The reason is often buried across different tools.
-                    </p>
-
-                    <div class="problem-solution">
-                        <strong>VuloPilot scans your whole site</strong>
-                        and names the page and the cause — not just that
-                        something's wrong.
-                    </div>
-
-                </article>
-
-
-                <article class="problem-card">
-
-                    <div class="problem-number">
-                        02
-                    </div>
-
-                    <h3>
-                        You have too many warnings.
-                    </h3>
-
-                    <p>
-                        SEO tools, speed tools and security tools all
-                        produce reports that don't tell you what matters.
-                    </p>
-
-                    <div class="problem-solution">
-                        <strong>VuloPilot ranks every finding</strong>
-                        by what actually affects traffic and trust, so
-                        you know what to do first.
-                    </div>
-
-                </article>
-
-
-                <article class="problem-card">
-
-                    <div class="problem-number">
-                        03
-                    </div>
-
-                    <h3>
-                        Fixing one problem is not the finish line.
-                    </h3>
-
-                    <p>
-                        A warning marked "resolved" doesn't confirm the
-                        fix worked.
-                    </p>
-
-                    <div class="problem-solution">
-                        <strong>VuloPilot rechecks it for you</strong>
-                        and keeps watching on a schedule, so nothing
-                        slips through again.
-                    </div>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================
-         HOW IT WORKS
-    ====================================== -->
-
-    <section class="loop" id="how-it-works">
-
-        <div class="container">
-
-            <div class="section-header">
-
-                <div class="section-kicker">
-                    How VuloPilot works
+                <div class="process-card">
+                    <div class="process-num">01</div>
+                    <h3>Find what matters</h3>
+                    <p>Discover problems and opportunities across your entire website.</p>
                 </div>
 
-                <h2>
-                    From website problems to continuous improvement.
-                </h2>
-
-                <p>
-                    VuloPilot turns website optimization into a repeatable
-                    operating loop instead of another monthly audit.
-                </p>
-
-            </div>
-
-
-            <div class="loop-grid">
-
-                <div class="loop-step">
-
-                    <div class="loop-icon">
-                        01
-                    </div>
-
-                    <h3>
-                        Scan
-                    </h3>
-
-                    <p>
-                        Understand your WordPress website,
-                        pages and important signals.
-                    </p>
-
+                <div class="process-card">
+                    <div class="process-num">02</div>
+                    <h3>Understand why</h3>
+                    <p>See the affected page, what is wrong and why it matters.</p>
                 </div>
 
-
-                <div class="loop-step">
-
-                    <div class="loop-icon">
-                        02
-                    </div>
-
-                    <h3>
-                        Prioritize
-                    </h3>
-
-                    <p>
-                        Separate important issues from
-                        noise and show what needs attention.
-                    </p>
-
+                <div class="process-card">
+                    <div class="process-num">03</div>
+                    <h3>Know what to fix first</h3>
+                    <p>Separate important work from technical noise.</p>
                 </div>
 
-
-                <div class="loop-step">
-
-                    <div class="loop-icon">
-                        03
-                    </div>
-
-                    <h3>
-                        Fix
-                    </h3>
-
-                    <p>
-                        Make the change yourself or use
-                        VuloPilot's tools and AI assistance.
-                    </p>
-
+                <div class="process-card">
+                    <div class="process-num">04</div>
+                    <h3>Take action</h3>
+                    <p>Use the right tools, recommendations, AI assistance or automated fixes.</p>
                 </div>
 
-
-                <div class="loop-step">
-
-                    <div class="loop-icon">
-                        04
-                    </div>
-
-                    <h3>
-                        Verify
-                    </h3>
-
-                    <p>
-                        Recheck the website and see whether
-                        the issue actually improved.
-                    </p>
-
+                <div class="process-card">
+                    <div class="process-num">05</div>
+                    <h3>Verify the result</h3>
+                    <p>Rescan and see whether the change actually helped.</p>
                 </div>
 
-
-                <div class="loop-step">
-
-                    <div class="loop-icon">
-                        05
-                    </div>
-
-                    <h3>
-                        Monitor
-                    </h3>
-
-                    <p>
-                        Keep watching as your website,
-                        content and environment change.
-                    </p>
-
+                <div class="process-card">
+                    <div class="process-num">06</div>
+                    <h3>Keep watching</h3>
+                    <p>Catch new problems as your website changes.</p>
                 </div>
 
             </div>
@@ -1845,7 +1564,7 @@ footer {
 
 
     <!-- =====================================
-         FEATURES
+         ONE SOURCE OF TRUTH
     ====================================== -->
 
     <section class="capabilities" id="features">
@@ -1855,155 +1574,527 @@ footer {
             <div class="section-header">
 
                 <div class="section-kicker">
-                    One operating layer
+                    One website. One source of truth.
                 </div>
 
                 <h2>
-                    Everything your WordPress website needs to keep improving.
+                    <span>See the whole picture</span> — not six disconnected reports.
                 </h2>
 
                 <p>
-                    VuloPilot connects visibility, content, performance,
-                    security, health and automation into one continuous
-                    workflow.
+                    Your website doesn't have separate SEO, performance, content and
+                    security problems. They're connected. VuloPilot brings them
+                    together so you can understand how your website is actually
+                    performing.
                 </p>
 
             </div>
 
-
             <div class="capability-grid">
 
                 <article class="capability">
-
-                    <h3>
-                        Search Visibility
-                    </h3>
-
+                    <h3>Search Visibility</h3>
                     <p>
-                        Find the technical and on-page issues that affect
-                        how your pages are discovered and understood.
+                        Find issues affecting crawling, indexing, on-page signals,
+                        internal linking, structured data and search performance.
                     </p>
-
-                    <ul class="capability-list">
-                        <li>Titles and meta descriptions</li>
-                        <li>Headings and internal links</li>
-                        <li>Indexing and crawl signals</li>
-                        <li>Broken links and redirects</li>
-                        <li>Schema and structured data</li>
-                    </ul>
-
                 </article>
 
+                <article class="capability" id="ai-visibility">
+                    <h3>AI Visibility</h3>
+                    <p>
+                        Improve the signals that help AI systems understand your
+                        business, content, expertise and offerings.
+                    </p>
+                </article>
 
                 <article class="capability">
-
-                    <h3>
-                        AI Visibility
-                    </h3>
-
+                    <h3>Content</h3>
                     <p>
-                        Understand how ready your website is for the
-                        growing world of AI-powered search and discovery.
+                        Find thin, duplicated, unclear or incomplete content — and
+                        identify where your website needs better answers.
                     </p>
-
-                    <ul class="capability-list">
-                        <li>How ready your pages are for AI answers</li>
-                        <li>Where your business details are unclear</li>
-                        <li>Questions your pages don't answer yet</li>
-                        <li>Which AI crawlers visit, and how often</li>
-                        <li>How to show up in AI-generated answers</li>
-                    </ul>
-
                 </article>
-
 
                 <article class="capability">
-
-                    <h3>
-                        Content
-                    </h3>
-
+                    <h3>Performance</h3>
                     <p>
-                        Find content that needs improvement before producing
-                        more content simply for the sake of publishing.
+                        Find slow pages, Core Web Vitals problems and performance
+                        issues affecting real visitors.
                     </p>
-
-                    <ul class="capability-list">
-                        <li>Content quality insights</li>
-                        <li>Thin and duplicate content</li>
-                        <li>Page improvement opportunities</li>
-                        <li>AI-assisted writing</li>
-                        <li>FAQs and structured answers</li>
-                    </ul>
-
                 </article>
-
 
                 <article class="capability">
-
-                    <h3>
-                        Performance
-                    </h3>
-
+                    <h3>Security &amp; Site Health</h3>
                     <p>
-                        Find the pages creating a poor experience and
-                        understand where performance work should begin.
+                        Monitor WordPress health, updates, SSL, security signals,
+                        backups and other technical risks.
                     </p>
-
-                    <ul class="capability-list">
-                        <li>Core Web Vitals</li>
-                        <li>Page performance</li>
-                        <li>Loading problems</li>
-                        <li>Responsiveness</li>
-                        <li>Layout stability</li>
-                    </ul>
-
                 </article>
-
 
                 <article class="capability">
-
-                    <h3>
-                        Security &amp; Site Health
-                    </h3>
-
+                    <h3>WooCommerce</h3>
                     <p>
-                        Keep important WordPress health and protection
-                        signals visible before they become business problems.
+                        Understand how your store's content, pages, products and
+                        technical health affect discovery and conversion.
                     </p>
-
-                    <ul class="capability-list">
-                        <li>WordPress health</li>
-                        <li>Security findings</li>
-                        <li>SSL status</li>
-                        <li>Plugin and environment checks</li>
-                        <li>Backup awareness</li>
-                    </ul>
-
                 </article>
 
+            </div>
 
-                <article class="capability">
+            <p class="section-closing">
+                One website. One view. One place to decide what happens next.
+            </p>
 
-                    <h3>
-                        Automation
-                    </h3>
+        </div>
 
-                    <p>
-                        Turn recurring website maintenance into workflows
-                        that continue after you leave the dashboard.
-                    </p>
+    </section>
 
-                    <ul class="capability-list">
-                        <li>Scheduled scans</li>
-                        <li>Recurring health checks</li>
-                        <li>Triggers and conditions</li>
-                        <li>Automated workflows</li>
-                        <li>Continuous monitoring</li>
-                    </ul>
 
-                </article>
+    <!-- =====================================
+         THE VULOPILOT LOOP
+    ====================================== -->
 
+    <section class="loop" id="how-it-works">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    The VuloPilot loop
+                </div>
+
+                <h2>
+                    From finding a problem to <span>knowing it is fixed.</span>
+                </h2>
+
+                <p>
+                    Most website tools stop at "you have a problem." VuloPilot goes
+                    further.
+                </p>
+
+            </div>
+
+            <div class="loop-grid loop-grid-6">
+
+                <div class="loop-step">
+                    <div class="loop-icon">01</div>
+                    <h3>Find</h3>
+                    <p>Scan your website and uncover issues and opportunities worth your attention.</p>
+                </div>
+
+                <div class="loop-arrow" aria-hidden="true">→</div>
+
+                <div class="loop-step">
+                    <div class="loop-icon">02</div>
+                    <h3>Understand</h3>
+                    <p>See exactly where the problem exists, what caused it and why it matters.</p>
+                </div>
+
+                <div class="loop-arrow" aria-hidden="true">→</div>
+
+                <div class="loop-step">
+                    <div class="loop-icon">03</div>
+                    <h3>Prioritize</h3>
+                    <p>Know what deserves attention now — and what can wait.</p>
+                </div>
+
+                <div class="loop-arrow" aria-hidden="true">→</div>
+
+                <div class="loop-step">
+                    <div class="loop-icon">04</div>
+                    <h3>Fix</h3>
+                    <p>Take action using your existing tools, VuloPilot assistance, AI or supported Pro automation.</p>
+                </div>
+
+                <div class="loop-arrow" aria-hidden="true">→</div>
+
+                <div class="loop-step">
+                    <div class="loop-icon">05</div>
+                    <h3>Verify</h3>
+                    <p>Rescan the affected area and check whether the change actually improved the result.</p>
+                </div>
+
+                <div class="loop-arrow" aria-hidden="true">→</div>
+
+                <div class="loop-step">
+                    <div class="loop-icon">06</div>
+                    <h3>Keep watching</h3>
+                    <p>Your website keeps changing. VuloPilot keeps checking.</p>
+                </div>
+
+            </div>
+
+            <p class="section-closing">
+                Find → Understand → Prioritize → Fix → Verify → Monitor.
+                That's not another audit. It's a continuous improvement loop.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         ACTIONABLE INTELLIGENCE
+    ====================================== -->
+
+    <section class="intelligence">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Actionable intelligence
+                </div>
+
+                <h2>
+                    Not just scores. <span>Actual things worth fixing.</span>
+                </h2>
+
+                <p>
+                    A score tells you that something might be wrong. A useful
+                    finding tells you a lot more.
+                </p>
+
+            </div>
+
+            <div class="intelligence-grid">
+
+                <div class="intel-card">
+                    <h4>What is wrong?</h4>
+                    <p>A clear explanation without unnecessary technical jargon.</p>
+                </div>
+
+                <div class="intel-card">
+                    <h4>Where is it?</h4>
+                    <p>The exact page, URL or website area affected.</p>
+                </div>
+
+                <div class="intel-card">
+                    <h4>Why does it matter?</h4>
+                    <p>Understand the potential impact before spending time fixing it.</p>
+                </div>
+
+                <div class="intel-card">
+                    <h4>What should I do?</h4>
+                    <p>Get a practical next step instead of another warning.</p>
+                </div>
+
+                <div class="intel-card">
+                    <h4>Did it get better?</h4>
+                    <p>Recheck the result instead of assuming the problem is solved.</p>
+                </div>
+
+            </div>
+
+            <p class="section-closing">
+                Less noise. Better decisions.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         MISSION CONTROL
+    ====================================== -->
+
+    <section class="mission-control">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-kicker">
+                    Mission Control
+                </div>
+
+                <h2>
+                    Know what deserves <span>your attention today.</span>
+                </h2>
+
+                <p>
+                    Instead of opening five different tools and trying to figure out
+                    which warning matters most, VuloPilot gives you a prioritized
+                    view of your website.
+                </p>
+
+            </div>
+
+            <div class="mc-dashboard">
+
+                <aside class="mc-sidebar" role="tablist" aria-label="Website areas">
+
+                    <button class="mc-tab active" data-tab="overview" role="tab" aria-selected="true">
+                        <span class="mc-tab-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13.2" y1="13.2" x2="17" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="mc-tab-text">
+                            <strong>The big picture</strong>
+                            <small>Full overview</small>
+                        </span>
+                        <span class="mc-tab-chevron" aria-hidden="true">&rsaquo;</span>
+                    </button>
+
+                    <button class="mc-tab" data-tab="search" role="tab" aria-selected="false">
+                        <span class="mc-tab-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13.2" y1="13.2" x2="17" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="mc-tab-text">
+                            <strong>Can people find you?</strong>
+                            <small>Search visibility</small>
+                        </span>
+                        <span class="mc-tab-chevron" aria-hidden="true">&rsaquo;</span>
+                    </button>
+
+                    <button class="mc-tab" data-tab="ai" role="tab" aria-selected="false">
+                        <span class="mc-tab-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13.2" y1="13.2" x2="17" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="mc-tab-text">
+                            <strong>Does AI know you exist?</strong>
+                            <small>AI visibility</small>
+                        </span>
+                        <span class="mc-tab-chevron" aria-hidden="true">&rsaquo;</span>
+                    </button>
+
+                    <button class="mc-tab" data-tab="content" role="tab" aria-selected="false">
+                        <span class="mc-tab-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13.2" y1="13.2" x2="17" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="mc-tab-text">
+                            <strong>Are you answering them?</strong>
+                            <small>Content</small>
+                        </span>
+                        <span class="mc-tab-chevron" aria-hidden="true">&rsaquo;</span>
+                    </button>
+
+                    <button class="mc-tab" data-tab="performance" role="tab" aria-selected="false">
+                        <span class="mc-tab-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13.2" y1="13.2" x2="17" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="mc-tab-text">
+                            <strong>How slow, really?</strong>
+                            <small>Performance</small>
+                        </span>
+                        <span class="mc-tab-chevron" aria-hidden="true">&rsaquo;</span>
+                    </button>
+
+                    <button class="mc-tab" data-tab="health" role="tab" aria-selected="false">
+                        <span class="mc-tab-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13.2" y1="13.2" x2="17" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="mc-tab-text">
+                            <strong>What's hiding underneath?</strong>
+                            <small>Security &amp; health</small>
+                        </span>
+                        <span class="mc-tab-chevron" aria-hidden="true">&rsaquo;</span>
+                    </button>
+
+                    <button class="mc-tab" data-tab="automation" role="tab" aria-selected="false">
+                        <span class="mc-tab-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" width="16" height="16"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="13.2" y1="13.2" x2="17" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                        <span class="mc-tab-text">
+                            <strong>What happens while you sleep?</strong>
+                            <small>Automation</small>
+                        </span>
+                        <span class="mc-tab-chevron" aria-hidden="true">&rsaquo;</span>
+                    </button>
+
+                </aside>
+
+                <div class="mc-content">
+
+                    <div class="mc-panel" data-panel="overview">
+                        <h3>What needs your attention?</h3>
+                        <p class="mc-panel-sub">VuloPilot found issues across your website and grouped them by what deserves attention.</p>
+                        <div class="finding-grid-3">
+                            <div class="finding-card fc-lavender">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="36.2" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">68</text></svg></div>
+                                <div class="finding-card-label">Visibility</div>
+                                <h4>8 pages need SEO attention</h4>
+                                <p>Missing or weak search signals affecting important pages.</p>
+                            </div>
+                            <div class="finding-card fc-features">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="#2f9e5c"/><circle cx="16" cy="28" r="3" fill="#c0585f"/><circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/><rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/><rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/></svg></div>
+                                <div class="finding-card-label">Performance</div>
+                                <h4>3 pages are slow</h4>
+                                <p>Identify the affected URLs and investigate the causes.</p>
+                            </div>
+                            <div class="finding-card fc-pink">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="36.2" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">68</text></svg></div>
+                                <div class="finding-card-label">AI Visibility</div>
+                                <h4>Improve business understanding</h4>
+                                <p>Strengthen signals that help AI systems understand your website.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mc-panel" data-panel="search" hidden>
+                        <h3>Usually — just not as well as it should.</h3>
+                        <p class="mc-panel-sub">VuloPilot checks titles, links and indexing signals, then tells you exactly which pages are holding themselves back.</p>
+                        <div class="finding-grid-3">
+                            <div class="finding-card fc-lavender">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="43" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">62</text></svg></div>
+                                <div class="finding-card-label">Titles &amp; meta</div>
+                                <h4>8 titles need attention</h4>
+                                <p>Missing or vague titles on important pages.</p>
+                            </div>
+                            <div class="finding-card fc-features">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="#2f9e5c"/><circle cx="16" cy="28" r="3" fill="#c0585f"/><circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/><rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/><rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/></svg></div>
+                                <div class="finding-card-label">Internal links</div>
+                                <h4>14 pages have no inbound links</h4>
+                                <p>Pages nothing else on your site points to.</p>
+                            </div>
+                            <div class="finding-card fc-pink">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="47.5" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">58</text></svg></div>
+                                <div class="finding-card-label">Indexing</div>
+                                <h4>2 pages aren't indexed</h4>
+                                <p>Canonical URLs and structured data checked.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mc-panel" data-panel="ai" hidden>
+                        <h3>Not if your details change page to page.</h3>
+                        <p class="mc-panel-sub">VuloPilot checks business information, answer coverage and crawler activity, and shows where AI systems lose the thread.</p>
+                        <div class="finding-grid-3">
+                            <div class="finding-card fc-lavender">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="40.7" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">64</text></svg></div>
+                                <div class="finding-card-label">Business clarity</div>
+                                <h4>Details differ on 4 pages</h4>
+                                <p>Hours or pricing don't match everywhere.</p>
+                            </div>
+                            <div class="finding-card fc-features">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="#2f9e5c"/><circle cx="16" cy="28" r="3" fill="#c0585f"/><circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/><rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/><rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/></svg></div>
+                                <div class="finding-card-label">Answer coverage</div>
+                                <h4>6 questions go unanswered</h4>
+                                <p>Buyer questions your pages don't answer yet.</p>
+                            </div>
+                            <div class="finding-card fc-pink">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="32.8" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">71</text></svg></div>
+                                <div class="finding-card-label">Crawler signals</div>
+                                <h4>GPTBot visited 12 times</h4>
+                                <p>Track which AI crawlers reach your site.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mc-panel" data-panel="content" hidden>
+                        <h3>Not on the pages that matter most.</h3>
+                        <p class="mc-panel-sub">VuloPilot finds thin, outdated or incomplete pages, and shows where your website needs better answers.</p>
+                        <div class="finding-grid-3">
+                            <div class="finding-card fc-lavender">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="46.4" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">59</text></svg></div>
+                                <div class="finding-card-label">Content findings</div>
+                                <h4>5 pages are thin or duplicate</h4>
+                                <p>Unlikely to rank or convert as they are.</p>
+                            </div>
+                            <div class="finding-card fc-features">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="#2f9e5c"/><circle cx="16" cy="28" r="3" fill="#c0585f"/><circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/><rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/><rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/></svg></div>
+                                <div class="finding-card-label">Answers</div>
+                                <h4>Missing FAQs and schema</h4>
+                                <p>Details most pages leave blank.</p>
+                            </div>
+                            <div class="finding-card fc-pink">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="38.5" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">66</text></svg></div>
+                                <div class="finding-card-label">WooCommerce</div>
+                                <h4>12 products need descriptions</h4>
+                                <p>Product pages missing real copy.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mc-panel" data-panel="performance" hidden>
+                        <h3>Slower than you'd guess, on at least one page.</h3>
+                        <p class="mc-panel-sub">VuloPilot tests every page's load time and Core Web Vitals, so you know exactly what to fix.</p>
+                        <div class="finding-grid-3">
+                            <div class="finding-card fc-lavender">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="44.1" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">61</text></svg></div>
+                                <div class="finding-card-label">Slow pages</div>
+                                <h4>3 pages need investigation</h4>
+                                <p>Identify the affected URLs and causes.</p>
+                            </div>
+                            <div class="finding-card fc-features">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="#2f9e5c"/><circle cx="16" cy="28" r="3" fill="#c0585f"/><circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/><rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/><rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/></svg></div>
+                                <div class="finding-card-label">Core Web Vitals</div>
+                                <h4>LCP failing on 2 pages</h4>
+                                <p>Loading speed affecting visitor experience.</p>
+                            </div>
+                            <div class="finding-card fc-pink">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="33.9" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">70</text></svg></div>
+                                <div class="finding-card-label">Speed history</div>
+                                <h4>Keep track after changes</h4>
+                                <p>Compare results after you apply a fix.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mc-panel" data-panel="health" hidden>
+                        <h3>An outdated plugin or two, most likely.</h3>
+                        <p class="mc-panel-sub">VuloPilot reviews security and site health alongside backup status, and flags what needs attention.</p>
+                        <div class="finding-grid-3">
+                            <div class="finding-card fc-lavender">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="48.6" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">57</text></svg></div>
+                                <div class="finding-card-label">Security</div>
+                                <h4>1 known plugin vulnerability</h4>
+                                <p>Malware and SSL checks, with the cause named.</p>
+                            </div>
+                            <div class="finding-card fc-features">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="#2f9e5c"/><circle cx="16" cy="28" r="3" fill="#c0585f"/><circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/><rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/><rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/></svg></div>
+                                <div class="finding-card-label">Backups</div>
+                                <h4>Backup status: unverified</h4>
+                                <p>Checks whether your backup plugin is running.</p>
+                            </div>
+                            <div class="finding-card fc-pink">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="36.2" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">68</text></svg></div>
+                                <div class="finding-card-label">Accessibility</div>
+                                <h4>3 images missing alt text</h4>
+                                <p>Headings and image descriptions checked.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mc-panel" data-panel="automation" hidden>
+                        <h3>VuloPilot, still checking — on your schedule.</h3>
+                        <p class="mc-panel-sub">Recurring scans bring new findings back to your attention automatically, no setup required.</p>
+                        <div class="finding-grid-3">
+                            <div class="finding-card fc-lavender">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="31.7" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">72</text></svg></div>
+                                <div class="finding-card-label">Ready-made checks</div>
+                                <h4>Full site scan, on autopilot</h4>
+                                <p>Free includes a recurring scan, no setup.</p>
+                            </div>
+                            <div class="finding-card fc-features">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#e4dcf5" stroke-width="1.5"/><circle cx="16" cy="16" r="3" fill="#2f9e5c"/><circle cx="16" cy="28" r="3" fill="#c0585f"/><circle cx="16" cy="40" r="3" fill="var(--accent-bright)"/><rect x="26" y="13" width="34" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="25" width="30" height="6" rx="3" fill="#e9edf7"/><rect x="26" y="37" width="26" height="6" rx="3" fill="#e9edf7"/><rect x="10" y="52" width="52" height="10" rx="5" fill="var(--pastel-1)"/></svg></div>
+                                <div class="finding-card-label">Schedules</div>
+                                <h4>Daily, weekly or custom schedule</h4>
+                                <p>Pick how often VuloPilot checks back in.</p>
+                            </div>
+                            <div class="finding-card fc-pink">
+                                <div class="finding-icon" aria-hidden="true"><svg viewBox="0 0 72 72" width="56" height="56"><rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/><rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/><circle cx="20" cy="15.5" r="1.8" fill="#fff"/><circle cx="27" cy="15.5" r="1.8" fill="#fff"/><circle cx="36" cy="44" r="18" fill="none" stroke="#f0e4e4" stroke-width="5.5"/><circle cx="36" cy="44" r="18" fill="none" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="39.6" transform="rotate(-90 36 44)"/><text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">65</text></svg></div>
+                                <div class="finding-card-label">Advanced workflows</div>
+                                <h4>"If a plugin update appears, apply it"</h4>
+                                <p>Pro lets you set rules like this one.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="section-closing">
+                You don't need 100 warnings. You need the right five things to work on.
+            </p>
+
+            <div class="hero-actions mc-actions">
+                <a href="#cta" class="btn btn-primary">See My Findings</a>
             </div>
 
         </div>
@@ -2012,122 +2103,154 @@ footer {
 
 
     <!-- =====================================
-         AI VISIBILITY
+         SEARCH IS CHANGING
     ====================================== -->
 
-    <section class="ai-visibility" id="ai-visibility">
+    <section class="ai-visibility">
 
         <div class="container">
 
-            <div class="ai-grid">
+            <div class="section-header">
 
-                <div class="ai-copy">
-
-                    <div class="section-kicker">
-                        Search is changing
-                    </div>
-
-                    <h2>
-                        Don't optimize only for search engines.
-                        Build visibility for AI discovery too.
-                    </h2>
-
-                    <p>
-                        Search is no longer limited to a list of blue links.
-                        People increasingly discover businesses, products
-                        and answers through AI-powered systems.
-                    </p>
-
-                    <p>
-                        VuloPilot helps you understand whether your website
-                        clearly communicates who you are, what you offer,
-                        what questions you answer and why your information
-                        should be understood.
-                    </p>
-
-                    <div class="ai-points">
-
-                        <div class="ai-point">
-                            See your AI visibility score at a glance
-                        </div>
-
-                        <div class="ai-point">
-                            Know which buyer questions go unanswered
-                        </div>
-
-                        <div class="ai-point">
-                            Track which AI crawlers visit, and how often
-                        </div>
-
-                        <div class="ai-point">
-                            Watch the score move as you make changes
-                        </div>
-
-                    </div>
-
+                <div class="section-kicker">
+                    Search is changing
                 </div>
 
+                <h2>
+                    Your website needs to be <span>understood</span> — not just indexed.
+                </h2>
 
-                <div class="ai-visual">
+                <p>
+                    People are no longer discovering businesses only through
+                    traditional search. They increasingly ask AI systems to
+                    recommend businesses, compare solutions, explain products,
+                    answer questions, find alternatives and summarize expertise.
+                    VuloPilot helps strengthen the website signals behind that
+                    discovery.
+                </p>
 
-                    <div class="ai-visual-header">
+            </div>
 
-                        <div>
-                            <strong>AI Visibility</strong>
-                            <div style="color:#777;font-size:13px;">
-                                Website analysis
-                            </div>
-                        </div>
+            <div class="ai-points">
+                <div class="ai-point">Business clarity</div>
+                <div class="ai-point">Entity signals</div>
+                <div class="ai-point">Content completeness</div>
+                <div class="ai-point">Structured information</div>
+                <div class="ai-point">Answers</div>
+                <div class="ai-point">Internal relationships</div>
+                <div class="ai-point">Search visibility</div>
+            </div>
 
-                        <div class="ai-score">
-                            78
-                        </div>
+            <p class="section-closing">
+                No promise that you'll "rank in ChatGPT." No magic switch. Just a
+                better, more understandable website foundation for search and
+                AI-driven discovery.
+            </p>
 
-                    </div>
+            <div class="hero-actions mc-actions">
+                <a href="#cta" class="btn btn-primary">Improve AI Visibility</a>
+            </div>
 
+        </div>
 
-                    <div class="ai-result">
-
-                        <strong>
-                            4 pages have mismatched business details
-                        </strong>
-
-                        <span>
-                            Hours, service area or pricing don't match
-                            everywhere VuloPilot checked.
-                        </span>
-
-                    </div>
-
-
-                    <div class="ai-result">
-
-                        <strong>
-                            6 common questions go unanswered
-                        </strong>
-
-                        <span>
-                            Pages that could directly answer a buyer's
-                            question, but don't yet.
-                        </span>
-
-                    </div>
+    </section>
 
 
-                    <div class="ai-result">
+    <!-- =====================================
+         KEEPS WATCHING
+    ====================================== -->
 
-                        <strong>
-                            GPTBot visited 12 times this month
-                        </strong>
+    <section class="monitor">
 
-                        <span>
-                            Track which AI crawlers reach your site,
-                            and how often they return.
-                        </span>
+        <div class="container">
 
-                    </div>
+            <div class="section-header">
 
+                <div class="section-kicker">
+                    Your website doesn't stay still
                 </div>
+
+                <h2>
+                    Neither should <span>your monitoring.</span>
+                </h2>
+
+                <p>
+                    A new page can introduce an SEO problem. A plugin update can
+                    affect performance. A content change can weaken an important
+                    page. A configuration change can create a security or health
+                    issue. You shouldn't have to remember to check everything.
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-step">
+                    <div class="timeline-time">MON 09:12</div>
+                    <h4>New issue detected</h4>
+                    <p>A newly published page has weak search signals.</p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-time">MON 10:04</div>
+                    <h4>Recommended action</h4>
+                    <p>Strengthen the page title, internal links and supporting content.</p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-time">TUE 14:20</div>
+                    <h4>Change verified</h4>
+                    <p>The page was rescanned after the update.</p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-time">FRI 08:00</div>
+                    <h4>Still watching</h4>
+                    <p>Recurring checks continue looking for what changed.</p>
+                </div>
+
+            </div>
+
+            <p class="section-closing">
+                Your website changes. VuloPilot keeps up.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         AI WHEN AI HELPS
+    ====================================== -->
+
+    <section class="ai-help">
+
+        <div class="container">
+
+            <div class="ai-help-grid">
+
+                <div class="section-header">
+                    <div class="section-kicker">AI, when AI actually helps</div>
+                    <h2>AI shouldn't replace your judgement. <span>It should remove the work around it.</span></h2>
+                    <p>
+                        VuloPilot uses AI where context and judgement are useful —
+                        but deterministic checks remain deterministic. VuloPilot
+                        doesn't call AI just to produce another opinion. It uses AI
+                        where it can make the next decision or action more useful.
+                    </p>
+                </div>
+
+                <ul class="ai-help-list">
+                    <li>Improve page titles and descriptions</li>
+                    <li>Identify content gaps</li>
+                    <li>Suggest better answers</li>
+                    <li>Refresh outdated content</li>
+                    <li>Improve structured content</li>
+                    <li>Explain complicated findings</li>
+                    <li>Analyze AI visibility</li>
+                    <li>Recommend what to do next</li>
+                </ul>
 
             </div>
 
@@ -2146,86 +2269,106 @@ footer {
 
             <div class="section-header">
 
-                <div class="section-kicker">
-                    Start free. Grow when you need more.
-                </div>
+                <div class="section-kicker">Free &amp; Pro</div>
 
                 <h2>
-                    Understand first. Automate when you're ready.
+                    See what's wrong for free. <span>Go further when you're ready.</span>
                 </h2>
 
-                <p>
-                    VuloPilot's free experience gives you a clear picture
-                    of your website. Pro gives you deeper intelligence,
-                    more action and greater control over recurring work.
-                </p>
-
             </div>
-
 
             <div class="plan-grid">
 
                 <article class="plan">
-
-                    <div class="plan-label">
-                        Free
-                    </div>
-
-                    <h3>
-                        Know what needs attention.
-                    </h3>
-
-                    <p>
-                        Build your website's starting intelligence and
-                        discover the issues worth working on.
-                    </p>
-
+                    <div class="plan-label">Free</div>
+                    <h3>Know what needs attention.</h3>
+                    <p>Start with the intelligence layer.</p>
                     <ul>
-                        <li>SEO and visibility analysis</li>
-                        <li>AI visibility insights</li>
-                        <li>Website issue detection</li>
+                        <li>Website visibility insights</li>
+                        <li>SEO and AI visibility analysis</li>
+                        <li>Issue detection</li>
+                        <li>Actionable findings</li>
                         <li>Full-site scanning</li>
-                        <li>Website health automation</li>
-                        <li>100 free AI credits</li>
+                        <li>Website health monitoring</li>
+                        <li>Recurring checks</li>
+                        <li>Free AI credits</li>
                     </ul>
-
-                    <a href="#cta" class="btn btn-secondary">
-                        Start Free
-                    </a>
-
+                    <a href="#cta" class="btn btn-secondary">Start Free</a>
                 </article>
-
 
                 <article class="plan pro">
-
-                    <div class="plan-label">
-                        Pro
-                    </div>
-
-                    <h3>
-                        Do more. Automate more.
-                    </h3>
-
-                    <p>
-                        Turn insights into action with deeper analysis,
-                        AI assistance, fixes and advanced workflows.
-                    </p>
-
+                    <div class="plan-label">Pro</div>
+                    <h3>Turn findings into action.</h3>
+                    <p>Go from knowing about problems to actively improving your website. Everything in Free, plus:</p>
                     <ul>
+                        <li>AI-powered fixes</li>
                         <li>Advanced AI visibility analysis</li>
-                        <li>AI-assisted content improvements</li>
-                        <li>SEO, schema and page assistance</li>
-                        <li>Advanced performance insights</li>
-                        <li>Custom triggers and workflows</li>
-                        <li>Scheduled automation</li>
-                        <li>Reports and historical insights</li>
+                        <li>AI content creation and refresh</li>
+                        <li>Bulk improvements</li>
+                        <li>Custom workflows</li>
+                        <li>Scheduled automations</li>
+                        <li>Advanced performance monitoring</li>
+                        <li>Advanced security monitoring</li>
+                        <li>Historical insights and reporting</li>
                     </ul>
-
-                    <a href="#plans" class="btn btn-primary">
-                        Explore Pro
-                    </a>
-
+                    <a href="#plans" class="btn btn-primary">Explore Pro</a>
                 </article>
+
+            </div>
+
+            <p class="section-closing">
+                Free tells you what matters. Pro helps you do something about it.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         BUILT FOR
+    ====================================== -->
+
+    <section class="roles">
+
+        <div class="container">
+
+            <div class="section-header">
+                <div class="section-kicker">Built for people who are responsible for a website</div>
+                <h2>One system. <span>Different jobs.</span></h2>
+            </div>
+
+            <div class="role-grid">
+
+                <div class="role-card">
+                    <h4>Website Owners</h4>
+                    <p>Know what needs attention without becoming an SEO expert.</p>
+                </div>
+
+                <div class="role-card">
+                    <h4>Businesses</h4>
+                    <p>Keep your website healthy, visible and competitive.</p>
+                </div>
+
+                <div class="role-card">
+                    <h4>Marketers</h4>
+                    <p>Turn website data into a clear action plan.</p>
+                </div>
+
+                <div class="role-card">
+                    <h4>Agencies</h4>
+                    <p>Monitor and improve multiple websites without manually checking everything.</p>
+                </div>
+
+                <div class="role-card">
+                    <h4>Developers</h4>
+                    <p>Find technical problems faster and understand their impact.</p>
+                </div>
+
+                <div class="role-card">
+                    <h4>WooCommerce Businesses</h4>
+                    <p>Improve visibility, performance, content and store health together.</p>
+                </div>
 
             </div>
 
@@ -2235,60 +2378,27 @@ footer {
 
 
     <!-- =====================================
-         MONITORING
+         THE DIFFERENCE
     ====================================== -->
 
-    <section class="monitor">
+    <section class="difference">
 
         <div class="container">
 
             <div class="section-header">
-
-                <div class="section-kicker">
-                    How monitoring actually works
-                </div>
-
-                <h2>
-                    Set it once. It runs on its own.
-                </h2>
-
+                <div class="section-kicker">The difference</div>
+                <h2>Stop collecting reports. <span>Start improving your website.</span></h2>
                 <p>
-                    Free includes a recurring full site scan, ready to go.
-                    Pro lets you set the schedule and the rules yourself.
+                    VuloPilot isn't trying to be another SEO plugin. It isn't
+                    another dashboard that gives you 200 warnings. It isn't another
+                    AI chatbot sitting inside WordPress. VuloPilot is built around
+                    one simple idea: your website should continuously get better.
                 </p>
-
             </div>
 
-
-            <div class="monitor-box">
-
-                <h3>
-                    Pick how often. VuloPilot does the rest.
-                </h3>
-
-                <p>
-                    Daily, weekly, or a custom schedule — choose how often
-                    VuloPilot checks back in, based on how fast your site
-                    actually changes.
-                </p>
-
-                <div class="monitor-items">
-
-                    <div class="monitor-item">
-                        Daily, weekly or custom schedules
-                    </div>
-
-                    <div class="monitor-item">
-                        Custom triggers and conditions
-                    </div>
-
-                    <div class="monitor-item">
-                        Supported fixes applied automatically
-                    </div>
-
-                </div>
-
-            </div>
+            <p class="section-closing">
+                Find what matters. Fix what matters. Verify the result. Keep improving.
+            </p>
 
         </div>
 
@@ -2304,21 +2414,29 @@ footer {
         <div class="container">
 
             <div class="eyebrow">
-                Start with your website
+                Stop wondering what's wrong
             </div>
 
             <h2>
-                Find out what is holding your website back.
+                Start <span>knowing what to fix.</span>
             </h2>
 
             <p>
-                Connect your WordPress website and get your first set
-                of actionable findings. No SEO expertise required.
+                Run your first scan and see what VuloPilot finds on your
+                WordPress website.
             </p>
 
             <a href="#cta" class="btn btn-primary">
                 Scan My Website
             </a>
+
+            <div class="hero-note">
+                Free to start · No credit card required
+            </div>
+
+            <p class="section-closing">
+                Find what matters. Fix what matters. Keep improving.
+            </p>
 
         </div>
 
@@ -2335,68 +2453,56 @@ footer {
 
     <div class="container">
 
-        <div class="footer-grid">
+        <div class="footer-grid footer-grid-5">
 
             <div class="footer-brand">
-
                 <a href="#top" class="logo">
                     Vulo<span>Pilot</span>
                 </a>
-
                 <p>
-                    The WordPress Growth Operating System for finding,
-                    fixing and continuously improving what matters.
+                    WordPress Growth Operating System. Find what matters. Fix what
+                    matters. Keep improving.
                 </p>
-
             </div>
 
-
             <div class="footer-column">
-
-                <h4>
-                    Product
-                </h4>
-
+                <h4>Product</h4>
+                <a href="#how-it-works">How It Works</a>
                 <a href="#features">Features</a>
-                <a href="#ai-visibility">AI Visibility</a>
-                <a href="#features">SEO</a>
-                <a href="#features">Performance</a>
-                <a href="#features">Security</a>
-                <a href="#features">Automation</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    Resources
-                </h4>
-
-                <a href="#">Documentation</a>
-                <a href="#">Blog</a>
-                <a href="#">Changelog</a>
-                <a href="#">Support</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    Company
-                </h4>
-
-                <a href="#">About</a>
-                <a href="#">Contact</a>
                 <a href="#plans">Pricing</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
+                <a href="#">Changelog</a>
+            </div>
 
+            <div class="footer-column">
+                <h4>Solutions</h4>
+                <a href="#features">WordPress SEO</a>
+                <a href="#ai-visibility">AI Visibility</a>
+                <a href="#">Website Audit</a>
+                <a href="#">Website Performance</a>
+                <a href="#">Website Health</a>
+                <a href="#">WooCommerce</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="#">Documentation</a>
+                <a href="#">Guides</a>
+                <a href="#">Blog</a>
+                <a href="#">Comparisons</a>
+                <a href="#">Support</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Brand Assets</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Refund Policy</a>
             </div>
 
         </div>
-
 
         <div class="copyright">
             © 2026 VuloPilot. All rights reserved.
@@ -2408,8 +2514,8 @@ footer {
 
 <script>
 (function () {
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.sidebar-item'));
-    var panels = Array.prototype.slice.call(document.querySelectorAll('.dashboard-panel'));
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.mc-tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.mc-panel'));
     tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
             var key = tab.getAttribute('data-tab');
