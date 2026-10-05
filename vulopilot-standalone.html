@@ -578,6 +578,14 @@ h2.light { color: var(--cream); }
 .compare-head .us { color: var(--green-dark); }
 .icon-x { color: #c05050; font-weight: 700; }
 .icon-check { color: var(--green-dark); font-weight: 700; }
+.compare-row { justify-content: space-between; grid-template-columns: none; }
+.compare-row .mc-label {
+  background: var(--peach);
+  color: var(--green-dark);
+  padding: 5px 12px;
+  border-radius: 999px;
+  opacity: 1;
+}
 
 /* ---------- FAQ ---------- */
 .faq-list {
@@ -1527,13 +1535,13 @@ h2.light { color: var(--cream); }
       VuloPilot
     </a>
     <ul class="nav-links">
-      <li><a href="#mission-control">Mission Control</a></li>
-      <li><a href="#how">How it works</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#mission-control">Features</a></li>
+      <li><a href="#faq">Resources</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
     </ul>
     <a class="btn btn-dark" href="#cta">
-      Scan your website
+      Get a Quote
       <span class="btn-dot"></span>
     </a>
   </nav>
@@ -1616,174 +1624,11 @@ h2.light { color: var(--cream); }
     </div>
   </section>
 
-  <!-- JOURNEY -->
-  <section class="section">
-    <p class="eyebrow reveal">From finding to fixed</p>
-    <h2 class="reveal">Three steps. <span class="highlight">Every time.</span></h2>
-    <div class="journey-grid reveal">
-      <div class="journey-card journey-lilac">
-        <h3>Understand</h3>
-        <p>See the issue as VuloPilot found it, where it happens and why it matters. Use the findings to decide where to begin.</p>
-        <span class="journey-stat">12+ data points reviewed per page</span>
-      </div>
-      <div class="journey-card journey-mint">
-        <h3>Improve</h3>
-        <p>Use AI writing tools for content or apply supported fixes with Pro. Bigger changes stay with your admin or developer.</p>
-        <span class="journey-stat">12+ fixes drafted before you ask</span>
-      </div>
-      <div class="journey-card journey-blue">
-        <h3>Recheck</h3>
-        <p>Run the scan again and confirm the change actually worked, instead of assuming the warning is gone.</p>
-        <span class="journey-stat">12+ checks re-run automatically</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section class="section" id="problem">
-    <p class="eyebrow reveal">The problem</p>
-    <h2 class="reveal">Growth stalls <span class="highlight">in places you never check.</span></h2>
-    <p class="section-sub reveal">Your site runs fine on the surface. Underneath, small issues pile up quietly — and each one costs you traffic, trust, or a sale.</p>
-
-    <div class="problem-grid reveal">
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <h3>You can't see what's broken</h3>
-        <p>SEO gaps, slow pages and security risks hide across dozens of pages, with no single place to check them all.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2 2 20h20L12 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg>
-        </span>
-        <h3>AI search is passing you by</h3>
-        <p>Chatbots and AI answers now send real traffic — but only to sites whose content and data they can understand.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v6M12 16v6M2 12h6M16 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <h3>Fixing it takes too many tools</h3>
-        <p>One plugin for SEO, another for speed, another for security — none of them talking to each other, or to you.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOOP / HOW IT WORKS -->
-  <section class="section" id="how">
-    <p class="eyebrow reveal">How it works</p>
-    <h2 class="reveal">One loop. <span class="highlight">Running on repeat.</span></h2>
-    <p class="section-sub reveal">VuloPilot doesn't just report problems once — it keeps the loop going, so new issues get caught the moment they appear.</p>
-
-    <div class="loop-grid reveal">
-      <div class="loop-step">
-        <span class="loop-num">1</span>
-        <h3>Scan</h3>
-        <p>Every page checked for SEO, AI visibility, content, speed and security issues.</p>
-      </div>
-      <div class="loop-arrow" aria-hidden="true">→</div>
-      <div class="loop-step">
-        <span class="loop-num">2</span>
-        <h3>Prioritize</h3>
-        <p>Findings ranked by what actually affects traffic and trust — not just a long list.</p>
-      </div>
-      <div class="loop-arrow" aria-hidden="true">→</div>
-      <div class="loop-step">
-        <span class="loop-num">3</span>
-        <h3>Fix</h3>
-        <p>AI drafts the fix — a rewritten section, a compressed image, a patched plugin.</p>
-      </div>
-      <div class="loop-arrow" aria-hidden="true">→</div>
-      <div class="loop-step">
-        <span class="loop-num">4</span>
-        <h3>Verify</h3>
-        <p>Re-check the page after the change, instead of hoping the issue went away.</p>
-      </div>
-      <div class="loop-arrow" aria-hidden="true">→</div>
-      <div class="loop-step">
-        <span class="loop-num">5</span>
-        <h3>Monitor</h3>
-        <p>Scans repeat on a schedule, so the next issue is caught before it costs you.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CAPABILITIES -->
-  <section class="section capabilities-dark" id="capabilities">
-    <p class="eyebrow light reveal">Everything checked</p>
-    <h2 class="light reveal">Six areas. <span class="highlight-light">One plugin.</span></h2>
-    <p class="section-sub light reveal">Each one maps to a real way visitors find, judge and leave your site.</p>
-
-    <div class="cap-grid reveal">
-      <div class="cap-card">
-        <h4>Search Visibility</h4>
-        <ul class="cap-list">
-          <li>Title &amp; meta description checks</li>
-          <li>Internal linking gaps</li>
-          <li>Indexing &amp; canonical issues</li>
-          <li>Structured data validation</li>
-          <li>Broken link detection</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h4>AI Visibility</h4>
-        <ul class="cap-list">
-          <li>Business detail consistency</li>
-          <li>Unanswered buyer questions</li>
-          <li>AI crawler activity tracking</li>
-          <li>Entity &amp; schema clarity</li>
-          <li>Answer-ready content checks</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h4>Content</h4>
-        <ul class="cap-list">
-          <li>Thin &amp; duplicate page detection</li>
-          <li>AI Writer &amp; Blog Generator</li>
-          <li>FAQ &amp; metadata drafting</li>
-          <li>WooCommerce description tools</li>
-          <li>Readability review</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h4>Performance</h4>
-        <ul class="cap-list">
-          <li>Page load time testing</li>
-          <li>Core Web Vitals tracking</li>
-          <li>Oversized image detection</li>
-          <li>Speed history comparisons</li>
-          <li>One-click image compression</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h4>Security &amp; Site Health</h4>
-        <ul class="cap-list">
-          <li>Malware &amp; vulnerability scans</li>
-          <li>SSL certificate monitoring</li>
-          <li>Backup status verification</li>
-          <li>Accessibility checks</li>
-          <li>Plugin update alerts</li>
-        </ul>
-      </div>
-      <div class="cap-card">
-        <h4>Automation</h4>
-        <ul class="cap-list">
-          <li>Recurring full site scans</li>
-          <li>Daily, weekly or custom cadence</li>
-          <li>Custom triggers &amp; conditions</li>
-          <li>Supported auto-fixes on Pro</li>
-          <li>Change history &amp; comparisons</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <!-- MISSION CONTROL -->
   <section class="section" id="mission-control">
-    <p class="eyebrow reveal">See it in action</p>
-    <h2 class="reveal">Open one dashboard. <span class="highlight">See what's holding you back.</span></h2>
-    <p class="section-sub reveal">Choose a category below, see what needs work, and jump straight to the affected pages.</p>
+    <p class="eyebrow reveal">Meet your website's Mission Control</p>
+    <h2 class="reveal">See exactly what's <span class="highlight">quietly holding you back.</span></h2>
+    <p class="section-sub reveal">Open one dashboard to review your website, area by area. Choose a category below, see what needs work, and jump straight to the affected pages.</p>
 
     <div class="mission reveal">
       <div class="mission-head">
@@ -1879,24 +1724,83 @@ h2.light { color: var(--cream); }
     </div>
   </section>
 
-  <!-- AI VISIBILITY -->
+  <!-- JOURNEY -->
   <section class="section">
+    <p class="eyebrow reveal">From finding to fixed</p>
+    <h2 class="reveal">Three steps. <span class="highlight">Every time.</span></h2>
+    <div class="journey-grid reveal">
+      <div class="journey-card journey-lilac">
+        <h3>Understand</h3>
+        <p>See the issue as VuloPilot found it, where it happens and why it matters. Use the findings to decide where to begin.</p>
+        <span class="journey-stat">12+ data points reviewed per page</span>
+      </div>
+      <div class="journey-card journey-mint">
+        <h3>Improve</h3>
+        <p>Use AI writing tools for content or apply supported fixes with Pro. Bigger changes stay with your admin or developer.</p>
+        <span class="journey-stat">12+ fixes drafted before you ask</span>
+      </div>
+      <div class="journey-card journey-blue">
+        <h3>Recheck</h3>
+        <p>Run the scan again and confirm the change actually worked, instead of assuming the warning is gone.</p>
+        <span class="journey-stat">12+ checks re-run automatically</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section" id="problem">
+    <p class="eyebrow reveal">The problem</p>
+    <h2 class="reveal">Growth stalls <span class="highlight">in places you never check.</span></h2>
+    <p class="section-sub reveal">Your site runs fine on the surface. Underneath, small issues pile up quietly — and each one costs you traffic, trust, or a sale.</p>
+
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <span class="problem-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <h3>You can't see what's broken</h3>
+        <p>SEO gaps, slow pages and security risks hide across dozens of pages, with no single place to check them all.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2 2 20h20L12 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg>
+        </span>
+        <h3>AI search is passing you by</h3>
+        <p>Chatbots and AI answers now send real traffic — but only to sites whose content and data they can understand.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v6M12 16v6M2 12h6M16 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Fixing it takes too many tools</h3>
+        <p>One plugin for SEO, another for speed, another for security — none of them talking to each other, or to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM INTRO -->
+  <section class="section problem-intro">
+    <p class="eyebrow reveal">One journey, every angle</p>
+    <h2 class="reveal">From the moment someone searches, <span class="highlight">to the moment they trust you.</span></h2>
+    <p class="section-sub reveal">Getting found is only step one. A visitor still has to understand your offer, use the page without friction, and trust what's running behind it. Here's how VuloPilot covers each part of that journey.</p>
+  </section>
+
+  <!-- FEATURE STORY 1 -->
+  <section class="section story-row reveal" id="how">
     <div class="split">
-      <div class="copy reveal">
-        <p class="eyebrow">AI visibility, explained</p>
-        <h2>Not just Google anymore. <span class="highlight">Now AI too.</span></h2>
-        <p class="card-copy">Buyers now ask ChatGPT and other AI tools for recommendations before they ever open a search engine. VuloPilot checks whether your business details, answers and structured data are clear enough for AI to understand — and fixes the gaps that keep you invisible to it.</p>
-        <ul class="check-list">
-          <li>Business details checked for consistency across pages</li>
-          <li>Common buyer questions flagged when a page doesn't answer them</li>
-          <li>AI crawler visits tracked, so you see who's actually reading</li>
-        </ul>
-        <a class="text-link" href="#mission-control">Explore AI findings ↗</a>
+      <div class="copy">
+        <span class="eyebrow">01 / Get found</span>
+        <h2>Finds what AI and search need <span class="highlight">— then drafts the fix.</span></h2>
+        <p class="card-copy">A page can read perfectly to a human and still be invisible to AI — a missing title tag or thin internal linking is usually why. VuloPilot checks every page for these signals and tells you exactly which ones need attention.</p>
+        <div class="story-links">
+          <a class="text-link" href="#mission-control">Search visibility ↗</a>
+          <a class="text-link" href="#mission-control">AI search ↗</a>
+        </div>
       </div>
       <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
         <div class="browser-chrome">
           <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-          <span class="chrome-url">VuloPilot — AI visibility</span>
+          <span class="chrome-url">/services/web-design</span>
         </div>
         <div class="insight-body">
           <div class="insight-score">
@@ -1904,18 +1808,168 @@ h2.light { color: var(--cream); }
               <circle class="ring-track" cx="40" cy="40" r="34" fill="none" stroke-width="7"/>
               <circle class="ring-fill" cx="40" cy="40" r="34" fill="none" stroke-width="7"/>
             </svg>
-            <div class="ring-label"><strong>64</strong><small>AI signal score</small></div>
+            <div class="ring-label"><strong>92</strong><small>page signal</small></div>
           </div>
           <ul class="insight-list">
-            <li><span class="dot dot-warn"></span>Business details <b>differ on 4 pages</b></li>
-            <li><span class="dot dot-warn"></span>6 questions <b>go unanswered</b></li>
-            <li><span class="dot dot-good"></span>GPTBot <b>visited 12 times this month</b></li>
+            <li><span class="dot dot-good"></span>Title tag <b>found</b></li>
+            <li><span class="dot dot-good"></span>Schema markup <b>valid</b></li>
+            <li><span class="dot dot-warn"></span>Internal links <b>thin</b></li>
           </ul>
           <div class="insight-fix">
             <span class="insight-fix-dot"></span>
-            <div><strong>AI-drafted answers ready</strong><small>Review and publish in one click</small></div>
+            <div><strong>3 internal links suggested</strong><small>Drafted by AI — review and add in one click</small></div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE STORY 2 -->
+  <section class="section story-row reverse reveal">
+    <div class="split reverse">
+      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
+        <div class="browser-chrome">
+          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+          <span class="chrome-url">VuloPilot — Content check</span>
+        </div>
+        <div class="insight-body insight-body-tight">
+          <p class="insight-eyebrow">Visitor's question</p>
+          <p class="insight-quote">"What's included in this service?"</p>
+          <span class="insight-tag insight-tag-bad">Page doesn't answer this</span>
+          <div class="insight-divider"></div>
+          <p class="insight-eyebrow">AI-drafted answer</p>
+          <div class="insight-typing">
+            <span class="type-line type-line-1"></span>
+            <span class="type-line type-line-2"></span>
+            <span class="type-line type-line-3"></span>
+          </div>
+          <span class="insight-tag insight-tag-good">Ready to review and publish</span>
+        </div>
+      </div>
+      <div class="copy">
+        <span class="eyebrow">02 / Answer the question</span>
+        <h2>Catches the questions your page ignores <span class="highlight">— then drafts the answer.</span></h2>
+        <p class="card-copy">"What's included?" If the page doesn't say, visitors leave in seconds. VuloPilot flags exactly where content falls short and writes a clearer version with AI, ready for you to review — plus tools for FAQs, metadata and WooCommerce descriptions on Pro.</p>
+        <div class="story-links">
+          <a class="text-link" href="#mission-control">Content tools ↗</a>
+          <a class="text-link" href="#mission-control">WooCommerce ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE STORY 3 -->
+  <section class="section story-row reveal">
+    <div class="split">
+      <div class="copy">
+        <span class="eyebrow">03 / Make it easy to use</span>
+        <h2>Finds the exact page slowing you down <span class="highlight">— and how to speed it up.</span></h2>
+        <p class="card-copy">A two-second delay is long enough to lose a sale. VuloPilot tests every page's load time, points to the real cause on the slow ones — usually an oversized image — and flags accessibility gaps like missing alt text or unlabeled forms.</p>
+        <div class="story-links">
+          <a class="text-link" href="#mission-control">Performance ↗</a>
+          <a class="text-link" href="#mission-control">Accessibility ↗</a>
+        </div>
+      </div>
+      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
+        <div class="browser-chrome">
+          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+          <span class="chrome-url">Core Web Vitals — Mobile</span>
+        </div>
+        <div class="insight-body">
+          <div class="vitals-row">
+            <span class="vitals-label">LCP <small>Load</small></span>
+            <div class="vitals-bar"><div class="vitals-fill vitals-good" style="--w:78%"></div></div>
+            <span class="vitals-val">2.1s</span>
+          </div>
+          <div class="vitals-row">
+            <span class="vitals-label">CLS <small>Stability</small></span>
+            <div class="vitals-bar"><div class="vitals-fill vitals-warn" style="--w:46%"></div></div>
+            <span class="vitals-val">0.18</span>
+          </div>
+          <div class="vitals-row">
+            <span class="vitals-label">INP <small>Response</small></span>
+            <div class="vitals-bar"><div class="vitals-fill vitals-good" style="--w:85%"></div></div>
+            <span class="vitals-val">180ms</span>
+          </div>
+          <ul class="insight-list insight-list-tight">
+            <li><span class="dot dot-good"></span>Layout <b>stable</b></li>
+            <li><span class="dot dot-warn"></span>Alt text <b>missing on 2 images</b></li>
+          </ul>
+          <div class="insight-fix">
+            <span class="insight-fix-dot"></span>
+            <div><strong>Image compression ready</strong><small>Cuts load time by ~1.4s — apply in one click</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE STORY 4 -->
+  <section class="section story-row reverse reveal">
+    <div class="split reverse">
+      <div class="insight-card reveal" style="transition-delay:.1s" aria-hidden="true">
+        <div class="browser-chrome">
+          <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+          <span class="chrome-url">VuloPilot — Security &amp; health</span>
+        </div>
+        <div class="insight-body">
+          <ul class="insight-list insight-list-security">
+            <li><span class="dot dot-good"></span>SSL certificate <b>valid</b></li>
+            <li><span class="dot dot-good"></span>Malware scan <b>clean</b></li>
+            <li><span class="dot dot-good"></span>Backup <b>today, 03:00</b></li>
+            <li><span class="dot dot-warn"></span>Plugin update <b>1 pending</b></li>
+          </ul>
+          <div class="insight-fix">
+            <span class="insight-fix-dot"></span>
+            <div><strong>Known vulnerability patched</strong><small>Update it now in one click</small></div>
+          </div>
+          <div class="insight-shield">
+            <svg viewBox="0 0 28 32" class="mini-shield">
+              <path d="M14 1 L26 6 V15 C26 23 20 28 14 31 C8 28 2 23 2 15 V6 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path class="mini-shield-check" d="M8 16 L12 20 L20 11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Protected once applied</span>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <span class="eyebrow">04 / Look after the foundations</span>
+        <h2>Flags the risks hiding behind your site <span class="highlight">— and how to patch them.</span></h2>
+        <p class="card-copy">An outdated plugin never shows up on the homepage, until it does. VuloPilot scans for malware, vulnerable plugins, a lapsed SSL certificate and backups that quietly stopped running — and tells you exactly what to fix first.</p>
+        <div class="story-links">
+          <a class="text-link" href="#mission-control">Security ↗</a>
+          <a class="text-link" href="#mission-control">Health &amp; backups ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="section">
+    <p class="eyebrow reveal">Why it's one plugin, not five</p>
+    <h2 class="reveal">Because the problem <span class="highlight">rarely lives in one plugin.</span></h2>
+    <p class="section-sub reveal">A dedicated tool for each one means five logins, five dashboards and nothing talking to each other. VuloPilot checks all five from the same place.</p>
+
+    <div class="compare-card reveal">
+      <div class="compare-row">
+        <span>Can people find you?</span>
+        <span class="mc-label">Visibility</span>
+      </div>
+      <div class="compare-row">
+        <span>Do they understand you?</span>
+        <span class="mc-label">Content</span>
+      </div>
+      <div class="compare-row">
+        <span>Will the page make them wait?</span>
+        <span class="mc-label">Performance</span>
+      </div>
+      <div class="compare-row">
+        <span>Is the site in good shape?</span>
+        <span class="mc-label">Health &amp; protection</span>
+      </div>
+      <div class="compare-row">
+        <span>Will you know if something changes?</span>
+        <span class="mc-label">Automation</span>
       </div>
     </div>
   </section>
@@ -1923,7 +1977,7 @@ h2.light { color: var(--cream); }
   <!-- PRICING -->
   <section class="section" id="pricing">
     <p class="eyebrow reveal">Free &amp; Pro</p>
-    <h2 class="reveal">See it free. <span class="highlight">Resolve it faster with Pro.</span></h2>
+    <h2 class="reveal">See the truth for free. <span class="highlight">Resolve it faster with Pro.</span></h2>
 
     <div class="split">
       <div class="card card-list plan-card reveal">
@@ -1948,39 +2002,6 @@ h2.light { color: var(--cream); }
           <li>Deeper AI visibility analysis and historical insights</li>
         </ul>
         <a class="btn btn-green" href="#cta">Explore Pro<span class="btn-dot dark"></span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MONITOR -->
-  <section class="section">
-    <div class="monitor-box reveal">
-      <div class="monitor-copy">
-        <p class="eyebrow light">Keep watching</p>
-        <h2 class="light">Set it once. <span class="highlight-light">It keeps running.</span></h2>
-        <p class="section-sub light">A new page or a plugin update can introduce an issue at any time — so the scan doesn't wait for you to remember it. Free gets a recurring full site scan; Pro adds custom triggers, conditions and automatic fixes where supported.</p>
-      </div>
-      <div class="workflow">
-        <div class="workflow-step">
-          <span class="workflow-icon wf-pulse">
-            <svg viewBox="0 0 20 20" class="wf-svg"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 6v4l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div><strong>When</strong><p>On your chosen schedule</p></div>
-        </div>
-        <div class="workflow-arrow">↓</div>
-        <div class="workflow-step">
-          <span class="workflow-icon wf-pulse" style="animation-delay:.6s">
-            <svg viewBox="0 0 20 20" class="wf-svg"><path d="M15.5 8a5.5 5.5 0 1 0-1.2 5.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15.5 4.5v3.5h-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div><strong>Run</strong><p>A full site scan</p></div>
-        </div>
-        <div class="workflow-arrow">↓</div>
-        <div class="workflow-step">
-          <span class="workflow-icon wf-pulse" style="animation-delay:1.2s">
-            <svg viewBox="0 0 20 20" class="wf-svg"><path d="M4 10.5l4 4 8-8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div><strong>Review</strong><p>The latest results</p></div>
-        </div>
       </div>
     </div>
   </section>

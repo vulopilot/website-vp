@@ -567,6 +567,14 @@ h2.light { color: var(--cream); }
 .compare-head .us { color: var(--green-dark); }
 .icon-x { color: #c05050; font-weight: 700; }
 .icon-check { color: var(--green-dark); font-weight: 700; }
+.compare-row { justify-content: space-between; grid-template-columns: none; }
+.compare-row .mc-label {
+  background: var(--peach);
+  color: var(--green-dark);
+  padding: 5px 12px;
+  border-radius: 999px;
+  opacity: 1;
+}
 
 /* ---------- FAQ ---------- */
 .faq-list {
