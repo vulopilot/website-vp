@@ -513,12 +513,7 @@ section {
 --------------------------------- */
 
 .capabilities {
-    background: var(--bg-dark);
-    color: var(--white);
-}
-
-.capabilities .section-header p {
-    color: #a7a7ae;
+    background: var(--bg-soft);
 }
 
 .capability-grid {
@@ -529,9 +524,9 @@ section {
 
 .capability {
     padding: 32px;
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #132257;
+    background: var(--white);
 }
 
 .capability h3 {
@@ -542,7 +537,7 @@ section {
 
 .capability p {
     margin: 0 0 18px;
-    color: #a7a7ae;
+    color: var(--text-soft);
 }
 
 .capability-list {
@@ -554,7 +549,7 @@ section {
 .capability-list li {
     position: relative;
     padding: 7px 0 7px 20px;
-    color: #d0d0d5;
+    color: var(--text-soft);
     font-size: 14px;
 }
 
@@ -562,7 +557,7 @@ section {
     content: "✓";
     position: absolute;
     left: 0;
-    color: var(--accent-bright);
+    color: var(--accent);
     font-weight: 800;
 }
 
