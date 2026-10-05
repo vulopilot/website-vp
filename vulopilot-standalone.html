@@ -394,113 +394,44 @@ img {
     font-size: 14px;
 }
 
-.finding-split {
-    position: relative;
+.finding-grid-3 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
-/* Connector line joining the two columns down the middle */
-.finding-split::before {
-    content: "";
-    position: absolute;
-    top: 44px;
-    bottom: 10px;
-    left: 50%;
-    width: 2px;
-    background: repeating-linear-gradient(
-        to bottom, var(--border) 0 6px, transparent 6px 12px
-    );
-    transform: translateX(-50%);
-    z-index: 0;
+.finding-card {
+    padding: 22px;
+    border-radius: 18px;
 }
 
-.finding-col {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.finding-col-head {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 2px;
-    color: var(--text-soft);
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-}
-.finding-col-head::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-}
-.finding-col-issues .finding-col-head::before { background: #c0585f; }
-.finding-col-fixes .finding-col-head::before { background: var(--accent); }
-
-.finding-item {
-    position: relative;
-    z-index: 1;
-    padding: 14px 16px;
-    border-radius: 14px;
-}
-
-.finding-item-issue {
-    background: #fdecec;
-}
+.fc-lavender { background: var(--pastel-3); }
+.fc-pink { background: var(--pastel-2); }
 
 .finding-icon {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 }
 
-.finding-item-fix {
-    background: var(--accent);
-    color: var(--white);
-}
-
-.finding-label {
-    margin: 0 0 8px;
-    color: var(--text-soft);
-    font-size: 10.5px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    opacity: 0.7;
-}
-.finding-item-fix .finding-label {
-    color: rgba(255,255,255,0.7);
-    opacity: 1;
-}
-
-.finding h4 {
+.finding-card-label {
     margin: 0 0 6px;
-    font-size: 15px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 800;
+}
+.fc-pink .finding-card-label { color: #c0585f; }
+
+.finding-card h4 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 800;
     color: var(--text);
 }
 
-.finding-item p {
+.finding-card p {
     margin: 0;
     color: var(--text-soft);
-    font-size: 12px;
-}
-
-.finding-item-fix strong {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 14.5px;
-    font-weight: 800;
-    color: var(--white);
-}
-.finding-item-fix p {
-    color: rgba(255,255,255,0.85);
-}
-
-.finding-tag {
-    display: none;
+    font-size: 13.5px;
+    line-height: 1.5;
 }
 
 /* ---------------------------------
@@ -979,12 +910,8 @@ footer {
         display: none;
     }
 
-    .finding-split {
+    .finding-grid-3 {
         grid-template-columns: 1fr;
-        gap: 28px;
-    }
-    .finding-split::before {
-        display: none;
     }
 
     .problem-grid,
@@ -1200,10 +1127,8 @@ footer {
                                     indexing signals, then drafts the fix.
                                 </div>
 
-                                <div class="finding-split">
-                                <div class="finding-col finding-col-issues">
-                                    <div class="finding-col-head">What VuloPilot found</div>
-                                    <div class="finding-item finding-item-issue">
+                                <div class="finding-grid-3">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1218,13 +1143,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">62</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Titles &amp; meta</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>8 titles need attention</h4>
-                                        <p>Missing or vague titles on important pages.</p>
+                                        <div class="finding-card-label">Titles &amp; meta</div>
+                                        <h4>AI rewrites the title and description</h4>
+                                        <p>For all 8 pages — you just review and approve.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1239,13 +1163,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">71</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Internal links</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>14 pages have no inbound links</h4>
-                                        <p>Pages nothing else on your site points to.</p>
+                                        <div class="finding-card-label">Internal links</div>
+                                        <h4>VuloPilot suggests 3 pages to link from</h4>
+                                        <p>Add them in one click — no manual digging.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-pink">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1260,36 +1183,11 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">58</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Indexing</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>2 pages aren't indexed</h4>
-                                        <p>Canonical URLs and structured data checked.</p>
-                                    </div>
-                                </div>
-                                <div class="finding-col finding-col-fixes">
-                                    <div class="finding-col-head">What it's doing about it</div>
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Titles &amp; meta</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>AI rewrites the title and description</strong>
-                                        <p>For all 8 pages — you just review and approve.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Internal links</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot suggests 3 pages to link from</strong>
-                                        <p>Add them in one click — no manual digging.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Indexing</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot rebuilds the missing tags</strong>
+                                        <div class="finding-card-label">Indexing</div>
+                                        <h4>VuloPilot rebuilds the missing tags</h4>
                                         <p>Canonical URL and structured data, fixed automatically.</p>
                                     </div>
                                 </div>
-                            </div>
                             </div>
 
                             <div class="dashboard-panel" data-panel="ai" hidden>
@@ -1301,10 +1199,8 @@ footer {
                                     answer coverage, then drafts the fix.
                                 </div>
 
-                                <div class="finding-split">
-                                <div class="finding-col finding-col-issues">
-                                    <div class="finding-col-head">What VuloPilot found</div>
-                                    <div class="finding-item finding-item-issue">
+                                <div class="finding-grid-3">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1319,13 +1215,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">64</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Business clarity</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>Details differ on 4 pages</h4>
-                                        <p>Hours or pricing don't match everywhere.</p>
+                                        <div class="finding-card-label">Business clarity</div>
+                                        <h4>VuloPilot finds where the details don't match</h4>
+                                        <p>And drafts the correction for you to approve.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1340,13 +1235,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">69</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Answer coverage</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>6 questions go unanswered</h4>
-                                        <p>Buyer questions your pages don't answer yet.</p>
+                                        <div class="finding-card-label">Answer coverage</div>
+                                        <h4>AI writes the missing answer</h4>
+                                        <p>Drops it right on the page — ready to publish.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-pink">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1361,36 +1255,11 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">55</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Crawler signals</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>GPTBot visited 12 times</h4>
-                                        <p>Track which AI crawlers reach your site.</p>
-                                    </div>
-                                </div>
-                                <div class="finding-col finding-col-fixes">
-                                    <div class="finding-col-head">What it's doing about it</div>
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Business clarity</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot finds where the details don't match</strong>
-                                        <p>And drafts the correction for you to approve.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Answer coverage</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>AI writes the missing answer</strong>
-                                        <p>Drops it right on the page — ready to publish.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Crawler signals</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot logs every AI crawler visit</strong>
+                                        <div class="finding-card-label">Crawler signals</div>
+                                        <h4>VuloPilot logs every AI crawler visit</h4>
                                         <p>So you see which AI systems are actually reading your site.</p>
                                     </div>
                                 </div>
-                            </div>
                             </div>
 
                             <div class="dashboard-panel" data-panel="content" hidden>
@@ -1402,10 +1271,8 @@ footer {
                                     then drafts the rewrite.
                                 </div>
 
-                                <div class="finding-split">
-                                <div class="finding-col finding-col-issues">
-                                    <div class="finding-col-head">What VuloPilot found</div>
-                                    <div class="finding-item finding-item-issue">
+                                <div class="finding-grid-3">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1420,13 +1287,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">73</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Content findings</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>5 pages are thin or duplicate</h4>
-                                        <p>Unlikely to rank or convert as they are.</p>
+                                        <div class="finding-card-label">Content findings</div>
+                                        <h4>AI rewrites the page</h4>
+                                        <p>With original content in seconds, ready to review.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1441,13 +1307,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">60</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">WooCommerce</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>12 products need descriptions</h4>
-                                        <p>Product pages missing real copy.</p>
+                                        <div class="finding-card-label">WooCommerce</div>
+                                        <h4>AI writes the product description</h4>
+                                        <p>From what's already on the page, then publishes it.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-pink">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1462,36 +1327,11 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">66</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Page improvements</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>FAQs and schema missing</h4>
-                                        <p>Details most pages leave blank.</p>
-                                    </div>
-                                </div>
-                                <div class="finding-col finding-col-fixes">
-                                    <div class="finding-col-head">What it's doing about it</div>
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Content findings</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>AI rewrites the page</strong>
-                                        <p>With original content in seconds, ready to review.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">WooCommerce</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>AI writes the product description</strong>
-                                        <p>From what's already on the page, then publishes it.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Page improvements</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>AI generates an FAQ block</strong>
+                                        <div class="finding-card-label">Page improvements</div>
+                                        <h4>AI generates an FAQ block</h4>
                                         <p>Complete with schema markup, ready to add.</p>
                                     </div>
                                 </div>
-                            </div>
                             </div>
 
                             <div class="dashboard-panel" data-panel="performance" hidden>
@@ -1503,10 +1343,8 @@ footer {
                                     then names the fix.
                                 </div>
 
-                                <div class="finding-split">
-                                <div class="finding-col finding-col-issues">
-                                    <div class="finding-col-head">What VuloPilot found</div>
-                                    <div class="finding-item finding-item-issue">
+                                <div class="finding-grid-3">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1521,13 +1359,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">59</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Slow pages</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>3 pages need investigation</h4>
-                                        <p>Identify the affected URLs and causes.</p>
+                                        <div class="finding-card-label">Slow pages</div>
+                                        <h4>VuloPilot compresses the oversized images</h4>
+                                        <p>One click, saves about 1.4 seconds of load time.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1542,13 +1379,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">71</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Core Web Vitals</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>LCP failing on 2 pages</h4>
-                                        <p>Loading speed affecting visitor experience.</p>
+                                        <div class="finding-card-label">Core Web Vitals</div>
+                                        <h4>VuloPilot names the exact fix</h4>
+                                        <p>Points to the element slowing the page and what to change.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-pink">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1563,36 +1399,11 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">63</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Speed history</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>Keep track after changes</h4>
-                                        <p>Compare results after you apply a fix.</p>
-                                    </div>
-                                </div>
-                                <div class="finding-col finding-col-fixes">
-                                    <div class="finding-col-head">What it's doing about it</div>
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Slow pages</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot compresses the oversized images</strong>
-                                        <p>One click, saves about 1.4 seconds of load time.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Core Web Vitals</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot names the exact fix</strong>
-                                        <p>Points to the element slowing the page and what to change.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Speed history</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot retests after your fix</strong>
+                                        <div class="finding-card-label">Speed history</div>
+                                        <h4>VuloPilot retests after your fix</h4>
                                         <p>And shows whether the load time actually improved.</p>
                                     </div>
                                 </div>
-                            </div>
                             </div>
 
                             <div class="dashboard-panel" data-panel="health" hidden>
@@ -1604,10 +1415,8 @@ footer {
                                     health, then names what to do.
                                 </div>
 
-                                <div class="finding-split">
-                                <div class="finding-col finding-col-issues">
-                                    <div class="finding-col-head">What VuloPilot found</div>
-                                    <div class="finding-item finding-item-issue">
+                                <div class="finding-grid-3">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1622,13 +1431,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">57</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Security</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>1 known plugin vulnerability</h4>
-                                        <p>Malware and SSL checks, with the cause named.</p>
+                                        <div class="finding-card-label">Security</div>
+                                        <h4>VuloPilot patches the plugin</h4>
+                                        <p>Identifies the exact risk and applies the fix in one click.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-lavender">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1643,13 +1451,12 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">68</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Backups</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>Backup status: unverified</h4>
-                                        <p>Checks whether your backup plugin is running.</p>
+                                        <div class="finding-card-label">Backups</div>
+                                        <h4>VuloPilot confirms the backup ran</h4>
+                                        <p>Not just that the plugin is installed — that it actually worked.</p>
                                     </div>
 
-                                    <div class="finding-item finding-item-issue">
+                                    <div class="finding-card fc-pink">
                                         <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
@@ -1664,36 +1471,11 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">61</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Accessibility</div>
-                                        <span class="finding-tag finding-tag-issue">Issue</span>
-                                        <h4>3 images missing alt text</h4>
-                                        <p>Headings and image descriptions checked.</p>
-                                    </div>
-                                </div>
-                                <div class="finding-col finding-col-fixes">
-                                    <div class="finding-col-head">What it's doing about it</div>
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Security</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot patches the plugin</strong>
-                                        <p>Identifies the exact risk and applies the fix in one click.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Backups</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>VuloPilot confirms the backup ran</strong>
-                                        <p>Not just that the plugin is installed — that it actually worked.</p>
-                                    </div>
-
-                                    <div class="finding-item finding-item-fix">
-                                        <div class="finding-label">Accessibility</div>
-                                        <span class="finding-tag finding-tag-fix">Fix</span>
-                                        <strong>AI writes the missing alt text</strong>
+                                        <div class="finding-card-label">Accessibility</div>
+                                        <h4>AI writes the missing alt text</h4>
                                         <p>For all 3 images — ready for you to review.</p>
                                     </div>
                                 </div>
-                            </div>
                             </div>
 
                             <div class="dashboard-panel" data-panel="automation" hidden>
@@ -1705,12 +1487,9 @@ footer {
                                     schedule, no setup required.
                                 </div>
 
-                                <div class="finding-split">
-                                    <div class="finding-col finding-col-issues">
-                                        <div class="finding-col-head">What VuloPilot found</div>
-
-                                        <div class="finding-item finding-item-issue">
-                                            <div class="finding-icon" aria-hidden="true">
+                                <div class="finding-grid-3">
+                                    <div class="finding-card fc-lavender">
+                                        <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
                                                 <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
@@ -1724,14 +1503,13 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">70</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Ready-made checks</div>
-                                            <span class="finding-tag finding-tag-issue">Issue</span>
-                                            <h4>Full site scan, on autopilot</h4>
-                                            <p>Free includes a recurring scan, no setup.</p>
-                                        </div>
+                                        <div class="finding-card-label">Ready-made checks</div>
+                                        <h4>VuloPilot scans the site on its own</h4>
+                                        <p>No setup needed — the next scan starts at 03:00.</p>
+                                    </div>
 
-                                        <div class="finding-item finding-item-issue">
-                                            <div class="finding-icon" aria-hidden="true">
+                                    <div class="finding-card fc-lavender">
+                                        <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
                                                 <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
@@ -1745,14 +1523,13 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">65</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Schedules</div>
-                                            <span class="finding-tag finding-tag-issue">Issue</span>
-                                            <h4>Daily, weekly or custom schedule</h4>
-                                            <p>Pick how often VuloPilot checks back in.</p>
-                                        </div>
+                                        <div class="finding-card-label">Schedules</div>
+                                        <h4>You pick how often, once</h4>
+                                        <p>VuloPilot checks back in on that schedule from then on.</p>
+                                    </div>
 
-                                        <div class="finding-item finding-item-issue">
-                                            <div class="finding-icon" aria-hidden="true">
+                                    <div class="finding-card fc-pink">
+                                        <div class="finding-icon" aria-hidden="true">
                                             <svg viewBox="0 0 72 72" width="64" height="64">
                                                 <rect x="2" y="2" width="68" height="68" rx="16" fill="#ffffff" stroke="#f0d8d8" stroke-width="1.5"/>
                                                 <rect x="10" y="10" width="52" height="11" rx="4" fill="var(--accent)"/>
@@ -1766,35 +1543,9 @@ footer {
                                                 <text x="36" y="48" text-anchor="middle" font-size="15" font-weight="800" fill="var(--text)">72</text>
                                             </svg>
                                         </div>
-                                        <div class="finding-label">Advanced workflows</div>
-                                            <span class="finding-tag finding-tag-issue">Issue</span>
-                                            <h4>"If a plugin update appears, apply it"</h4>
-                                            <p>Pro lets you set rules like this one.</p>
-                                        </div>
-                                    </div>
-                                    <div class="finding-col finding-col-fixes">
-                                        <div class="finding-col-head">What it's doing about it</div>
-
-                                        <div class="finding-item finding-item-fix">
-                                            <div class="finding-label">Ready-made checks</div>
-                                            <span class="finding-tag finding-tag-fix">Fix</span>
-                                            <strong>VuloPilot scans the site on its own</strong>
-                                            <p>No setup needed — the next scan starts at 03:00.</p>
-                                        </div>
-
-                                        <div class="finding-item finding-item-fix">
-                                            <div class="finding-label">Schedules</div>
-                                            <span class="finding-tag finding-tag-fix">Fix</span>
-                                            <strong>You pick how often, once</strong>
-                                            <p>VuloPilot checks back in on that schedule from then on.</p>
-                                        </div>
-
-                                        <div class="finding-item finding-item-fix">
-                                            <div class="finding-label">Advanced workflows</div>
-                                            <span class="finding-tag finding-tag-fix">Fix</span>
-                                            <strong>You set the rule, once (Pro)</strong>
-                                            <p>VuloPilot applies the fix automatically after that.</p>
-                                        </div>
+                                        <div class="finding-card-label">Advanced workflows</div>
+                                        <h4>You set the rule, once (Pro)</h4>
+                                        <p>VuloPilot applies the fix automatically after that.</p>
                                     </div>
                                 </div>
 
