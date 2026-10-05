@@ -427,8 +427,22 @@ section {
 }
 
 .problem-card p {
-    margin: 0;
+    margin: 0 0 20px;
     color: var(--text-soft);
+}
+
+.problem-solution {
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: var(--pastel-1);
+    color: var(--accent);
+    font-size: 14px;
+    line-height: 1.5;
+}
+.problem-solution strong {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--text);
 }
 
 /* ---------------------------------
