@@ -1313,13 +1313,6 @@ h2.light { color: var(--cream); }
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .recap-item:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(12,25,72,0.08); }
-.recap-num {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--ink-soft);
-  margin-bottom: 10px;
-}
 .recap-item p { font-size: 13.5px; margin: 0; line-height: 1.6; }
 .recap-item b { color: var(--green-dark); }
 
