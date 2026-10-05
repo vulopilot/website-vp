@@ -437,6 +437,10 @@ img {
     background: #fdecec;
 }
 
+.finding-icon {
+    margin-bottom: 10px;
+}
+
 .finding-item-fix {
     background: var(--accent);
     color: var(--white);
