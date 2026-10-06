@@ -9,10 +9,11 @@ const steps = [
 ];
 
 const findings = [
-  { n: "01", title: "What is wrong?", desc: "Get the critical issues, not another list." },
-  { n: "02", title: "Why does it matter?", desc: "Get the likely impact on discovery, trust, and experience." },
-  { n: "03", title: "What should I do next?", desc: "Move from finding to a useful recommendation or fix." },
-  { n: "04", title: "Did it get better?", desc: "Compare the results instead of assuming the work was done." },
+  { n: "01", title: "It spots what's wrong", desc: "One scan looks at your whole website." },
+  { n: "02", title: "It explains it in plain words", desc: "You see which page is affected and why it matters." },
+  { n: "03", title: "It tells you what comes first", desc: "The important things come first. The small stuff can wait." },
+  { n: "04", title: "It helps you fix it", desc: "Sometimes with one click. Sometimes with a draft from AI that you approve. Sometimes with a clear note for your developer." },
+  { n: "05", title: "It proves the fix worked", desc: "VuloPilot looks at the page again and confirms the problem is gone." },
 ];
 
 export default function DataToDirection() {
@@ -55,11 +56,12 @@ export default function DataToDirection() {
           <div>
             <Eyebrow>Not another report</Eyebrow>
             <h3 className="mt-4 text-2xl font-extrabold text-slate-900">
-              Every finding should lead somewhere.
+              From &ldquo;something is wrong&rdquo; to &ldquo;it is
+              fixed.&rdquo;
             </h3>
             <p className="mt-3 max-w-md text-sm text-slate-600">
-              VuloPilot is built around the question that matters after
-              every scan: what should I do next?
+              Every problem follows the same five steps. You are never left
+              with a warning and no idea what to do.
             </p>
             <a
               href="#"
