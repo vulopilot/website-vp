@@ -2,32 +2,32 @@ import Eyebrow from "./Eyebrow";
 
 const signals = [
   {
-    label: "From finding to next steps",
-    desc: "Get clear, prioritized recommendations.",
+    label: "What to fix first",
+    desc: "A short, ranked list — not a pile of warnings.",
     cta: "View details",
     icon: "→",
   },
   {
-    label: "Search visibility",
-    desc: "Improve your rankings and discoverability.",
+    label: "Get found on Google",
+    desc: "See what's quietly keeping pages out of search results.",
     cta: "Explore",
     icon: "🔍",
   },
   {
-    label: "Availability & content",
-    desc: "Audit your content and fix what's missing.",
+    label: "Missing or outdated content",
+    desc: "Find the gaps visitors (and Google) notice first.",
     cta: "Explore",
     icon: "📄",
   },
   {
-    label: "Performance experience",
-    desc: "Make your site faster and smoother.",
+    label: "Speed & experience",
+    desc: "Know which pages are driving visitors away.",
     cta: "Explore",
     icon: "⚡",
   },
   {
-    label: "Security, health & automation",
-    desc: "Keep your site secure and running smoothly.",
+    label: "Security & uptime",
+    desc: "Catch the risks before they become downtime.",
     cta: "Explore",
     icon: "🛡️",
   },
@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 sm:pt-20 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
-            <Eyebrow>WordPress + Website Intelligence</Eyebrow>
+            <Eyebrow>For WordPress site owners</Eyebrow>
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
               Stop collecting warnings.
               <br />
@@ -50,9 +50,10 @@ export default function Hero() {
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600">
-              VuloPilot looks across your entire WordPress website, finds
-              what&apos;s holding it back, explains why it matters, and helps
-              you improve it.
+              Plugins and scanners are good at finding problems. VuloPilot
+              goes one step further: it tells you which ones actually hurt
+              your traffic, trust, and sales — and exactly what to do about
+              them, in plain English.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
@@ -70,6 +71,10 @@ export default function Hero() {
                 <span aria-hidden>→</span>
               </a>
             </div>
+            <p className="mt-6 text-xs text-slate-400">
+              Free to connect · Read-only access · No code changes without
+              your say-so
+            </p>
           </div>
 
           <div className="relative">
@@ -92,15 +97,15 @@ export default function Hero() {
               <div className="flex items-center justify-between py-4">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                    Overall progress for Acme
+                    This week&apos;s report for Acme
                   </p>
                   <p className="text-lg font-bold text-slate-900">
-                    WordPress website
+                    acme-furniture.com
                   </p>
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-extrabold text-brand-600">06</p>
-                  <p className="text-xs text-slate-400">Insights</p>
+                  <p className="text-xs text-slate-400">things to review</p>
                 </div>
               </div>
 
@@ -129,8 +134,8 @@ export default function Hero() {
               </ul>
 
               <div className="mt-2 flex items-center justify-between border-t border-slate-100 pt-4 text-xs text-slate-400">
-                <span>One WordPress plugin</span>
-                <span>Connected website signals</span>
+                <span>One plugin, your whole site</span>
+                <span>Updated automatically</span>
               </div>
             </div>
           </div>

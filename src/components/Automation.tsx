@@ -2,24 +2,24 @@ import Eyebrow from "./Eyebrow";
 
 const flows = [
   {
-    title: "A new page is published?",
-    steps: ["Check SEO", "Check AI visibility", "Check links"],
-    result: "Every new page gets checked before problems go unnoticed.",
+    title: "You publish a new page",
+    steps: ["Check SEO basics", "Check AI readability", "Check broken links"],
+    result: "Catches rookie mistakes before Google or visitors ever see them.",
   },
   {
-    title: "A page became slow?",
-    steps: ["Detect", "Find the cause", "Prioritize", "Resolve"],
-    result: "Performance changes are flagged so you know where to investigate.",
+    title: "A page starts loading slowly",
+    steps: ["Detect the slowdown", "Find the cause", "Tell you what to fix"],
+    result: "You find out from VuloPilot, not from a customer complaint.",
   },
   {
-    title: "Content becomes outdated?",
-    steps: ["Detect", "Analyze", "Suggest refresh", "Verify"],
-    result: "Find content that needs updating without checking every page manually.",
+    title: "Content gets stale",
+    steps: ["Flag outdated pages", "Suggest a refresh", "Confirm it's fixed"],
+    result: "Old, outranked pages get noticed without you re-reading your whole site.",
   },
   {
-    title: "Review website growth?",
-    steps: ["Scan", "Compare changes", "Find opportunities"],
-    result: "Start the week knowing what needs attention — and where to look.",
+    title: "A new week starts",
+    steps: ["Re-scan everything", "Compare to last week", "Surface what changed"],
+    result: "You open Monday already knowing where to look — no digging required.",
   },
 ];
 
@@ -27,14 +27,14 @@ export default function Automation() {
   return (
     <section className="bg-brand-50/40 py-20">
       <div className="mx-auto max-w-5xl px-6 text-center lg:px-8">
-        <Eyebrow className="justify-center">Following problems the VuloPilot way</Eyebrow>
+        <Eyebrow className="justify-center">Set it up once</Eyebrow>
         <h2 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
-          Automation that works{" "}
-          <span className="text-brand-600">around your website.</span>
+          Maintenance that happens{" "}
+          <span className="text-brand-600">whether or not you log in.</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-sm text-slate-600">
-          Turn recurring website work into workflows that check, prioritize,
-          and follow up for you.
+          The checks you&apos;d normally forget to run manually, running
+          quietly in the background.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-4 text-left sm:grid-cols-2">
