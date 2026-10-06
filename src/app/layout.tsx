@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "VuloPilot — Know what to fix on your WordPress site",
   description:
-    "VuloPilot scans your WordPress site and turns warnings into a short, ranked to-do list — in plain English. Security, search visibility, performance, and AI visibility in one plugin.",
+    "VuloPilot is the WordPress plugin that helps you find issues, understand what matters, and take action — security, search visibility, performance, and AI visibility in one place.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

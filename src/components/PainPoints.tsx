@@ -1,15 +1,15 @@
 const cards = [
-  { icon: "📈", text: "“Is my website even okay? I honestly can’t tell.”", dark: false },
+  { icon: "📈", text: "Is my website even okay? I can't tell.", dark: false },
   {
     icon: "⚠️",
-    text: "“I’ve got three tools and a hundred warnings. Which one actually matters?”",
+    text: "I have three tools and a hundred warnings. What do I fix?",
     dark: true,
   },
-  { icon: "📉", text: "“My traffic dropped last month. No idea why.”", dark: false },
-  { icon: "🔄", text: "“I fixed something last week — did it even work?”", dark: false },
+  { icon: "📉", text: "My visitors dropped. Why?", dark: false },
+  { icon: "🔄", text: "I fixed it last week. Did it help?", dark: false },
   {
     icon: "✦",
-    text: "“Does ChatGPT even know my business exists?”",
+    text: "Does ChatGPT even know my business exists?",
     dark: false,
   },
 ];
@@ -17,18 +17,18 @@ const cards = [
 const summary = [
   {
     n: "01",
-    title: "Too many warnings, not enough answers.",
-    desc: "Every scanner, plugin, and dashboard is happy to tell you something's wrong — just not what it means.",
+    title: "Too many warnings.",
+    desc: "Audits, dashboards, scanners, and plugins all tell you something is wrong.",
   },
   {
     n: "02",
-    title: "No sense of priority.",
-    desc: "A list of 100 issues reads the same whether #3 is costing you customers or #97 never will.",
+    title: "No clear priority.",
+    desc: "A list of 100 issues does not tell you which fix could make a difference.",
   },
   {
     n: "03",
-    title: "Fixes that don't stick.",
-    desc: "You patch one thing, move on, and have no idea if it helped — or if a new problem already took its place.",
+    title: "Nothing stays finished.",
+    desc: "Work gets started, then stops. You can create a new problem tomorrow.",
   },
 ];
 
@@ -37,12 +37,9 @@ export default function PainPoints() {
     <section className="bg-white py-20">
       <div className="mx-auto max-w-5xl px-6 text-center lg:px-8">
         <h2 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">
-          Sound familiar?
+          You have probably thought{" "}
+          <span className="text-brand-600">one of these.</span>
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500">
-          If you own a WordPress site, you&apos;ve probably had one of these
-          thoughts this month.
-        </p>
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((c) => (
@@ -61,11 +58,11 @@ export default function PainPoints() {
         </div>
 
         <p className="mt-10 text-sm text-slate-500">
-          If you nodded at even one of those, you&apos;re not alone — most
-          site owners are guessing, not knowing.
+          If you nodded at even one, you are not alone. Most website owners
+          are guessing.
         </p>
-        <p className="mt-1 text-base font-semibold text-slate-900">
-          Here&apos;s why that happens, and what actually fixes it.
+        <p className="mt-1 text-sm font-semibold text-slate-800">
+          And there is a simple answer.
         </p>
 
         <div className="mt-8 grid grid-cols-1 gap-8 rounded-3xl bg-slate-900 p-8 text-left sm:grid-cols-3">

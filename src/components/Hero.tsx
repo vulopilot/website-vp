@@ -2,32 +2,32 @@ import Eyebrow from "./Eyebrow";
 
 const signals = [
   {
-    label: "What to fix first",
-    desc: "A short, ranked list — not a pile of warnings.",
+    label: "From finding to next steps",
+    desc: "Get clear, prioritized next steps.",
     cta: "View details",
     icon: "→",
   },
   {
-    label: "Get found on Google",
-    desc: "See what's quietly keeping pages out of search results.",
+    label: "Search visibility",
+    desc: "Improve your rankings and discoverability.",
     cta: "Explore",
     icon: "🔍",
   },
   {
-    label: "Missing or outdated content",
-    desc: "Find the gaps visitors (and Google) notice first.",
+    label: "Availability & content",
+    desc: "Audit your content and fix what is missing.",
     cta: "Explore",
     icon: "📄",
   },
   {
-    label: "Speed & experience",
-    desc: "Know which pages are driving visitors away.",
+    label: "Performance experience",
+    desc: "Make your site faster and smoother.",
     cta: "Explore",
     icon: "⚡",
   },
   {
-    label: "Security & uptime",
-    desc: "Catch the risks before they become downtime.",
+    label: "Security, health & automation",
+    desc: "Keep your site secure and running smoothly.",
     cta: "Explore",
     icon: "🛡️",
   },
@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 sm:pt-20 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
-            <Eyebrow>For WordPress site owners</Eyebrow>
+            <Eyebrow>WordPress + Website Intelligence</Eyebrow>
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
               Stop collecting warnings.
               <br />
@@ -50,10 +50,9 @@ export default function Hero() {
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600">
-              Plugins and scanners are good at finding problems. VuloPilot
-              goes one step further: it tells you which ones actually hurt
-              your traffic, trust, and sales — and exactly what to do about
-              them, in plain English.
+              VuloPilot looks across your entire WordPress website, finds
+              what is holding it back, explains why it matters, and helps
+              you improve it.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
@@ -71,10 +70,6 @@ export default function Hero() {
                 <span aria-hidden>→</span>
               </a>
             </div>
-            <p className="mt-6 text-xs text-slate-400">
-              Free to connect · Read-only access · No code changes without
-              your say-so
-            </p>
           </div>
 
           <div className="relative">
@@ -97,15 +92,15 @@ export default function Hero() {
               <div className="flex items-center justify-between py-4">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                    This week&apos;s report for Acme
+                    Overall progress for Acme
                   </p>
                   <p className="text-lg font-bold text-slate-900">
-                    acme-furniture.com
+                    WordPress website
                   </p>
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-extrabold text-brand-600">06</p>
-                  <p className="text-xs text-slate-400">things to review</p>
+                  <p className="text-xs text-slate-400">Insights</p>
                 </div>
               </div>
 
@@ -134,8 +129,8 @@ export default function Hero() {
               </ul>
 
               <div className="mt-2 flex items-center justify-between border-t border-slate-100 pt-4 text-xs text-slate-400">
-                <span>One plugin, your whole site</span>
-                <span>Updated automatically</span>
+                <span>One WordPress plugin</span>
+                <span>Connected website signals</span>
               </div>
             </div>
           </div>

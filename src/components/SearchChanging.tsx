@@ -1,8 +1,9 @@
 const points = [
-  { icon: "🧭", text: "Clear, factual descriptions of what you actually do." },
-  { icon: "💬", text: "Answers AI tools can quote directly, instead of guessing." },
-  { icon: "🔗", text: "Consistent business details search engines can trust." },
-  { icon: "📡", text: "An ongoing check that nothing drifts out of date." },
+  { icon: "🧭", text: "Make your business easier to understand." },
+  { icon: "💬", text: "Strengthen information and entities that explain your business." },
+  { icon: "🔗", text: "Help AI and search tools find the right information." },
+  { icon: "📡", text: "Monitor the signals you can improve." },
+  { icon: "📊", text: "Track what's working and where to make your website stronger." },
 ];
 
 export default function SearchChanging() {
@@ -12,30 +13,24 @@ export default function SearchChanging() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-brand-400">
-              Search is changing
+              The next layer of discovery
             </p>
             <h2 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-              People are starting to ask
+              Search is changing.
               <br />
-              ChatGPT instead of Google.
+              Your website needs
+              <br />
+              to be understood everywhere.
             </h2>
             <p className="mt-4 max-w-md text-sm text-slate-300">
-              When someone asks an AI assistant about a product or business
-              like yours, it answers using whatever it can find and
-              understand on your site. If your content is vague or
-              inconsistent, it either gets your business wrong — or leaves
-              you out of the answer entirely.
-            </p>
-            <p className="mt-3 max-w-md text-sm text-slate-300">
-              VuloPilot checks whether your site gives AI tools what they
-              need to describe your business correctly, and tells you what
-              to fix if it doesn&apos;t.
+              VuloPilot helps you make your website clearer and structured and
+              ready for what&apos;s next.
             </p>
             <a
               href="#"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/30 hover:bg-brand-500"
             >
-              Check your AI visibility →
+              Improve your visibility →
             </a>
           </div>
 
