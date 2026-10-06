@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VuloPilot — Know what to fix on your WordPress site</title>
+<meta name="description" content="VuloPilot scans your WordPress site and turns warnings into a short, ranked to-do list — in plain English. Security, search visibility, performance, and AI visibility in one plugin." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: "#f5f3ff",
+            100: "#ede9fe",
+            200: "#ddd6fe",
+            300: "#c4b5fd",
+            400: "#a78bfa",
+            500: "#8b5cf6",
+            600: "#7c3aed",
+            700: "#6d28d9",
+            900: "#2e1065",
+          },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+</style>
+</head>
+<body class="bg-white text-slate-900 overflow-x-hidden">
+<main class="flex flex-col">
+
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-b from-brand-50 via-white to-white">
+    <div class="mx-auto max-w-7xl px-6 pt-16 pb-24 sm:pt-20 lg:px-8">
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+            <span class="text-brand-500">✦</span>
+            For WordPress site owners
+          </div>
+          <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+            Stop collecting warnings.
+            <br />
+            <span class="bg-gradient-to-r from-brand-600 to-fuchsia-500 bg-clip-text text-transparent">
+              Start knowing
+              <br />
+              what to fix.
+            </span>
+          </h1>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600">
+            Plugins and scanners are good at finding problems. VuloPilot
+            goes one step further: it tells you which ones actually hurt
+            your traffic, trust, and sales — and exactly what to do about
+            them, in plain English.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#" class="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700">
+              Connect your WordPress site
+              <span aria-hidden>→</span>
+            </a>
+            <a href="#how-it-works" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-brand-600">
+              See how it works
+              <span aria-hidden>→</span>
+            </a>
+          </div>
+          <p class="mt-6 text-xs text-slate-400">
+            Free to connect · Read-only access · No code changes without your say-so
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-200/60 blur-3xl"></div>
+          <div class="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-fuchsia-200/50 blur-3xl"></div>
+          <div class="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl shadow-brand-900/10">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div class="flex items-center gap-2 text-xs text-slate-400">
+                <span class="h-2.5 w-2.5 rounded-full bg-rose-300"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+                <span class="ml-2">vulopilot.com/report</span>
+              </div>
+              <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-600">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                Connected live
+              </span>
+            </div>
+
+            <div class="flex items-center justify-between py-4">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">This week's report for Acme</p>
+                <p class="text-lg font-bold text-slate-900">acme-furniture.com</p>
+              </div>
+              <div class="text-right">
+                <p class="text-2xl font-extrabold text-brand-600">06</p>
+                <p class="text-xs text-slate-400">things to review</p>
+              </div>
+            </div>
+
+            <ul class="divide-y divide-slate-100">
+              <li class="flex items-center justify-between gap-4 py-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm">→</span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-800">What to fix first</p>
+                    <p class="text-xs text-slate-500">A short, ranked list — not a pile of warnings.</p>
+                  </div>
+                </div>
+                <span class="shrink-0 text-xs font-semibold text-brand-600">View details →</span>
+              </li>
+              <li class="flex items-center justify-between gap-4 py-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm">🔍</span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-800">Get found on Google</p>
+                    <p class="text-xs text-slate-500">See what's quietly keeping pages out of search results.</p>
+                  </div>
+                </div>
+                <span class="shrink-0 text-xs font-semibold text-brand-600">Explore →</span>
+              </li>
+              <li class="flex items-center justify-between gap-4 py-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm">📄</span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-800">Missing or outdated content</p>
+                    <p class="text-xs text-slate-500">Find the gaps visitors (and Google) notice first.</p>
+                  </div>
+                </div>
+                <span class="shrink-0 text-xs font-semibold text-brand-600">Explore →</span>
+              </li>
+              <li class="flex items-center justify-between gap-4 py-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm">⚡</span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-800">Speed & experience</p>
+                    <p class="text-xs text-slate-500">Know which pages are driving visitors away.</p>
+                  </div>
+                </div>
+                <span class="shrink-0 text-xs font-semibold text-brand-600">Explore →</span>
+              </li>
+              <li class="flex items-center justify-between gap-4 py-3">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm">🛡️</span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-800">Security & uptime</p>
+                    <p class="text-xs text-slate-500">Catch the risks before they become downtime.</p>
+                  </div>
+                </div>
+                <span class="shrink-0 text-xs font-semibold text-brand-600">Explore →</span>
+              </li>
+            </ul>
+
+            <div class="mt-2 flex items-center justify-between border-t border-slate-100 pt-4 text-xs text-slate-400">
+              <span>One plugin, your whole site</span>
+              <span>Updated automatically</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain points -->
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
+      <h2 class="text-2xl font-extrabold text-slate-900 sm:text-3xl">Sound familiar?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-sm text-slate-500">
+        If you own a WordPress site, you've probably had one of these thoughts this month.
+      </p>
+
+      <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-sm">
+          <span class="text-xl">📈</span>
+          <p class="text-sm font-medium leading-snug text-slate-800">"Is my website even okay? I honestly can't tell."</p>
+        </div>
+        <div class="flex flex-col items-start gap-3 rounded-2xl border border-slate-900 bg-slate-900 p-6 text-left shadow-sm">
+          <span class="text-xl">⚠️</span>
+          <p class="text-sm font-medium leading-snug text-white">"I've got three tools and a hundred warnings. Which one actually matters?"</p>
+        </div>
+        <div class="flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-sm">
+          <span class="text-xl">📉</span>
+          <p class="text-sm font-medium leading-snug text-slate-800">"My traffic dropped last month. No idea why."</p>
+        </div>
+        <div class="flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-sm">
+          <span class="text-xl">🔄</span>
+          <p class="text-sm font-medium leading-snug text-slate-800">"I fixed something last week — did it even work?"</p>
+        </div>
+        <div class="flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-sm">
+          <span class="text-xl">✦</span>
+          <p class="text-sm font-medium leading-snug text-slate-800">"Does ChatGPT even know my business exists?"</p>
+        </div>
+      </div>
+
+      <p class="mt-10 text-sm text-slate-500">
+        If you nodded at even one of those, you're not alone — most site owners are guessing, not knowing.
+      </p>
+      <p class="mt-1 text-base font-semibold text-slate-900">Here's why that happens, and what actually fixes it.</p>
+
+      <div class="mt-8 grid grid-cols-1 gap-8 rounded-3xl bg-slate-900 p-8 text-left sm:grid-cols-3">
+        <div>
+          <span class="text-xs font-semibold text-brand-400">01</span>
+          <h3 class="mt-2 text-sm font-semibold text-white">Too many warnings, not enough answers.</h3>
+          <p class="mt-1 text-xs leading-relaxed text-slate-400">Every scanner, plugin, and dashboard is happy to tell you something's wrong — just not what it means.</p>
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-brand-400">02</span>
+          <h3 class="mt-2 text-sm font-semibold text-white">No sense of priority.</h3>
+          <p class="mt-1 text-xs leading-relaxed text-slate-400">A list of 100 issues reads the same whether #3 is costing you customers or #97 never will.</p>
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-brand-400">03</span>
+          <h3 class="mt-2 text-sm font-semibold text-white">Fixes that don't stick.</h3>
+          <p class="mt-1 text-xs leading-relaxed text-slate-400">You patch one thing, move on, and have no idea if it helped — or if a new problem already took its place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section id="how-it-works" class="bg-brand-50/40 py-20">
+    <div class="mx-auto max-w-7xl px-6 text-center lg:px-8">
+      <div class="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+        <span class="text-brand-500">✦</span>
+        Meet VuloPilot
+      </div>
+      <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
+        One plugin that turns
+        <br />
+        website noise into <span class="text-brand-600">a to-do list.</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-sm text-slate-600">
+        VuloPilot installs on your WordPress site, scans it the way a
+        technical consultant would, and translates what it finds into
+        steps anyone can act on — no jargon, no guesswork.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
+        <div class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <span class="text-xs font-semibold text-brand-500">Step 1</span>
+          <p class="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-900"><span>📈</span> Scan</p>
+          <p class="mt-2 text-xs leading-relaxed text-slate-500">VuloPilot checks your whole site — pages, content, speed, security — automatically.</p>
+        </div>
+        <div class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <span class="text-xs font-semibold text-brand-500">Step 2</span>
+          <p class="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-900"><span>💬</span> Explain</p>
+          <p class="mt-2 text-xs leading-relaxed text-slate-500">Every issue comes with a plain-English reason it matters, not just a red X.</p>
+        </div>
+        <div class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <span class="text-xs font-semibold text-brand-500">Step 3</span>
+          <p class="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-900"><span>📋</span> Prioritize</p>
+          <p class="mt-2 text-xs leading-relaxed text-slate-500">Issues are ranked by real impact, so you always know what to fix first.</p>
+        </div>
+        <div class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <span class="text-xs font-semibold text-brand-500">Step 4</span>
+          <p class="mt-2 flex items-center gap-2 text-sm font-semibold text-slate-900"><span>🔄</span> Verify</p>
+          <p class="mt-2 text-xs leading-relaxed text-slate-500">VuloPilot rescans after you fix something, so you know it actually worked.</p>
+        </div>
+      </div>
+
+      <div class="mt-16 text-left">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">Everything it watches</p>
+        <div class="mt-6 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Security & health <span class="text-brand-500">→</span></p>
+            <p class="mt-1 text-xs text-slate-500">Catch the risks that could take your site down or get it flagged.</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Search visibility <span class="text-brand-500">→</span></p>
+            <p class="mt-1 text-xs text-slate-500">Understand what's stopping pages from ranking on Google.</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Performance <span class="text-brand-500">→</span></p>
+            <p class="mt-1 text-xs text-slate-500">See which pages are slow enough to lose you visitors.</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Content <span class="text-brand-500">→</span></p>
+            <p class="mt-1 text-xs text-slate-500">Find thin, missing, or outdated content before visitors do.</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">Automation <span class="text-brand-500">→</span></p>
+            <p class="mt-1 text-xs text-slate-500">Let recurring checks run themselves so nothing slips through.</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-slate-800">AI visibility <span class="text-brand-500">→</span></p>
+            <p class="mt-1 text-xs text-slate-500">Make sure tools like ChatGPT can find and describe your business correctly.</p>
+          </div>
+        </div>
+        <a href="#" class="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">
+          Explore VuloPilot features →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- From data to direction -->
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+        <div class="text-left">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+            <span class="text-brand-500">✦</span>
+            Not another report
+          </div>
+          <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
+            Every finding answers
+            <br />
+            <span class="text-brand-600">one question: now what?</span>
+          </h2>
+          <p class="mt-4 max-w-md text-sm text-slate-600">
+            Most audits stop at "here's a list of problems." VuloPilot
+            treats that as the start, not the finish — every item is
+            built around four questions, in order.
+          </p>
+          <a href="#" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">
+            See a sample report →
+          </a>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <ul class="space-y-5">
+            <li class="flex items-start gap-4">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-600">01</span>
+              <div>
+                <p class="text-sm font-semibold text-slate-800">What's wrong?</p>
+                <p class="text-xs text-slate-500">A specific issue on a specific page — not a generic warning.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-600">02</span>
+              <div>
+                <p class="text-sm font-semibold text-slate-800">Why does it matter?</p>
+                <p class="text-xs text-slate-500">The likely effect on traffic, trust, or sales, explained in plain terms.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-600">03</span>
+              <div>
+                <p class="text-sm font-semibold text-slate-800">What do I do about it?</p>
+                <p class="text-xs text-slate-500">A clear next step or fix you (or your developer) can act on today.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand-600">04</span>
+              <div>
+                <p class="text-sm font-semibold text-slate-800">Did it work?</p>
+                <p class="text-xs text-slate-500">A follow-up check that confirms the issue is actually resolved.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation -->
+  <section class="bg-brand-50/40 py-20">
+    <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
+      <div class="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+        <span class="text-brand-500">✦</span>
+        Set it up once
+      </div>
+      <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
+        Maintenance that happens <span class="text-brand-600">whether or not you log in.</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-sm text-slate-600">
+        The checks you'd normally forget to run manually, running quietly in the background.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-4 text-left sm:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold text-slate-900">You publish a new page</p>
+          <div class="mt-3 flex flex-wrap items-center gap-2 text-xs font-medium text-brand-600">
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Check SEO basics</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Check AI readability</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Check broken links</span>
+          </div>
+          <p class="mt-4 text-xs text-slate-500"><span class="font-semibold text-slate-700">Result: </span>Catches rookie mistakes before Google or visitors ever see them.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold text-slate-900">A page starts loading slowly</p>
+          <div class="mt-3 flex flex-wrap items-center gap-2 text-xs font-medium text-brand-600">
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Detect the slowdown</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Find the cause</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Tell you what to fix</span>
+          </div>
+          <p class="mt-4 text-xs text-slate-500"><span class="font-semibold text-slate-700">Result: </span>You find out from VuloPilot, not from a customer complaint.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold text-slate-900">Content gets stale</p>
+          <div class="mt-3 flex flex-wrap items-center gap-2 text-xs font-medium text-brand-600">
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Flag outdated pages</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Suggest a refresh</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Confirm it's fixed</span>
+          </div>
+          <p class="mt-4 text-xs text-slate-500"><span class="font-semibold text-slate-700">Result: </span>Old, outranked pages get noticed without you re-reading your whole site.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold text-slate-900">A new week starts</p>
+          <div class="mt-3 flex flex-wrap items-center gap-2 text-xs font-medium text-brand-600">
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Re-scan everything</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Compare to last week</span>
+            <span class="text-slate-300">→</span>
+            <span class="rounded-full bg-brand-50 px-2.5 py-1">Surface what changed</span>
+          </div>
+          <p class="mt-4 text-xs text-slate-500"><span class="font-semibold text-slate-700">Result: </span>You open Monday already knowing where to look — no digging required.</p>
+        </div>
+      </div>
+
+      <a href="#" class="mt-10 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">
+        Explore automation →
+      </a>
+    </div>
+  </section>
+
+  <!-- Search is changing -->
+  <section class="bg-slate-900 py-20 text-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-brand-400">Search is changing</p>
+          <h2 class="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
+            People are starting to ask
+            <br />
+            ChatGPT instead of Google.
+          </h2>
+          <p class="mt-4 max-w-md text-sm text-slate-300">
+            When someone asks an AI assistant about a product or business
+            like yours, it answers using whatever it can find and
+            understand on your site. If your content is vague or
+            inconsistent, it either gets your business wrong — or leaves
+            you out of the answer entirely.
+          </p>
+          <p class="mt-3 max-w-md text-sm text-slate-300">
+            VuloPilot checks whether your site gives AI tools what they
+            need to describe your business correctly, and tells you what
+            to fix if it doesn't.
+          </p>
+          <a href="#" class="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-600/30 hover:bg-brand-500">
+            Check your AI visibility →
+          </a>
+        </div>
+
+        <div class="space-y-3">
+          <div class="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+            <span class="text-base">🧭</span>
+            <span class="text-sm text-slate-200">Clear, factual descriptions of what you actually do.</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+            <span class="text-base">💬</span>
+            <span class="text-sm text-slate-200">Answers AI tools can quote directly, instead of guessing.</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+            <span class="text-base">🔗</span>
+            <span class="text-sm text-slate-200">Consistent business details search engines can trust.</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+            <span class="text-base">📡</span>
+            <span class="text-sm text-slate-200">An ongoing check that nothing drifts out of date.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI visibility -->
+  <section class="bg-brand-50/40 py-20">
+    <div class="mx-auto max-w-7xl px-6 text-center lg:px-8">
+      <p class="text-xs font-semibold uppercase tracking-wider text-brand-600">One score, plainly explained</p>
+      <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
+        One website. Every signal. <span class="text-brand-600">One score.</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-sm text-slate-600">
+        VuloPilot boils AI and search visibility down to six plain-English
+        questions — no SEO degree required to understand your score.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 text-left shadow-xl shadow-brand-900/5 lg:grid-cols-[220px_1fr]">
+        <nav class="space-y-1 border-b border-slate-100 pb-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-4">
+          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Search visibility</div>
+          <div class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-medium text-white">AI visibility <span class="float-right">→</span></div>
+          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Content</div>
+          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Performance</div>
+          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Security & Health</div>
+          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Automation</div>
+        </nav>
+
+        <div class="p-2">
+          <h3 class="text-sm font-semibold text-slate-800">Help AI systems understand your business.</h3>
+          <p class="mt-1 text-xs text-slate-500">
+            This score reflects how easily tools like ChatGPT and Google
+            can find, understand, and accurately describe what you do.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-[auto_1fr]">
+            <div class="flex flex-col items-center justify-center rounded-2xl bg-brand-50 px-8 py-6">
+              <div class="relative flex h-24 w-24 items-center justify-center rounded-full border-8 border-emerald-400">
+                <span class="text-2xl font-extrabold text-slate-900">96</span>
+              </div>
+              <p class="mt-3 text-xs font-semibold text-emerald-600">Excellent</p>
+              <p class="mt-1 text-xs text-slate-400">AI tools can understand and accurately describe your business.</p>
+              <div class="mt-4 flex gap-6 text-xs text-slate-500">
+                <div><p class="font-semibold text-slate-800">70</p><p>Pages checked</p></div>
+                <div><p class="font-semibold text-slate-800">38</p><p>Pages flagged</p></div>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex items-baseline justify-between gap-4 text-xs">
+                  <span class="font-medium text-slate-700">Who you are</span>
+                  <span class="shrink-0 font-semibold text-slate-800">80%</span>
+                </div>
+                <p class="mt-0.5 text-[11px] text-slate-400">Can AI tools correctly identify your business and what it does?</p>
+                <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-full rounded-full bg-brand-500" style="width:80%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-baseline justify-between gap-4 text-xs">
+                  <span class="font-medium text-slate-700">Why you're credible</span>
+                  <span class="shrink-0 font-semibold text-slate-800">88%</span>
+                </div>
+                <p class="mt-0.5 text-[11px] text-slate-400">Do you show the expertise or track record that earns trust?</p>
+                <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-full rounded-full bg-brand-500" style="width:88%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-baseline justify-between gap-4 text-xs">
+                  <span class="font-medium text-slate-700">Who's talking about you</span>
+                  <span class="shrink-0 font-semibold text-slate-800">65%</span>
+                </div>
+                <p class="mt-0.5 text-[11px] text-slate-400">Are other sites and reviews mentioning your business by name?</p>
+                <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-full rounded-full bg-brand-500" style="width:65%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-baseline justify-between gap-4 text-xs">
+                  <span class="font-medium text-slate-700">Technical basics</span>
+                  <span class="shrink-0 font-semibold text-slate-800">90%</span>
+                </div>
+                <p class="mt-0.5 text-[11px] text-slate-400">Can search and AI crawlers actually read your pages properly?</p>
+                <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-full rounded-full bg-brand-500" style="width:90%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-baseline justify-between gap-4 text-xs">
+                  <span class="font-medium text-slate-700">Social proof</span>
+                  <span class="shrink-0 font-semibold text-slate-800">50%</span>
+                </div>
+                <p class="mt-0.5 text-[11px] text-slate-400">Do your social profiles back up what your site claims?</p>
+                <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-full rounded-full bg-brand-500" style="width:50%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-baseline justify-between gap-4 text-xs">
+                  <span class="font-medium text-slate-700">Up-to-date content</span>
+                  <span class="shrink-0 font-semibold text-slate-800">72%</span>
+                </div>
+                <p class="mt-0.5 text-[11px] text-slate-400">Is your information current, or quietly out of date?</p>
+                <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-full rounded-full bg-brand-500" style="width:72%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">
+            Check my AI visibility score →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-100 bg-white py-10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-500 sm:flex-row lg:px-8">
+      <p class="font-semibold text-slate-800">VuloPilot</p>
+      <p>© 2026 VuloPilot. All rights reserved.</p>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>
