@@ -32,6 +32,21 @@
 </style>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
+
+<header class="sticky top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+    <a href="#" class="text-sm font-extrabold tracking-tight text-slate-900">Vulo<span class="text-brand-600">Pilot</span></a>
+    <nav class="hidden items-center gap-8 text-sm font-medium text-slate-600 sm:flex">
+      <a href="#how-it-works" class="hover:text-brand-600">Features</a>
+      <a href="#pricing" class="hover:text-brand-600">Pricing</a>
+    </nav>
+    <a href="#how-it-works" class="inline-flex items-center gap-2 rounded-full bg-brand-600 px-4 py-2 text-xs font-semibold text-white shadow-sm shadow-brand-600/20 hover:bg-brand-700 sm:text-sm">
+      Get started
+      <span aria-hidden>→</span>
+    </a>
+  </div>
+</header>
+
 <main class="flex flex-col">
 
   <!-- Hero -->
@@ -834,6 +849,84 @@
 
     renderSignals();
   </script>
+
+  <!-- Pricing -->
+  <section id="pricing" class="bg-white py-20">
+    <div class="mx-auto max-w-3xl px-6 text-center lg:px-8">
+      <div class="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+        <span class="text-brand-500">✦</span>
+        Pricing
+      </div>
+      <h2 class="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">
+        Free forever. <span class="text-brand-600">Pro when you need more.</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-sm text-slate-600">
+        Every scan, score and fix described on this page works in the free
+        plugin. VuloPilot Pro adds deeper checks, automation and one-click
+        fixes on top — priced by how many sites you run it on.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-6 px-6 lg:grid-cols-4 lg:px-8">
+      <div class="rounded-3xl border border-slate-200 bg-white p-8 text-left">
+        <p class="text-sm font-semibold text-slate-500">Free</p>
+        <p class="mt-2 text-4xl font-extrabold text-slate-900">$0<span class="text-base font-medium text-slate-400"> /forever</span></p>
+        <p class="mt-3 text-sm text-slate-600">Full scans and scores across SEO, AI visibility, content, performance, security, accessibility and commerce. No card required.</p>
+        <a href="#" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">Install VuloPilot free</a>
+      </div>
+
+      <div class="relative rounded-3xl border border-slate-200 bg-white p-8 text-left">
+        <p class="text-sm font-semibold text-brand-600">Pro — 1 site</p>
+        <p class="mt-2 text-4xl font-extrabold text-slate-900">$19<span class="text-base font-medium text-slate-400"> /year</span></p>
+        <p class="mt-3 text-sm text-slate-600">For a single WordPress site.</p>
+        <a href="#" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">Get Pro — 1 site</a>
+      </div>
+
+      <div class="relative rounded-3xl border border-brand-600 bg-brand-50/60 p-8 text-left shadow-lg shadow-brand-600/10">
+        <span class="absolute -top-3 left-8 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">Most popular</span>
+        <p class="text-sm font-semibold text-brand-600">Pro — 3 sites</p>
+        <p class="mt-2 text-4xl font-extrabold text-slate-900">$49<span class="text-base font-medium text-slate-400"> /year</span></p>
+        <p class="mt-3 text-sm text-slate-600">For a few sites you manage.</p>
+        <a href="#" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">Get Pro — 3 sites</a>
+      </div>
+
+      <div class="relative rounded-3xl border border-slate-200 bg-white p-8 text-left">
+        <p class="text-sm font-semibold text-brand-600">Pro — 10 sites</p>
+        <p class="mt-2 text-4xl font-extrabold text-slate-900">$99<span class="text-base font-medium text-slate-400"> /year</span></p>
+        <p class="mt-3 text-sm text-slate-600">For an agency or a growing portfolio.</p>
+        <a href="#" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">Get Pro — 10 sites</a>
+      </div>
+    </div>
+
+    <p class="mx-auto mt-6 max-w-3xl px-6 text-center text-xs text-slate-400 lg:px-8">
+      Pro needs the free plugin installed first — it adds to it, not replaces it. If a license lapses, Pro features pause but nothing is deleted.
+    </p>
+
+    <div class="mx-auto mt-16 max-w-3xl px-6 text-left lg:px-8">
+      <div class="text-center">
+        <p class="text-xs font-semibold uppercase tracking-wider text-brand-600">Questions</p>
+        <h3 class="mt-3 text-2xl font-extrabold text-slate-900">Pricing, plainly.</h3>
+      </div>
+      <div class="mt-8 space-y-6">
+        <div>
+          <p class="text-sm font-semibold text-slate-800">Do I need Pro to use VuloPilot?</p>
+          <p class="mt-1 text-sm text-slate-600">No. The free plugin scans your whole site — SEO, AI visibility, performance, security, accessibility, content and (with WooCommerce) commerce — and gives every area a score. Pro adds deeper checks and automation on top of what free already does.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-800">How does the per-site pricing work?</p>
+          <p class="mt-1 text-sm text-slate-600">One license key activates Pro on the number of sites in your plan — 1, 3, or 10. Pick the tier that matches how many WordPress sites you manage.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-800">What happens if my license expires?</p>
+          <p class="mt-1 text-sm text-slate-600">Pro features stop working until you renew, but your scan history, settings and data all stay exactly as they were. Nothing is deleted.</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-800">Can I turn off Pro features I don't need?</p>
+          <p class="mt-1 text-sm text-slate-600">Yes. Every Pro capability is its own module under Settings → Modules — turn on only what you use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="border-t border-slate-100 bg-white py-10">
