@@ -540,105 +540,275 @@
       </p>
 
       <div class="mt-12 grid grid-cols-1 gap-6 overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 text-left shadow-xl shadow-brand-900/5 lg:grid-cols-[220px_1fr]">
-        <nav class="space-y-1 border-b border-slate-100 pb-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-4">
-          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Search visibility</div>
-          <div class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-medium text-white">AI visibility <span class="float-right">→</span></div>
-          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Content</div>
-          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Performance</div>
-          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Security & Health</div>
-          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Automation</div>
-          <div class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">Commerce</div>
-        </nav>
-
-        <div class="p-2">
-          <h3 class="text-sm font-semibold text-slate-800">Help AI systems understand your business.</h3>
-          <p class="mt-1 text-xs text-slate-500">
-            Review your Q&A, find gaps in your content and track how your website signals change.
-          </p>
-          <div class="mt-2 flex flex-wrap gap-4 text-xs text-slate-400">
-            <span>● Entity clarity</span>
-            <span>● Question coverage</span>
-            <span>● Content freshness</span>
-          </div>
-
-          <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-[auto_1fr]">
-            <div class="flex flex-col items-center justify-center rounded-2xl bg-brand-50 px-8 py-6">
-              <div class="relative flex h-24 w-24 items-center justify-center rounded-full border-8 border-emerald-400">
-                <span class="text-2xl font-extrabold text-slate-900">96</span>
-              </div>
-              <p class="mt-3 text-xs font-semibold text-emerald-600">Excellent</p>
-              <p class="mt-1 text-xs text-slate-400">Your website is well understood by AI systems.</p>
-              <div class="mt-4 flex gap-6 text-xs text-slate-500">
-                <div><p class="font-semibold text-slate-800">70</p><p>Pages checked</p></div>
-                <div><p class="font-semibold text-slate-800">38</p><p>Pages flagged</p></div>
-              </div>
-            </div>
-
-            <div class="space-y-3">
-              <div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="text-slate-600">Entities & Expertise</span>
-                  <span class="font-semibold text-slate-800">80%</span>
-                </div>
-                <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                  <div class="h-full rounded-full bg-brand-500" style="width:80%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="text-slate-600">Experts & Authority</span>
-                  <span class="font-semibold text-slate-800">88%</span>
-                </div>
-                <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                  <div class="h-full rounded-full bg-brand-500" style="width:88%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="text-slate-600">Brand mentions</span>
-                  <span class="font-semibold text-slate-800">65%</span>
-                </div>
-                <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                  <div class="h-full rounded-full bg-brand-500" style="width:65%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="text-slate-600">Technical SEO</span>
-                  <span class="font-semibold text-slate-800">90%</span>
-                </div>
-                <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                  <div class="h-full rounded-full bg-brand-500" style="width:90%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="text-slate-600">Social Signals</span>
-                  <span class="font-semibold text-slate-800">50%</span>
-                </div>
-                <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                  <div class="h-full rounded-full bg-brand-500" style="width:50%"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="text-slate-600">Content freshness</span>
-                  <span class="font-semibold text-slate-800">72%</span>
-                </div>
-                <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                  <div class="h-full rounded-full bg-brand-500" style="width:72%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <a href="#" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">
-            Explore AI visibility →
-          </a>
-        </div>
+        <nav id="signals-nav" class="space-y-1 border-b border-slate-100 pb-4 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-4"></nav>
+        <div id="signals-panel" class="p-2"></div>
       </div>
     </div>
   </section>
+
+  <script>
+    const SIGNAL_TABS = [
+      {
+        kind: "standard",
+        label: "Search visibility",
+        heading: "Help people find your pages on Google.",
+        subheading: "See what's stopping pages from ranking and which ones to fix first.",
+        tags: ["Indexability", "Keyword coverage", "Backlink health"],
+        score: 82, scoreLabel: "Good",
+        scoreNote: "Most of your pages are set up to be found.",
+        pagesChecked: 70, pagesFlagged: 22,
+        metrics: [
+          { label: "Page titles & meta", value: 85 },
+          { label: "Indexing & crawlability", value: 92 },
+          { label: "Keyword targeting", value: 70 },
+          { label: "Internal linking", value: 68 },
+          { label: "Mobile usability", value: 95 },
+          { label: "Backlink profile", value: 60 },
+        ],
+        cta: "Explore search visibility →",
+      },
+      {
+        kind: "standard",
+        label: "AI visibility",
+        heading: "Help AI systems understand your business.",
+        subheading: "Review your Q&A, find gaps in your content and track how your website signals change.",
+        tags: ["Entity clarity", "Question coverage", "Content freshness"],
+        score: 96, scoreLabel: "Excellent",
+        scoreNote: "Your website is well understood by AI systems.",
+        pagesChecked: 70, pagesFlagged: 38,
+        metrics: [
+          { label: "Entities & Expertise", value: 80 },
+          { label: "Experts & Authority", value: 88 },
+          { label: "Brand mentions", value: 65 },
+          { label: "Technical SEO", value: 90 },
+          { label: "Social Signals", value: 50 },
+          { label: "Content freshness", value: 72 },
+        ],
+        cta: "Explore AI visibility →",
+      },
+      {
+        kind: "standard",
+        label: "Content",
+        heading: "Find thin, missing, or outdated content.",
+        subheading: "Spot the gaps visitors and search engines notice first.",
+        tags: ["Content freshness", "Depth & completeness", "Duplicate content"],
+        score: 74, scoreLabel: "Good",
+        scoreNote: "Some pages are thin or overdue for a refresh.",
+        pagesChecked: 70, pagesFlagged: 29,
+        metrics: [
+          { label: "Content freshness", value: 72 },
+          { label: "Depth & completeness", value: 78 },
+          { label: "Readability", value: 81 },
+          { label: "Duplicate content", value: 90 },
+          { label: "Media & alt text", value: 55 },
+          { label: "Internal structure", value: 69 },
+        ],
+        cta: "Explore content →",
+      },
+      {
+        kind: "standard",
+        label: "Performance",
+        heading: "See how fast your pages open for visitors.",
+        subheading: "Catch the pages slow enough to be costing you visitors.",
+        tags: ["Load time", "Core Web Vitals", "Image weight"],
+        score: 88, scoreLabel: "Excellent",
+        scoreNote: "Your site is fast on most devices and connections.",
+        pagesChecked: 70, pagesFlagged: 11,
+        metrics: [
+          { label: "Largest Contentful Paint", value: 90 },
+          { label: "Cumulative Layout Shift", value: 95 },
+          { label: "Image optimization", value: 72 },
+          { label: "Script weight", value: 80 },
+          { label: "Server response time", value: 92 },
+          { label: "Mobile speed", value: 85 },
+        ],
+        cta: "Explore performance →",
+      },
+      {
+        kind: "standard",
+        label: "Security & Health",
+        heading: "Catch the risks that could take your site down.",
+        subheading: "Spot critical issues before they become downtime or a security incident.",
+        tags: ["Malware scan", "SSL & updates", "Backup status"],
+        score: 91, scoreLabel: "Excellent",
+        scoreNote: "No critical risks found on your most recent scan.",
+        pagesChecked: 70, pagesFlagged: 6,
+        metrics: [
+          { label: "Malware & vulnerabilities", value: 98 },
+          { label: "Plugin & core updates", value: 85 },
+          { label: "SSL configuration", value: 100 },
+          { label: "File permissions", value: 90 },
+          { label: "Backup status", value: 75 },
+          { label: "Login security", value: 88 },
+        ],
+        cta: "Explore security & health →",
+      },
+      {
+        kind: "standard",
+        label: "Automation",
+        heading: "Checks that run themselves so nothing slips through.",
+        subheading: "See what VuloPilot is watching in the background right now.",
+        tags: ["Active workflows", "Last run", "Next check"],
+        score: 95, scoreLabel: "Excellent",
+        scoreNote: "Your recurring checks are running on schedule.",
+        pagesChecked: 70, pagesFlagged: 0,
+        metrics: [
+          { label: "New page checks", value: 100 },
+          { label: "Slow page detection", value: 100 },
+          { label: "Content freshness checks", value: 90 },
+          { label: "Weekly re-scan", value: 100 },
+          { label: "Broken link checks", value: 95 },
+          { label: "Alert delivery", value: 100 },
+        ],
+        cta: "Explore automation →",
+      },
+      { kind: "commerce", label: "Commerce" },
+    ];
+
+    function ringColorClass(score) {
+      if (score >= 85) return "border-emerald-400";
+      if (score >= 70) return "border-amber-400";
+      return "border-rose-400";
+    }
+    function labelColorClass(score) {
+      if (score >= 85) return "text-emerald-600";
+      if (score >= 70) return "text-amber-600";
+      return "text-rose-600";
+    }
+
+    function renderStandardPanel(tab) {
+      const tags = tab.tags.map((t) => `<span>● ${t}</span>`).join("");
+      const metrics = tab.metrics.map((m) => `
+        <div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-600">${m.label}</span>
+            <span class="font-semibold text-slate-800">${m.value}%</span>
+          </div>
+          <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+            <div class="h-full rounded-full bg-brand-500" style="width:${m.value}%"></div>
+          </div>
+        </div>
+      `).join("");
+
+      return `
+        <h3 class="text-sm font-semibold text-slate-800">${tab.heading}</h3>
+        <p class="mt-1 text-xs text-slate-500">${tab.subheading}</p>
+        <div class="mt-2 flex flex-wrap gap-4 text-xs text-slate-400">${tags}</div>
+
+        <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-[auto_1fr]">
+          <div class="flex flex-col items-center justify-center rounded-2xl bg-brand-50 px-8 py-6">
+            <div class="relative flex h-24 w-24 items-center justify-center rounded-full border-8 ${ringColorClass(tab.score)}">
+              <span class="text-2xl font-extrabold text-slate-900">${tab.score}</span>
+            </div>
+            <p class="mt-3 text-xs font-semibold ${labelColorClass(tab.score)}">${tab.scoreLabel}</p>
+            <p class="mt-1 text-xs text-slate-400">${tab.scoreNote}</p>
+            <div class="mt-4 flex gap-6 text-xs text-slate-500">
+              <div><p class="font-semibold text-slate-800">${tab.pagesChecked}</p><p>Pages checked</p></div>
+              <div><p class="font-semibold text-slate-800">${tab.pagesFlagged}</p><p>Pages flagged</p></div>
+            </div>
+          </div>
+          <div class="space-y-3">${metrics}</div>
+        </div>
+
+        <a href="#" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">
+          ${tab.cta}
+        </a>
+      `;
+    }
+
+    function renderCommercePanel() {
+      const categories = [
+        { icon: "📦", label: "Products", note: "5 need attention", tone: "warn" },
+        { icon: "🛒", label: "Orders", note: "1 needs attention", tone: "warn" },
+        { icon: "💳", label: "Checkout & Payments", note: "3 active payment methods", tone: "neutral" },
+        { icon: "🔍", label: "Product SEO", note: "No open findings", tone: "good" },
+      ];
+      const toneClass = { warn: "bg-rose-50 text-rose-600", good: "bg-emerald-50 text-emerald-600", neutral: "bg-slate-100 text-slate-600" };
+      const categoriesHtml = categories.map((c) => `
+        <div class="rounded-xl border border-slate-200 bg-white p-3">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm">${c.icon}</span>
+          <p class="mt-2 text-xs font-semibold text-slate-800">${c.label}</p>
+          <span class="mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-medium ${toneClass[c.tone]}">${c.note}</span>
+        </div>
+      `).join("");
+
+      const priorities = [
+        { icon: "📋", title: "Product completeness", desc: "Update product data like categories, tags, descriptions, and SKU.", priority: "High" },
+        { icon: "📝", title: "Product descriptions", desc: "Add rich product descriptions to improve SEO and conversion.", priority: "Medium" },
+        { icon: "⏱️", title: "Stale pending orders", desc: "Review and process pending orders to keep customers happy.", priority: "Medium" },
+      ];
+      const priorityClass = { High: "bg-rose-50 text-rose-600", Medium: "bg-amber-50 text-amber-600" };
+      const prioritiesHtml = priorities.map((p) => `
+        <li class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-3">
+          <div class="flex items-center gap-3">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-sm">${p.icon}</span>
+            <div>
+              <p class="text-xs font-semibold text-slate-800">${p.title}</p>
+              <p class="text-[11px] text-slate-500">${p.desc}</p>
+            </div>
+          </div>
+          <span class="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold ${priorityClass[p.priority]}">${p.priority}</span>
+        </li>
+      `).join("");
+
+      return `
+        <h3 class="text-sm font-semibold text-slate-800">AI-powered WooCommerce intelligence to help you increase sales and grow revenue.</h3>
+        <p class="mt-1 text-xs text-slate-500">VuloPilot watches your store the same way it watches your content and security — then tells you what to fix first.</p>
+
+        <div class="mt-5 rounded-2xl bg-brand-50 p-5">
+          <p class="text-sm font-bold text-slate-900">Your store needs some attention</p>
+          <p class="mt-0.5 text-xs font-semibold text-rose-600">6 things could interfere with sales.</p>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">${categoriesHtml}</div>
+
+        <div class="mt-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">★ What should I work on first?</p>
+          <p class="mt-1 text-xs text-slate-500">The highest-impact opportunities for your WooCommerce store.</p>
+          <ul class="mt-3 space-y-2">${prioritiesHtml}</ul>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div class="rounded-xl border border-slate-200 bg-white p-4">
+            <p class="flex items-center gap-2 text-xs font-semibold text-slate-800"><span>✦</span> Bulk AI optimization</p>
+            <p class="mt-1 text-[11px] text-slate-500">Select an action and a batch of products to get AI suggestions, then review and approve each proposal.</p>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-white p-4">
+            <p class="flex items-center gap-2 text-xs font-semibold text-slate-800"><span>📈</span> AI Sales Optimizer</p>
+            <p class="mt-1 text-[11px] text-slate-500">Find cross-sell, upsell, and bundle opportunities across your store.</p>
+          </div>
+        </div>
+
+        <a href="#" class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700">
+          Explore commerce →
+        </a>
+      `;
+    }
+
+    let activeSignalIndex = 1;
+
+    function renderSignals() {
+      const nav = document.getElementById("signals-nav");
+      const panel = document.getElementById("signals-panel");
+      nav.innerHTML = SIGNAL_TABS.map((t, i) => `
+        <button type="button" data-index="${i}" class="signal-tab block w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition ${i === activeSignalIndex ? "bg-brand-600 text-white" : "text-slate-600 hover:bg-slate-50"}">
+          ${t.label} ${i === activeSignalIndex ? '<span class="float-right">→</span>' : ""}
+        </button>
+      `).join("");
+
+      const activeTab = SIGNAL_TABS[activeSignalIndex];
+      panel.innerHTML = activeTab.kind === "commerce" ? renderCommercePanel() : renderStandardPanel(activeTab);
+
+      nav.querySelectorAll(".signal-tab").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          activeSignalIndex = parseInt(btn.getAttribute("data-index"), 10);
+          renderSignals();
+        });
+      });
+    }
+
+    renderSignals();
+  </script>
 
   <!-- Footer -->
   <footer class="border-t border-slate-100 bg-white py-10">
