@@ -19,10 +19,11 @@ const howItHelps = [
 const features = [
   { title: "Security & health", desc: "Spot critical issues and make your site safer." },
   { title: "Search visibility", desc: "Check what could be done to help people find your pages on Google." },
-  { title: "Performance", desc: "See how your pages open for visitors." },
-  { title: "SEO how", desc: "Fine tune quickly your pages open for visitors." },
+  { title: "Performance", desc: "See how fast your pages open for visitors." },
+  { title: "Content", desc: "Find thin, missing, or outdated content before visitors do." },
   { title: "Automation", desc: "Find opportunities to save time and reduce manual work." },
   { title: "AI visibility", desc: "Strengthen the signals that help tools like ChatGPT understand what you do." },
+  { title: "Commerce", desc: "Spot store issues and sales opportunities on WooCommerce." },
 ];
 
 export default function Solution() {
