@@ -22,7 +22,12 @@ type CommerceTab = {
   label: string;
 };
 
-type Tab = StandardTab | CommerceTab;
+type AutomationTab = {
+  kind: "automation";
+  label: string;
+};
+
+type Tab = StandardTab | CommerceTab | AutomationTab;
 
 const tabs: Tab[] = [
   {
@@ -133,28 +138,7 @@ const tabs: Tab[] = [
     ],
     cta: "Explore security & health →",
   },
-  {
-    kind: "standard",
-    label: "Automation",
-    heading: "Checks that run themselves so nothing slips through.",
-    subheading:
-      "See what VuloPilot is watching in the background right now.",
-    tags: ["Active workflows", "Last run", "Next check"],
-    score: 95,
-    scoreLabel: "Excellent",
-    scoreNote: "Your recurring checks are running on schedule.",
-    pagesChecked: 70,
-    pagesFlagged: 0,
-    metrics: [
-      { label: "New page checks", value: 100 },
-      { label: "Slow page detection", value: 100 },
-      { label: "Content freshness checks", value: 90 },
-      { label: "Weekly re-scan", value: 100 },
-      { label: "Broken link checks", value: 95 },
-      { label: "Alert delivery", value: 100 },
-    ],
-    cta: "Explore automation →",
-  },
+  { kind: "automation", label: "Automation" },
   { kind: "commerce", label: "Commerce" },
 ];
 
@@ -240,6 +224,80 @@ function StandardPanel({ tab }: { tab: StandardTab }) {
         className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700"
       >
         {tab.cta}
+      </a>
+    </div>
+  );
+}
+
+const scheduledAutomations = [
+  {
+    icon: "🔁",
+    title: "Run Full Site Scan",
+    desc: "Checks your whole website and refreshes every score, on its own.",
+    frequency: "Weekly",
+    status: "Active",
+  },
+  {
+    icon: "📧",
+    title: "Send Visibility Report",
+    desc: "Emails you a summary of how visible your site is and what to work on.",
+    frequency: "Weekly",
+    status: "Active",
+  },
+];
+
+function AutomationPanel() {
+  return (
+    <div className="p-2">
+      <h3 className="text-sm font-semibold text-slate-800">
+        Checks that run themselves so nothing slips through.
+      </h3>
+      <p className="mt-1 text-xs text-slate-500">
+        Turn these on once and VuloPilot keeps your scores fresh without you
+        logging in.
+      </p>
+
+      <div className="mt-5 rounded-2xl bg-emerald-50 p-4">
+        <p className="text-sm font-semibold text-emerald-700">
+          Great job! Your automations are running smoothly.
+        </p>
+      </div>
+
+      <ul className="mt-4 space-y-3">
+        {scheduledAutomations.map((a) => (
+          <li
+            key={a.title}
+            className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4"
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-sm">
+                {a.icon}
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-slate-800">{a.title}</p>
+                <p className="mt-0.5 text-[11px] text-slate-500">{a.desc}</p>
+              </div>
+            </div>
+            <div className="flex shrink-0 flex-col items-end gap-1">
+              <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold text-emerald-600">
+                {a.status}
+              </span>
+              <span className="text-[10px] text-slate-400">{a.frequency}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-4 text-[11px] text-slate-400">
+        Choose daily, weekly, monthly, or manual-only for each automation —
+        and get an emailed alert the moment one needs attention.
+      </p>
+
+      <a
+        href="#"
+        className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700"
+      >
+        Explore automation →
       </a>
     </div>
   );
@@ -420,6 +478,8 @@ export default function AiVisibility() {
 
           {activeTab.kind === "commerce" ? (
             <CommercePanel />
+          ) : activeTab.kind === "automation" ? (
+            <AutomationPanel />
           ) : (
             <StandardPanel tab={activeTab} />
           )}
