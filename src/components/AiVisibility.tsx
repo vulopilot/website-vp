@@ -5,6 +5,7 @@ const nav = [
   { label: "Performance", active: false },
   { label: "Security & Health", active: false },
   { label: "Automation", active: false },
+  { label: "Commerce", active: false },
 ];
 
 const metrics = [
